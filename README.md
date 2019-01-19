@@ -1,1 +1,2 @@
-# huaweicloud-sdk-dotnet-obs
+ 
+Version:3.0.4

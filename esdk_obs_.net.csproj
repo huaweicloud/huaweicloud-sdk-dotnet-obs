@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{96DAED81-80C1-4DF1-8731-6A93CD01F93E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OBS</RootNamespace>
+    <AssemblyName>esdk_obs_.net</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\Release\esdk_obs_.net.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>packages\log4net.2.0.8\lib\net20-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Internal\Auth\AbstractSigner.cs" />
+    <Compile Include="Internal\DownloadCheckPoint.cs" />
+    <Compile Include="Internal\EnumAdaptor.cs" />
+    <Compile Include="Internal\HttpClient.async.cs" />
+    <Compile Include="Internal\IConvertor.cs" />
+    <Compile Include="Internal\IHeaders.cs" />
+    <Compile Include="Internal\IParser.cs" />
+    <Compile Include="Internal\Negotiation\AuthTypeCache.cs" />
+    <Compile Include="Internal\Negotiation\GetApiVersionRequest.cs" />
+    <Compile Include="Internal\Negotiation\GetApiVersionResponse.cs" />
+    <Compile Include="Internal\Negotiation\LocksHolder.cs" />
+    <Compile Include="Internal\ObsAsyncResult.cs" />
+    <Compile Include="Internal\ObsCallback.cs" />
+    <Compile Include="Internal\ObsConvertor.cs" />
+    <Compile Include="Internal\ObsHeaders.cs" />
+    <Compile Include="Internal\ObsParser.cs" />
+    <Compile Include="Internal\SimpleTransfer.cs" />
+    <Compile Include="Internal\ThreadSafeTransfer.cs" />
+    <Compile Include="Internal\UploadCheckPoint.cs" />
+    <Compile Include="Internal\V2Convertor.cs" />
+    <Compile Include="Internal\V2Headers.cs" />
+    <Compile Include="Internal\V2Parser.cs" />
+    <Compile Include="Internal\CommonParser.cs" />
+    <Compile Include="Model\AbstractAccessControlList.cs" />
+    <Compile Include="Model\CreateBucketRequest.cs" />
+    <Compile Include="Model\CreateBucketResponse.cs" />
+    <Compile Include="Model\CreatePostSignatureRequest.cs" />
+    <Compile Include="Model\CreateV4PostSignatureResponse.cs" />
+    <Compile Include="Model\CreatePostSignatureResponse.cs" />
+    <Compile Include="Model\DeleteBucketReplicationRequest.cs" />
+    <Compile Include="Model\DeleteBucketReplicationResponse.cs" />
+    <Compile Include="Model\AppendObjectRequest.cs" />
+    <Compile Include="Model\AppendObjectResponse.cs" />
+    <Compile Include="Model\ReplicationRule.cs" />
+    <Compile Include="Model\GetBucketReplicationResponse.cs" />
+    <Compile Include="Model\GetBucketReplicationRequest.cs" />
+    <Compile Include="Model\ReplicationConfiguration.cs" />
+    <Compile Include="Model\RestoreStatus.cs" />
+    <Compile Include="Model\GetObjectAclResponse.cs" />
+    <Compile Include="Model\GetBucketAclRequest.cs" />
+    <Compile Include="Model\GroupGrantee.cs" />
+    <Compile Include="Model\CanonicalGrantee.cs" />
+    <Compile Include="Model\PutObjectBasicRequest.cs" />
+    <Compile Include="Model\SetBucketReplicationResponse.cs" />
+    <Compile Include="Model\SetBucketReplicationRequest.cs" />
+    <Compile Include="Model\SetObjectAclRequest.cs" />
+    <Compile Include="Model\SetBucketAclRequest.cs" />
+    <Compile Include="Model\SetObjectAclResponse.cs" />
+    <Compile Include="Model\SetBucketAclResponse.cs" />
+    <Compile Include="Model\RedirectBasic.cs" />
+    <Compile Include="Model\SetBucketLoggingRequest.cs" />
+    <Compile Include="Model\SetBucketLoggingResponse.cs" />
+    <Compile Include="Model\SetBucketQuotaRequest.cs" />
+    <Compile Include="Model\SetBucketQuotaResponse.cs" />
+    <Compile Include="Model\SseCHeader.cs" />
+    <Compile Include="Model\SseHeader.cs" />
+    <Compile Include="Model\SseKmsHeader.cs" />
+    <Compile Include="Model\ResumableEvent.cs" />
+    <Compile Include="Model\TransferStatus.cs" />
+    <Compile Include="Model\ResumableUploadRequest.cs" />
+    <Compile Include="Model\UploadStreamRequest.cs" />
+    <Compile Include="ObsBucketWebServiceRequest.cs" />
+    <Compile Include="ObsClient.common.async.cs" />
+    <Compile Include="ObsClient.buckets.async.cs" />
+    <Compile Include="ObsClient.objects.async.cs" />
+    <Compile Include="ObsClient.resumable.cs" />
+    <Compile Include="ObsClient.temporary.cs" />
+    <Compile Include="Internal\Auth\ObsSigner.cs" />
+    <Compile Include="Internal\Auth\Signer.cs" />
+    <Compile Include="Internal\Auth\V2Signer.cs" />
+    <Compile Include="Internal\Auth\V4Signer.cs" />
+    <Compile Include="Internal\HttpClient.cs" />
+    <Compile Include="Internal\HttpContext.cs" />
+    <Compile Include="Internal\HttpRequest.cs" />
+    <Compile Include="Internal\HttpResponse.cs" />
+    <Compile Include="Internal\HttpResponseHandler.cs" />
+    <Compile Include="Internal\SecurityProvider.cs" />
+    <Compile Include="Internal\Log\LoggerMgr.cs" />
+    <Compile Include="ObsClient.common.cs" />
+    <Compile Include="ObsClient.objects.cs" />
+    <Compile Include="ObsClient.buckets.cs" />
+    <Compile Include="ObsConfig.ext.cs" />
+    <Compile Include="Internal\Constants.cs" />
+    <Compile Include="Internal\CommonUtil.cs" />
+    <Compile Include="Model\LoggingConfiguration.cs" />
+    <Compile Include="Model\ModelEnumerations.cs" />
+    <Compile Include="Model\VersioningConfiguration.cs" />
+    <Compile Include="Model\AbortMultipartUploadRequest.cs" />
+    <Compile Include="Model\AbortMultipartUploadResponse.cs" />
+    <Compile Include="Model\ByteRange.cs" />
+    <Compile Include="Model\CompleteMultipartUploadRequest.cs" />
+    <Compile Include="Model\CompleteMultipartUploadResponse.cs" />
+    <Compile Include="Model\CopyObjectRequest.cs" />
+    <Compile Include="Model\CopyObjectResponse.cs" />
+    <Compile Include="Model\CopyPartRequest.cs" />
+    <Compile Include="Model\CopyPartResponse.cs" />
+    <Compile Include="Model\CorsConfiguration.cs" />
+    <Compile Include="Model\CorsRule.cs" />
+    <Compile Include="Model\DeleteBucketPolicyRequest.cs" />
+    <Compile Include="Model\DeleteBucketPolicyResponse.cs" />
+    <Compile Include="Model\DeleteBucketRequest.cs" />
+    <Compile Include="Model\DeleteBucketResponse.cs" />
+    <Compile Include="Model\DeleteBucketTaggingRequest.cs" />
+    <Compile Include="Model\DeleteBucketTaggingResponse.cs" />
+    <Compile Include="Model\DeleteBucketWebsiteRequest.cs" />
+    <Compile Include="Model\DeleteBucketWebsiteResponse.cs" />
+    <Compile Include="Model\DeleteBucketCorsRequest.cs" />
+    <Compile Include="Model\DeleteBucketCorsResponse.cs" />
+    <Compile Include="Model\DeletedObject.cs" />
+    <Compile Include="Model\DeleteError.cs" />
+    <Compile Include="Model\DeleteBucketLifecycleRequest.cs" />
+    <Compile Include="Model\DeleteBucketLifecycleResponse.cs" />
+    <Compile Include="Model\DeleteObjectRequest.cs" />
+    <Compile Include="Model\DeleteObjectResponse.cs" />
+    <Compile Include="Model\DeleteObjectsRequest.cs" />
+    <Compile Include="Model\DeleteObjectsRequest.ext.cs" />
+    <Compile Include="Model\DeleteObjectsResponse.cs" />
+    <Compile Include="Model\DownloadFileRequest.cs" />
+    <Compile Include="Model\ExpirationDetail.cs" />
+    <Compile Include="Model\FilterRule.cs" />
+    <Compile Include="Model\GetObjectAclRequest.cs" />
+    <Compile Include="Model\GetBucketAclResponse.cs" />
+    <Compile Include="Model\GetBucketLocationRequest.cs" />
+    <Compile Include="Model\GetBucketLocationResponse.cs" />
+    <Compile Include="Model\GetBucketLoggingRequest.cs" />
+    <Compile Include="Model\GetBucketLoggingResponse.cs" />
+    <Compile Include="Model\GetBucketMetadataRequest.cs" />
+    <Compile Include="Model\GetBucketMetadataResponse.cs" />
+    <Compile Include="Model\GetBucketNotificationRequest.cs" />
+    <Compile Include="Model\GetBucketNotificationResponse.cs" />
+    <Compile Include="Model\GetBucketPolicyRequest.cs" />
+    <Compile Include="Model\GetBucketPolicyResponse.cs" />
+    <Compile Include="Model\GetBucketQuotaRequest.cs" />
+    <Compile Include="Model\GetBucketQuotaResponse.cs" />
+    <Compile Include="Model\GetBucketStorageInfoRequest.cs" />
+    <Compile Include="Model\GetBucketStorageInfoResponse.cs" />
+    <Compile Include="Model\GetBucketStoragePolicyRequest.cs" />
+    <Compile Include="Model\GetBucketStoragePolicyResponse.cs" />
+    <Compile Include="Model\GetBucketTaggingRequest.cs" />
+    <Compile Include="Model\GetBucketTaggingResponse.cs" />
+    <Compile Include="Model\GetBucketVersioningRequest.cs" />
+    <Compile Include="Model\GetBucketVersioningResponse.cs" />
+    <Compile Include="Model\GetBucketWebsiteRequest.cs" />
+    <Compile Include="Model\GetBucketWebsiteResponse.cs" />
+    <Compile Include="Model\GetBucketCorsRequest.cs" />
+    <Compile Include="Model\GetBucketCorsResponse.cs" />
+    <Compile Include="Model\GetBucketLifecycleRequest.cs" />
+    <Compile Include="Model\GetBucketLifecycleResponse.cs" />
+    <Compile Include="Model\GetObjectMetadataRequest.cs" />
+    <Compile Include="Model\GetObjectMetadataResponse.cs" />
+    <Compile Include="Model\GetObjectRequest.cs" />
+    <Compile Include="Model\GetObjectResponse.cs" />
+    <Compile Include="Model\CreateTemporarySignatureRequest.cs" />
+    <Compile Include="Model\CreateTemporarySignatureResponse.cs" />
+    <Compile Include="Model\HeadBucketRequest.cs" />
+    <Compile Include="Model\InitiateMultipartUploadRequest.cs" />
+    <Compile Include="Model\InitiateMultipartUploadResponse.cs" />
+    <Compile Include="Model\Initiator.cs" />
+    <Compile Include="Model\KeyVersion.cs" />
+    <Compile Include="Model\LifecycleConfiguration.cs" />
+    <Compile Include="Model\LifecycleRule.cs" />
+    <Compile Include="Model\Expiration.cs" />
+    <Compile Include="Model\NoncurrentVersionExpiration.cs" />
+    <Compile Include="Model\NoncurrentVersionTransition.cs" />
+    <Compile Include="Model\Transition.cs" />
+    <Compile Include="Model\ListBucketsRequest.cs" />
+    <Compile Include="Model\ListBucketsResponse.cs" />
+    <Compile Include="Model\ListMultipartUploadsRequest.cs" />
+    <Compile Include="Model\ListMultipartUploadsResponse.cs" />
+    <Compile Include="Model\ListObjectsRequest.cs" />
+    <Compile Include="Model\ListObjectsResponse.cs" />
+    <Compile Include="Model\ListPartsRequest.cs" />
+    <Compile Include="Model\ListPartsResponse.cs" />
+    <Compile Include="Model\ListVersionsRequest.cs" />
+    <Compile Include="Model\ListVersionsResponse.cs" />
+    <Compile Include="Model\MetadataCollection.cs" />
+    <Compile Include="Model\MultipartUpload.cs" />
+    <Compile Include="Model\NotificationConfiguration.cs" />
+    <Compile Include="Model\Owner.cs" />
+    <Compile Include="Model\PartDetail.cs" />
+    <Compile Include="Model\PartEtag.cs" />
+    <Compile Include="Model\SetBucketNotificationRequest.cs" />
+    <Compile Include="Model\SetBucketNotificationResponse.cs" />
+    <Compile Include="Model\SetBucketPolicyRequest.cs" />
+    <Compile Include="Model\SetBucketPolicyResponse.cs" />
+    <Compile Include="Model\SetBucketStoragePolicyRequest.cs" />
+    <Compile Include="Model\SetBucketStoragePolicyResponse.cs" />
+    <Compile Include="Model\SetBucketTaggingRequest.cs" />
+    <Compile Include="Model\SetBucketTaggingResponse.cs" />
+    <Compile Include="Model\SetBucketVersioningRequest.cs" />
+    <Compile Include="Model\SetBucketVersioningResponse.cs" />
+    <Compile Include="Model\SetBucketWebsiteRequest.cs" />
+    <Compile Include="Model\SetBucketWebsiteResponse.cs" />
+    <Compile Include="Model\SetBucketCorsRequest.cs" />
+    <Compile Include="Model\SetBucketCorsResponse.cs" />
+    <Compile Include="Model\SetBucketLifecycleRequest.cs" />
+    <Compile Include="Model\SetBucketLifecycleResponse.cs" />
+    <Compile Include="Model\PutObjectRequest.cs" />
+    <Compile Include="Model\PutObjectResponse.cs" />
+    <Compile Include="Model\ResponseHeaderOverrides.cs" />
+    <Compile Include="Model\RestoreObjectRequest.cs" />
+    <Compile Include="Model\RestoreObjectResponse.cs" />
+    <Compile Include="Model\RoutingRule.cs" />
+    <Compile Include="Model\Condition.cs" />
+    <Compile Include="Model\Redirect.cs" />
+    <Compile Include="Model\AccessControlList.cs" />
+    <Compile Include="Model\ObsBucket.cs" />
+    <Compile Include="Model\Grant.cs" />
+    <Compile Include="Model\Grantee.cs" />
+    <Compile Include="Model\ObsObject.cs" />
+    <Compile Include="Model\ObsObjectVersion.cs" />
+    <Compile Include="Model\Tag.cs" />
+    <Compile Include="Model\TopicConfiguration.cs" />
+    <Compile Include="Model\UploadFileRequest.cs" />
+    <Compile Include="Model\UploadPartRequest.cs" />
+    <Compile Include="Model\UploadPartResponse.cs" />
+    <Compile Include="Model\WebsiteConfiguration.cs" />
+    <Compile Include="ObsConfig.cs" />
+    <Compile Include="Enumerations.cs" />
+    <Compile Include="ObsException.cs" />
+    <Compile Include="ServiceException.cs" />
+    <Compile Include="ObsWebServiceRequest.cs" />
+    <Compile Include="ObsWebServiceResponse.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="packages\log4net.2.0.8\log4net.2.0.8.nupkg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages\log4net.2.0.8\lib\net20-full\log4net.dll" />
+    <Content Include="packages\log4net.2.0.8\lib\net20-full\log4net.xml" />
+    <Content Include="packages\log4net.2.0.8\lib\net35-client\log4net.dll" />
+    <Content Include="packages\log4net.2.0.8\lib\net35-client\log4net.xml" />
+    <Content Include="packages\log4net.2.0.8\lib\net35-full\log4net.dll" />
+    <Content Include="packages\log4net.2.0.8\lib\net35-full\log4net.xml" />
+    <Content Include="packages\log4net.2.0.8\lib\net40-client\log4net.dll" />
+    <Content Include="packages\log4net.2.0.8\lib\net40-client\log4net.xml" />
+    <Content Include="packages\log4net.2.0.8\lib\net40-full\log4net.dll" />
+    <Content Include="packages\log4net.2.0.8\lib\net40-full\log4net.xml" />
+    <Content Include="packages\log4net.2.0.8\lib\net45-full\log4net.dll" />
+    <Content Include="packages\log4net.2.0.8\lib\net45-full\log4net.xml" />
+    <Content Include="packages\log4net.2.0.8\lib\netstandard1.3\log4net.dll" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

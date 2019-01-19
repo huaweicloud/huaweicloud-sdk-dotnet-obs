@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2018
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "esdk_obs_.net_core", "esdk_obs_.net_core.csproj", "{14AB9B89-1559-48FB-82C0-F7319DF828E0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		test|Any CPU = test|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{14AB9B89-1559-48FB-82C0-F7319DF828E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14AB9B89-1559-48FB-82C0-F7319DF828E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14AB9B89-1559-48FB-82C0-F7319DF828E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14AB9B89-1559-48FB-82C0-F7319DF828E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14AB9B89-1559-48FB-82C0-F7319DF828E0}.test|Any CPU.ActiveCfg = test|Any CPU
+		{14AB9B89-1559-48FB-82C0-F7319DF828E0}.test|Any CPU.Build.0 = test|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9E2CEAF1-8F0B-41BA-A49C-0B4E28401803}
+	EndGlobalSection
+EndGlobal

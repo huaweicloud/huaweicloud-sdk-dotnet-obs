@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2018
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "esdk_obs_.net", "esdk_obs_.net.csproj", "{96DAED81-80C1-4DF1-8731-6A93CD01F93E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96DAED81-80C1-4DF1-8731-6A93CD01F93E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96DAED81-80C1-4DF1-8731-6A93CD01F93E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96DAED81-80C1-4DF1-8731-6A93CD01F93E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96DAED81-80C1-4DF1-8731-6A93CD01F93E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5938B185-BAFB-4B02-B489-B1D1749255EF}
+	EndGlobalSection
+EndGlobal
