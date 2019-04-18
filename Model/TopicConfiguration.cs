@@ -4,14 +4,15 @@ using System.Collections.Generic;
 namespace OBS.Model
 {   
     /// <summary>
-    /// 事件通知配置.
+    /// 简单通知服务配置.
     /// </summary>
     public class TopicConfiguration
     {
         List<EventTypeEnum> _events;
+        List<FilterRule> _filterRules;
 
         /// <summary>
-        /// 事件通知配置ID.
+        /// 简单通知服务配置ID.
         /// </summary>
         /// <remarks>
         /// <para>
@@ -49,7 +50,6 @@ namespace OBS.Model
             set { this._events = value; } 
         }
         
-        public List<FilterRule> filterRules;
         /// <summary>
         /// 事件通知配置的过滤规则列表.
         /// </summary>
@@ -62,9 +62,9 @@ namespace OBS.Model
         {
             get
             {
-                return this.filterRules ?? (this.filterRules = new List<FilterRule>());
+                return this._filterRules ?? (this._filterRules = new List<FilterRule>());
             }
-            set { this.filterRules = value; }
+            set { this._filterRules = value; }
         }
     }
 }
