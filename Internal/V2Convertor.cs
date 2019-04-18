@@ -1,4 +1,17 @@
-﻿using System;
+﻿/*----------------------------------------------------------------------------------
+// Copyright 2019 Huawei Technologies Co.,Ltd.
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+// this file except in compliance with the License.  You may obtain a copy of the
+// License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software distributed
+// under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations under the License.
+//----------------------------------------------------------------------------------*/
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
@@ -1469,13 +1482,10 @@ namespace OBS.Internal
             if (request.InputStream != null)
             {
                 httpRequest.Content = request.InputStream;
-                if (request.ContentLength.HasValue)
+                if (request.ContentLength.HasValue && request.ContentLength.Value > 0)
                 {
-                    if(request.ContentLength.Value > 0)
-                    {
-                        contentLength = request.ContentLength.Value;
-                        CommonUtil.AddHeader(httpRequest, Constants.CommonHeaders.ContentLength, contentLength.ToString());
-                    }
+                    contentLength = request.ContentLength.Value;
+                    CommonUtil.AddHeader(httpRequest, Constants.CommonHeaders.ContentLength, contentLength.ToString());
                 }
             }
             else if (!string.IsNullOrEmpty(request.FilePath))
@@ -1498,18 +1508,15 @@ namespace OBS.Internal
                     offset = offset >= 0 && offset < fileLength ? offset : 0L;
                     httpRequest.Content.Seek(offset, SeekOrigin.Begin);
                 }
-                if (request.ContentLength.HasValue)
+                if (request.ContentLength.HasValue && contentLength > 0 && contentLength <= fileLength - offset)
                 {
                     contentLength = request.ContentLength.Value;
-                    if (contentLength > 0 && contentLength <= fileLength - offset)
-                    {
-                        CommonUtil.AddHeader(httpRequest, Constants.CommonHeaders.ContentLength, contentLength.ToString());
-                    }
-                    else
-                    {
-                        contentLength = fileLength - offset;
-                    }
                 }
+                else
+                {
+                    contentLength = fileLength - offset;
+                }
+                CommonUtil.AddHeader(httpRequest, Constants.CommonHeaders.ContentLength, contentLength.ToString());
             }
 
             if(request.UploadProgress != null && httpRequest.Content != null)
