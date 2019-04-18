@@ -1,9 +1,21 @@
-
+/*----------------------------------------------------------------------------------
+// Copyright 2019 Huawei Technologies Co.,Ltd.
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+// this file except in compliance with the License.  You may obtain a copy of the
+// License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software distributed
+// under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations under the License.
+//----------------------------------------------------------------------------------*/
 
 namespace OBS.Model
 {
     /// <summary>
-    /// ×·¼ÓÉÏ´«¶ÔÏóµÄÏìÓ¦½á¹û¡£
+    /// è¿½åŠ ä¸Šä¼ å¯¹è±¡çš„å“åº”ç»“æœã€‚
     /// </summary>
     public class AppendObjectResponse : ObsWebServiceResponse
     {
@@ -11,7 +23,7 @@ namespace OBS.Model
         private long _nextPosition = -1;
 
         /// <summary>
-        /// ±¾´Î×·¼ÓÄÚÈİµÄetagĞ£ÑéÖµ¡£ 
+        /// æœ¬æ¬¡è¿½åŠ å†…å®¹çš„etagæ ¡éªŒå€¼ã€‚ 
         /// </summary>
         public string ETag
         {
@@ -20,7 +32,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// ÏÂ´Î×·¼ÓÉÏ´«µÄÎ»ÖÃ¡£
+        /// ä¸‹æ¬¡è¿½åŠ ä¸Šä¼ çš„ä½ç½®ã€‚
         /// </summary>
         public long NextPosition
         {
@@ -35,7 +47,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// ¶ÔÏó´æ´¢ÀàĞÍ¡£
+        /// å¯¹è±¡å­˜å‚¨ç±»å‹ã€‚
         /// </summary>
         public StorageClassEnum? StorageClass
         {
@@ -44,7 +56,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// ¶ÔÏóµÄÈ«Â·¾¶¡£
+        /// å¯¹è±¡çš„å…¨è·¯å¾„ã€‚
         /// </summary>
         public string ObjectUrl
         {

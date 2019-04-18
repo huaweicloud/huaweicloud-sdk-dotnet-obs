@@ -1,10 +1,22 @@
-
+/*----------------------------------------------------------------------------------
+// Copyright 2019 Huawei Technologies Co.,Ltd.
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+// this file except in compliance with the License.  You may obtain a copy of the
+// License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software distributed
+// under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations under the License.
+//----------------------------------------------------------------------------------*/
 using System;
 using System.Collections.Generic;
 namespace OBS.Model
 {
     /// <summary>
-    /// ÁÙÊ±¼øÈ¨ÇëÇó²ÎÊı¡£ 
+    /// ä¸´æ—¶é‰´æƒè¯·æ±‚å‚æ•°ã€‚ 
     /// </summary>
     public class CreateTemporarySignatureRequest : ObsBucketWebServiceRequest
     {
@@ -19,11 +31,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// Í°Ãû¡£
+        /// æ¡¶åã€‚
         /// </summary>
         /// <remarks>
         /// <para>
-        /// ²ÎÊı¿ÉÑ¡¡£
+        /// å‚æ•°å¯é€‰ã€‚
         /// </para>
         /// </remarks>
         public override string BucketName
@@ -33,11 +45,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// ¶ÔÏóÃû¡£
+        /// å¯¹è±¡åã€‚
         /// </summary>
         /// <remarks>
         /// <para>
-        /// ²ÎÊı¿ÉÑ¡¡£
+        /// å‚æ•°å¯é€‰ã€‚
         /// </para>
         /// </remarks>
         public string ObjectKey
@@ -48,11 +60,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// ¹ıÆÚÊ±¼ä£¬µ¥Î»Ãë¡£
+        /// è¿‡æœŸæ—¶é—´ï¼Œå•ä½ç§’ã€‚
         /// </summary>
         /// <remarks>
         /// <para>
-        /// ²ÎÊı¿ÉÑ¡¡£
+        /// å‚æ•°å¯é€‰ã€‚
         /// </para>
         /// </remarks>
         public long? Expires
@@ -64,11 +76,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// ÇëÇó·½·¨¡£
+        /// è¯·æ±‚æ–¹æ³•ã€‚
         /// </summary>
         /// <remarks>
         /// <para>
-        /// ²ÎÊı±ØÑ¡¡£
+        /// å‚æ•°å¿…é€‰ã€‚
         /// </para>
         /// </remarks>
         public HttpVerb Method
@@ -79,11 +91,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// ÇëÇóÍ·Óò¡£
+        /// è¯·æ±‚å¤´åŸŸã€‚
         /// </summary>
         /// <remarks>
         /// <para>
-        /// ²ÎÊı¿ÉÑ¡¡£
+        /// å‚æ•°å¯é€‰ã€‚
         /// </para>
         /// </remarks>
         public IDictionary<string, string> Headers
@@ -100,11 +112,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// ×Ô¶¨ÒåÔªÊı¾İ£¬½öÔÚÉÏ´«¶ÔÏó¡¢³õÊ¼»¯·Ö¶ÎÉÏ´«ÈÎÎñ¡¢¸´ÖÆ¶ÔÏóÊ±¿ÉÓÃ¡£
+        /// è‡ªå®šä¹‰å…ƒæ•°æ®ï¼Œä»…åœ¨ä¸Šä¼ å¯¹è±¡ã€åˆå§‹åŒ–åˆ†æ®µä¸Šä¼ ä»»åŠ¡ã€å¤åˆ¶å¯¹è±¡æ—¶å¯ç”¨ã€‚
         /// </summary>
         /// <remarks>
         /// <para>
-        /// ²ÎÊı¿ÉÑ¡¡£
+        /// å‚æ•°å¯é€‰ã€‚
         /// </para>
         /// </remarks>
         public MetadataCollection Metadata
@@ -121,11 +133,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// ×Ó×ÊÔ´¡£
+        /// å­èµ„æºã€‚
         /// </summary>
         /// <remarks>
         /// <para>
-        /// ²ÎÊı¿ÉÑ¡¡£
+        /// å‚æ•°å¯é€‰ã€‚
         /// </para>
         /// </remarks>
         public SubResourceEnum? SubResource
@@ -135,11 +147,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// ÇëÇó²éÑ¯²ÎÊı¡£
+        /// è¯·æ±‚æŸ¥è¯¢å‚æ•°ã€‚
         /// </summary>
         /// <remarks>
         /// <para>
-        /// ²ÎÊı¿ÉÑ¡¡£
+        /// å‚æ•°å¯é€‰ã€‚
         /// </para>
         /// </remarks>
         public IDictionary<String, String> Parameters
