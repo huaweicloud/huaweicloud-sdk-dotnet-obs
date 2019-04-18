@@ -109,6 +109,7 @@
     <Compile Include="Model\SseHeader.cs" />
     <Compile Include="Model\SseKmsHeader.cs" />
     <Compile Include="Model\ResumableEvent.cs" />
+    <Compile Include="Model\FunctionGraphConfiguration.cs" />
     <Compile Include="Model\TransferStatus.cs" />
     <Compile Include="Model\ResumableUploadRequest.cs" />
     <Compile Include="Model\UploadStreamRequest.cs" />

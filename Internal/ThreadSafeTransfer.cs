@@ -49,7 +49,7 @@ namespace OBS.Internal
             DateTime now = DateTime.Now;
             IList<BytesUnit> currentInstantaneousBytes = this.CreateCurrentInstantaneousBytes(bytes, now);
             this.lastInstantaneousBytes = currentInstantaneousBytes;
-            // 并发请求下最后一段不汇报，交由上层处理。
+
             long _newlyTransferredBytes = Interlocked.Read(ref newlyTransferredBytes);
             long _transferredBytes = Interlocked.Read(ref transferredBytes);
             if (_newlyTransferredBytes >= this.interval && _transferredBytes < totalBytes)

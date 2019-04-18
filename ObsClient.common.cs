@@ -4,6 +4,7 @@ using OBS.Internal.Log;
 using OBS.Internal.Negotiation;
 using OBS.Model;
 using System;
+using System.IO;
 using System.Net;
 using System.Reflection;
 using System.Text;
@@ -340,6 +341,39 @@ namespace OBS
             }
             catch (ObsException ex)
             {
+                if ("CreateBucket".Equals(request.GetAction()) 
+                    && ex.StatusCode == HttpStatusCode.BadRequest
+                    && "Unsupported Authorization Type".Equals(ex.ErrorMessage)
+                    && this.ObsConfig.AuthTypeNegotiation 
+                    && context.AuthType == AuthTypeEnum.OBS) 
+                {
+                    try
+                    {
+                        if (httpRequest.Content != null && httpRequest.Content.CanSeek)
+                        {
+                            httpRequest.Content.Seek(0, SeekOrigin.Begin);
+                        }
+                        context.AuthType = AuthTypeEnum.V2;
+                        return PrepareResponse<T, K>(request, context, httpRequest, this.httpClient.PerformRequest(httpRequest, context));
+                    }catch(ObsException _ex)
+                    {
+                        if (LoggerMgr.IsErrorEnabled)
+                        {
+                            LoggerMgr.Error(string.Format("{0} exception code: {1}, with message: {2}", request.GetAction(), _ex.ErrorCode, _ex.Message));
+
+                        }
+                        throw _ex;
+                    }
+                    catch(Exception _ex)
+                    {
+                        if (LoggerMgr.IsErrorEnabled)
+                        {
+                            LoggerMgr.Error(string.Format("{0} exception with message: {1}", request.GetAction(), _ex.Message));
+                        }
+                        throw new ObsException(_ex.Message, _ex);
+                    }
+                }
+
                 if (LoggerMgr.IsErrorEnabled)
                 {
                     LoggerMgr.Error(string.Format("{0} exception code: {1}, with message: {2}", request.GetAction(), ex.ErrorCode, ex.Message));

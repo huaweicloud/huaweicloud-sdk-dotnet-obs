@@ -1053,7 +1053,9 @@ namespace OBS.Internal
             using (XmlReader xmlReader = XmlReader.Create(httpResponse.Content))
             {
                 TopicConfiguration currentTc = null;
+                FunctionGraphConfiguration currentFc = null;
                 bool innerTopicConfiguration = false;
+                bool innerFunctionGraphConfiguration = false;
                 FilterRule currentFr = null;
                 while (xmlReader.Read())
                 {
@@ -1073,11 +1075,23 @@ namespace OBS.Internal
                         }
                         innerTopicConfiguration = xmlReader.IsStartElement();
                     }
+                    else if ("FunctionGraphConfiguration".Equals(xmlReader.Name))
+                    {
+                        if (xmlReader.IsStartElement())
+                        {
+                            currentFc = new FunctionGraphConfiguration();
+                            response.Configuration.FunctionGraphConfigurations.Add(currentFc);
+                        }
+                        innerFunctionGraphConfiguration = xmlReader.IsStartElement();
+                    }
                     else if ("Id".Equals(xmlReader.Name))
                     {
                         if (innerTopicConfiguration)
                         {
                             currentTc.Id = xmlReader.ReadString();
+                        }else if (innerFunctionGraphConfiguration)
+                        {
+                            currentFc.Id = xmlReader.ReadString(); 
                         }
                     }
                     else if ("FilterRule".Equals(xmlReader.Name))
@@ -1088,6 +1102,9 @@ namespace OBS.Internal
                             {
                                 currentFr = new FilterRule();
                                 currentTc.FilterRules.Add(currentFr);
+                            }else if (innerFunctionGraphConfiguration)
+                            {
+                                currentFc.FilterRules.Add(currentFr);
                             }
                         }
 
@@ -1096,13 +1113,17 @@ namespace OBS.Internal
                     {
                         currentFr.Name = this.ParseFilterName(xmlReader.ReadString());
                     }
-                    else if ("Name".Equals(xmlReader.Value))
+                    else if ("Value".Equals(xmlReader.Value))
                     {
                         currentFr.Value = xmlReader.ReadString();
                     }
                     else if ("Topic".Equals(xmlReader.Name))
                     {
                         currentTc.Topic = xmlReader.ReadString();
+                    }
+                    else if ("FunctionGraph".Equals(xmlReader.Name))
+                    {
+                        currentFc.FunctionGraph = xmlReader.ReadString();
                     }
                     else if ("Event".Equals(xmlReader.Name))
                     {
@@ -1112,6 +1133,13 @@ namespace OBS.Internal
                             if (temp.HasValue)
                             {
                                 currentTc.Events.Add(temp.Value);
+                            }
+                        }else if (innerFunctionGraphConfiguration)
+                        {
+                            EventTypeEnum? temp = this.ParseEventTypeEnum(xmlReader.ReadString());
+                            if (temp.HasValue)
+                            {
+                                currentFc.Events.Add(temp.Value);
                             }
                         }
                     }

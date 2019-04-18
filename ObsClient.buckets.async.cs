@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using System.Net;
+using OBS.Internal;
 using OBS.Model;
 
 
@@ -49,7 +51,38 @@ namespace OBS
         /// <returns>创建桶响应结果。</returns>
         public CreateBucketResponse EndCreateBucket(IAsyncResult ar)
         {
-            return this.EndDoRequest<CreateBucketRequest, CreateBucketResponse>(ar);
+
+            HttpObsAsyncResult result = ar as HttpObsAsyncResult;
+            try
+            {
+                return this.EndDoRequest<CreateBucketRequest, CreateBucketResponse>(ar, false);
+            }
+            catch (ObsException ex)
+            {
+                if (result != null && result.HttpContext != null 
+                    && result.HttpRequest != null && 
+                    ex.StatusCode == HttpStatusCode.BadRequest
+                    && "Unsupported Authorization Type".Equals(ex.ErrorMessage)
+                    && this.ObsConfig.AuthTypeNegotiation
+                    && result.HttpContext.AuthType == AuthTypeEnum.OBS)
+                {
+                    if (result.HttpRequest.Content != null && result.HttpRequest.Content.CanSeek)
+                    {
+                        result.HttpRequest.Content.Seek(0, SeekOrigin.Begin);
+                    }
+                    result.HttpContext.AuthType = AuthTypeEnum.V2;
+                    HttpObsAsyncResult retryResult = this.httpClient.BeginPerformRequest(result.HttpRequest, result.HttpContext,
+                        result.AsyncCallback, result.AsyncState);
+
+                    retryResult.AdditionalState = result.AdditionalState;
+                    return this.EndDoRequest<CreateBucketRequest, CreateBucketResponse>(retryResult);
+                }
+                throw ex;
+            }
+            finally
+            {
+                CommonUtil.CloseIDisposable(result);
+            }
         }
 
         /// <summary>

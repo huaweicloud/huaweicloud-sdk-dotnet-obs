@@ -1039,18 +1039,45 @@ namespace OBS.Internal
             return httpRequest;
         }
 
+        private void WriteFilterRules(XmlWriter xmlWriter, List<FilterRule> filterRules)
+        {
+            xmlWriter.WriteStartElement("Filter");
+            xmlWriter.WriteStartElement(this.FilterContainerTag);
+            foreach (FilterRule rule in filterRules)
+            {
+                if (rule != null)
+                {
+                    xmlWriter.WriteStartElement("FilterRule");
+                    if (rule.Name.HasValue)
+                    {
+                        xmlWriter.WriteElementString("Name", rule.Name.Value.ToString().ToLower());
+                    }
+
+                    if (rule.Value != null)
+                    {
+                        xmlWriter.WriteElementString("Value", rule.Value);
+                    }
+                    xmlWriter.WriteEndElement();
+                }
+            }
+            xmlWriter.WriteEndElement();
+            xmlWriter.WriteEndElement();
+        }
+
         public HttpRequest Trans(SetBucketNotificationRequest request)
         {
+            
             HttpRequest httpRequest = new HttpRequest();
             httpRequest.BucketName = request.BucketName;
             httpRequest.Method = HttpVerb.PUT;
             httpRequest.Params.Add(EnumAdaptor.GetStringValue(SubResourceEnum.Notification), null);
 
             this.TransContent(httpRequest, delegate (XmlWriter xmlWriter)
-            {
+            {   
                 xmlWriter.WriteStartElement("NotificationConfiguration");
                 if (request.Configuration != null)
                 {
+
                     foreach (TopicConfiguration tc in request.Configuration.TopicConfigurations)
                     {
                         if (tc != null)
@@ -1063,27 +1090,7 @@ namespace OBS.Internal
 
                             if (tc.FilterRules.Count > 0)
                             {
-                                xmlWriter.WriteStartElement("Filter");
-                                xmlWriter.WriteStartElement(this.FilterContainerTag);
-                                foreach (FilterRule rule in tc.FilterRules)
-                                {
-                                    if (rule != null)
-                                    {
-                                        xmlWriter.WriteStartElement("FilterRule");
-                                        if (rule.Name.HasValue)
-                                        {
-                                            xmlWriter.WriteElementString("Name", rule.Name.Value.ToString().ToLower());
-                                        }
-
-                                        if (rule.Value != null)
-                                        {
-                                            xmlWriter.WriteElementString("Value", rule.Value);
-                                        }
-                                        xmlWriter.WriteEndElement();
-                                    }
-                                }
-                                xmlWriter.WriteEndElement();
-                                xmlWriter.WriteEndElement();
+                                this.WriteFilterRules(xmlWriter, tc.FilterRules);
                             }
 
                             if (!string.IsNullOrEmpty(tc.Topic))
@@ -1092,6 +1099,35 @@ namespace OBS.Internal
                             }
 
                             foreach (EventTypeEnum e in tc.Events)
+                            {
+                                xmlWriter.WriteElementString("Event", this.TransEventType(e));
+                            }
+
+                            xmlWriter.WriteEndElement();
+                        }
+                    }
+
+                    foreach (FunctionGraphConfiguration fc in request.Configuration.FunctionGraphConfigurations)
+                    {
+                        if (fc != null)
+                        {
+                            xmlWriter.WriteStartElement("FunctionGraphConfiguration");
+                            if (!string.IsNullOrEmpty(fc.Id))
+                            {
+                                xmlWriter.WriteElementString("Id", fc.Id);
+                            }
+
+                            if (fc.FilterRules.Count > 0)
+                            {
+                                this.WriteFilterRules(xmlWriter, fc.FilterRules);
+                            }
+
+                            if (!string.IsNullOrEmpty(fc.FunctionGraph))
+                            {
+                                xmlWriter.WriteElementString("FunctionGraph", fc.FunctionGraph);
+                            }
+
+                            foreach (EventTypeEnum e in fc.Events)
                             {
                                 xmlWriter.WriteElementString("Event", this.TransEventType(e));
                             }

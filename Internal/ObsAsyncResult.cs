@@ -43,6 +43,11 @@ namespace OBS.Internal
             }
         }
 
+        public AsyncCallback AsyncCallback
+        {
+            get { return this._callback; }
+        }
+
         public object AsyncState
         {
             get { return this._state; }

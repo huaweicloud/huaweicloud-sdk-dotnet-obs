@@ -122,7 +122,7 @@ namespace OBS.Internal
 
         public const string V2HeaderMetaPrefix = "x-amz-meta-";
 
-        public const string ObsSdkVersion = "3.0.5";
+        public const string ObsSdkVersion = "3.1.2";
 
         public const string ObsApiHeader = "api";
         public const string ObsApiHeaderWithPrefix = ObsHeaderPrefix + ObsApiHeader;

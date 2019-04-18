@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Threading;
 using OBS.Internal;
@@ -52,6 +53,12 @@ namespace OBS
         }
 
         internal K EndDoRequest<T, K>(IAsyncResult ar)
+             where T : ObsWebServiceRequest
+            where K : ObsWebServiceResponse
+        {
+            return this.EndDoRequest<T, K>(ar, true);
+        }
+        internal K EndDoRequest<T, K>(IAsyncResult ar, bool autoClose)
             where T : ObsWebServiceRequest
             where K : ObsWebServiceResponse
         {
@@ -95,12 +102,15 @@ namespace OBS
             }
             finally
             {
-                if (request != null)
+                if (autoClose)
                 {
-                    request.Sender = null;
-                }
+                    if (request != null)
+                    {
+                        request.Sender = null;
+                    }
 
-                CommonUtil.CloseIDisposable(result);
+                    CommonUtil.CloseIDisposable(result);
+                }
 
                 if (LoggerMgr.IsInfoEnabled)
                 {
