@@ -1,4 +1,17 @@
-﻿using System;
+﻿/*----------------------------------------------------------------------------------
+// Copyright 2019 Huawei Technologies Co.,Ltd.
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+// this file except in compliance with the License.  You may obtain a copy of the
+// License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software distributed
+// under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations under the License.
+//----------------------------------------------------------------------------------*/
+using System;
 using System.Collections.Generic;
 using OBS;
 using OBS.Model;
@@ -1017,8 +1030,8 @@ namespace ObsDemo
                 topicConfiguration1.Id = "Id001";
                 topicConfiguration1.Topic = "urn:smn:globrg:35667523534:topic1";
                 topicConfiguration1.Events.Add(EventTypeEnum.ObjectCreatedAll);
-                topicConfiguration1.filterRules = new List<FilterRule>();
-                topicConfiguration1.filterRules.Add(filterRule1);
+                topicConfiguration1.FilterRules = new List<FilterRule>();
+                topicConfiguration1.FilterRules.Add(filterRule1);
 
                 FilterRule filterRule2 = new FilterRule();
                 filterRule2.Name = FilterNameEnum.Suffix;
@@ -1027,8 +1040,8 @@ namespace ObsDemo
                 topicConfiguration2.Id = "Id002";
                 topicConfiguration2.Topic = "urn:smn:globrg:35667523535:topic2";
                 topicConfiguration2.Events.Add(EventTypeEnum.ObjectRemovedAll);
-                topicConfiguration2.filterRules = new List<FilterRule>();
-                topicConfiguration2.filterRules.Add(filterRule2);
+                topicConfiguration2.FilterRules = new List<FilterRule>();
+                topicConfiguration2.FilterRules.Add(filterRule2);
 
                 NotificationConfiguration notificationConfiguration = new NotificationConfiguration();
                 notificationConfiguration.TopicConfigurations = new List<TopicConfiguration>();
@@ -1071,7 +1084,7 @@ namespace ObsDemo
                         {
                             Console.WriteLine("Event is : {0}", Event);
                         }
-                        foreach (var filterRule in topicConfig.filterRules)
+                        foreach (var filterRule in topicConfig.FilterRules)
                         {
                             Console.WriteLine("Name is : {0}", filterRule.Name);
                             Console.WriteLine("Value is : {0}", filterRule.Value);

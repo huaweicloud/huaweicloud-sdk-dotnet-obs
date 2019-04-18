@@ -1,4 +1,16 @@
-
+/*----------------------------------------------------------------------------------
+// Copyright 2019 Huawei Technologies Co.,Ltd.
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+// this file except in compliance with the License.  You may obtain a copy of the
+// License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software distributed
+// under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+// CONDITIONS OF ANY KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations under the License.
+//----------------------------------------------------------------------------------*/
 using System;
 using System.Net;
 using OBS.Model;
@@ -7,98 +19,98 @@ using System.Text;
 namespace OBS
 {
     /// <summary>
-    ///  OBS·şÎñÒì³£¡£
+    ///  OBSæœåŠ¡å¼‚å¸¸ã€‚
     /// </summary>
     public class ObsException : ServiceException
     {
         /// <summary>
-        /// ¹¹Ôìº¯Êı¡£
+        /// æ„é€ å‡½æ•°ã€‚
         /// </summary>
-        /// <param name="message">OBS·şÎñ¶Ë´íÎóÃèÊö¡£</param>
+        /// <param name="message">OBSæœåŠ¡ç«¯é”™è¯¯æè¿°ã€‚</param>
         public ObsException(string message)
             : base(message)
         {
         }
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı¡£
+        /// æ„é€ å‡½æ•°ã€‚
         /// </summary>
-        /// <param name="message">OBS·şÎñ¶Ë´íÎóÃèÊö¡£</param>
-        /// <param name="innerException">µ¼ÖÂµ±Ç°Òì³£µÄÒì³£¡£</param>
+        /// <param name="message">OBSæœåŠ¡ç«¯é”™è¯¯æè¿°ã€‚</param>
+        /// <param name="innerException">å¯¼è‡´å½“å‰å¼‚å¸¸çš„å¼‚å¸¸ã€‚</param>
         public ObsException(string message, Exception innerException)
             : base(message, innerException)
         {
         }
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı¡£
+        /// æ„é€ å‡½æ•°ã€‚
         /// </summary>
-        /// <param name="innerException">µ¼ÖÂµ±Ç°Òì³£µÄÒì³£¡£</param>
+        /// <param name="innerException">å¯¼è‡´å½“å‰å¼‚å¸¸çš„å¼‚å¸¸ã€‚</param>
         public ObsException(Exception innerException)
             : base(innerException.Message, innerException)
         {
         }
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı¡£
+        /// æ„é€ å‡½æ•°ã€‚
         /// </summary>
-        /// <param name="message">OBS·şÎñ¶Ë´íÎóÃèÊö¡£</param>
-        /// <param name="errorType">´íÎóÀàĞÍ¡£</param>
-        /// <param name="errorCode">OBS·şÎñ¶Ë´íÎóÂë¡£</param>
+        /// <param name="message">OBSæœåŠ¡ç«¯é”™è¯¯æè¿°ã€‚</param>
+        /// <param name="errorType">é”™è¯¯ç±»å‹ã€‚</param>
+        /// <param name="errorCode">OBSæœåŠ¡ç«¯é”™è¯¯ç ã€‚</param>
         public ObsException(string message, ErrorType errorType, string errorCode)
             : base(message, errorType, errorCode)
         {
         }
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı¡£
+        /// æ„é€ å‡½æ•°ã€‚
         /// </summary>
-        /// <param name="message">OBS·şÎñ¶Ë´íÎóÃèÊö¡£</param>
-        /// <param name="errorType">´íÎóÀàĞÍ¡£</param>
-        /// <param name="errorCode">OBS·şÎñ¶Ë´íÎóÂë¡£</param>
-        /// <param name="requestId">OBS·şÎñ¶Ë·µ»ØµÄÇëÇóId¡£</param>
+        /// <param name="message">OBSæœåŠ¡ç«¯é”™è¯¯æè¿°ã€‚</param>
+        /// <param name="errorType">é”™è¯¯ç±»å‹ã€‚</param>
+        /// <param name="errorCode">OBSæœåŠ¡ç«¯é”™è¯¯ç ã€‚</param>
+        /// <param name="requestId">OBSæœåŠ¡ç«¯è¿”å›çš„è¯·æ±‚Idã€‚</param>
         public ObsException(string message, ErrorType errorType, string errorCode, string requestId)
             : base(message, errorType, errorCode, requestId)
         {
         }
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı¡£
+        /// æ„é€ å‡½æ•°ã€‚
         /// </summary>
-        /// <param name="message">OBS·şÎñ¶Ë´íÎóÃèÊö¡£</param>
-        /// <param name="errorType">´íÎóÀàĞÍ¡£</param>
-        /// <param name="errorCode">OBS·şÎñ¶Ë´íÎóÂë¡£</param>
-        /// <param name="requestId">OBS·şÎñ¶Ë·µ»ØµÄÇëÇóId¡£</param>
-        /// <param name="statusCode">HTTP×´Ì¬Âë¡£</param>
+        /// <param name="message">OBSæœåŠ¡ç«¯é”™è¯¯æè¿°ã€‚</param>
+        /// <param name="errorType">é”™è¯¯ç±»å‹ã€‚</param>
+        /// <param name="errorCode">OBSæœåŠ¡ç«¯é”™è¯¯ç ã€‚</param>
+        /// <param name="requestId">OBSæœåŠ¡ç«¯è¿”å›çš„è¯·æ±‚Idã€‚</param>
+        /// <param name="statusCode">HTTPçŠ¶æ€ç ã€‚</param>
         public ObsException(string message, ErrorType errorType, string errorCode, string requestId, HttpStatusCode statusCode)
             : base(message, errorType, errorCode, requestId, statusCode)
         {
         }
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı¡£
+        /// æ„é€ å‡½æ•°ã€‚
         /// </summary>
-        /// <param name="message">OBS·şÎñ¶Ë´íÎóÃèÊö¡£</param>
-        /// <param name="innerException">µ¼ÖÂµ±Ç°Òì³£µÄÒì³£¡£</param>
-        /// <param name="errorType">´íÎóÀàĞÍ¡£</param>
-        /// <param name="errorCode">OBS·şÎñ¶Ë´íÎóÂë¡£</param>
-        /// <param name="requestId">OBS·şÎñ¶Ë·µ»ØµÄÇëÇóId¡£</param>
-        /// <param name="statusCode">HTTP×´Ì¬Âë¡£</param>
+        /// <param name="message">OBSæœåŠ¡ç«¯é”™è¯¯æè¿°ã€‚</param>
+        /// <param name="innerException">å¯¼è‡´å½“å‰å¼‚å¸¸çš„å¼‚å¸¸ã€‚</param>
+        /// <param name="errorType">é”™è¯¯ç±»å‹ã€‚</param>
+        /// <param name="errorCode">OBSæœåŠ¡ç«¯é”™è¯¯ç ã€‚</param>
+        /// <param name="requestId">OBSæœåŠ¡ç«¯è¿”å›çš„è¯·æ±‚Idã€‚</param>
+        /// <param name="statusCode">HTTPçŠ¶æ€ç ã€‚</param>
         public ObsException(string message, Exception innerException, ErrorType errorType, string errorCode, string requestId, HttpStatusCode statusCode)
             : base(message, innerException, errorType, errorCode, requestId, statusCode)
         {
         }
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı¡£
+        /// æ„é€ å‡½æ•°ã€‚
         /// </summary>
-        /// <param name="message">OBS·şÎñ¶Ë´íÎóÃèÊö¡£</param>
-        /// <param name="innerException">µ¼ÖÂµ±Ç°Òì³£µÄÒì³£¡£</param>
-        /// <param name="errorType">´íÎóÀàĞÍ¡£</param>
-        /// <param name="errorCode">OBS·şÎñ¶Ë´íÎóÂë¡£</param>
-        /// <param name="requestId">OBS·şÎñ¶Ë·µ»ØµÄÇëÇóId¡£</param>
-        /// <param name="statusCode">HTTP×´Ì¬Âë¡£</param>
-        /// <param name="obsId2">±ê¼Ç¡£</param>
+        /// <param name="message">OBSæœåŠ¡ç«¯é”™è¯¯æè¿°ã€‚</param>
+        /// <param name="innerException">å¯¼è‡´å½“å‰å¼‚å¸¸çš„å¼‚å¸¸ã€‚</param>
+        /// <param name="errorType">é”™è¯¯ç±»å‹ã€‚</param>
+        /// <param name="errorCode">OBSæœåŠ¡ç«¯é”™è¯¯ç ã€‚</param>
+        /// <param name="requestId">OBSæœåŠ¡ç«¯è¿”å›çš„è¯·æ±‚Idã€‚</param>
+        /// <param name="statusCode">HTTPçŠ¶æ€ç ã€‚</param>
+        /// <param name="obsId2">æ ‡è®°ã€‚</param>
         public ObsException(string message, Exception innerException, ErrorType errorType, string errorCode, string requestId, HttpStatusCode statusCode, string obsId2)
             : base(message, innerException, errorType, errorCode, requestId, statusCode)
         {
@@ -106,14 +118,14 @@ namespace OBS
         }
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı¡£
+        /// æ„é€ å‡½æ•°ã€‚
         /// </summary>
-        /// <param name="message">´íÎóĞÅÏ¢¡£</param>
-        /// <param name="errorType">´íÎóÀàĞÍ¡£</param>
-        /// <param name="errorCode">OBS·şÎñ¶Ë´íÎóÂë¡£</param>
-        /// <param name="errorMessage">OBS·şÎñ¶Ë´íÎóÃèÊö¡£</param>
-        /// <param name="requestId">OBS·şÎñ¶Ë·µ»ØµÄÇëÇóId¡£</param>
-        /// <param name="statusCode">HTTP×´Ì¬Âë¡£</param>
+        /// <param name="message">é”™è¯¯ä¿¡æ¯ã€‚</param>
+        /// <param name="errorType">é”™è¯¯ç±»å‹ã€‚</param>
+        /// <param name="errorCode">OBSæœåŠ¡ç«¯é”™è¯¯ç ã€‚</param>
+        /// <param name="errorMessage">OBSæœåŠ¡ç«¯é”™è¯¯æè¿°ã€‚</param>
+        /// <param name="requestId">OBSæœåŠ¡ç«¯è¿”å›çš„è¯·æ±‚Idã€‚</param>
+        /// <param name="statusCode">HTTPçŠ¶æ€ç ã€‚</param>
         public ObsException(string message, ErrorType errorType, string errorCode, string errorMessage, string requestId, HttpStatusCode statusCode)
             : base(message, errorType, errorCode, requestId, statusCode)
         {
@@ -121,15 +133,15 @@ namespace OBS
         }
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı¡£
+        /// æ„é€ å‡½æ•°ã€‚
         /// </summary>
-        /// <param name="message">´íÎóĞÅÏ¢¡£</param>
-        /// <param name="innerException">µ¼ÖÂµ±Ç°Òì³£µÄÒì³£¡£</param>
-        /// <param name="errorType">´íÎóÀàĞÍ¡£</param>
-        /// <param name="errorCode">OBS·şÎñ¶Ë´íÎóÂë¡£</param>
-        /// <param name="errorMessage">OBS·şÎñ¶Ë´íÎóÃèÊö¡£</param>
-        /// <param name="requestId">OBS·şÎñ¶Ë·µ»ØµÄÇëÇóId¡£</param>
-        /// <param name="statusCode">HTTP×´Ì¬Âë¡£</param>
+        /// <param name="message">é”™è¯¯ä¿¡æ¯ã€‚</param>
+        /// <param name="innerException">å¯¼è‡´å½“å‰å¼‚å¸¸çš„å¼‚å¸¸ã€‚</param>
+        /// <param name="errorType">é”™è¯¯ç±»å‹ã€‚</param>
+        /// <param name="errorCode">OBSæœåŠ¡ç«¯é”™è¯¯ç ã€‚</param>
+        /// <param name="errorMessage">OBSæœåŠ¡ç«¯é”™è¯¯æè¿°ã€‚</param>
+        /// <param name="requestId">OBSæœåŠ¡ç«¯è¿”å›çš„è¯·æ±‚Idã€‚</param>
+        /// <param name="statusCode">HTTPçŠ¶æ€ç ã€‚</param>
         public ObsException(string message, Exception innerException, ErrorType errorType, string errorCode, string errorMessage, string requestId, HttpStatusCode statusCode)
             : base(message, innerException, errorType, errorCode, requestId, statusCode)
         {
@@ -137,13 +149,13 @@ namespace OBS
         }
 
         /// <summary>
-        /// OBS·şÎñ¶Ë·µ»ØµÄÓÃÓÚ¶¨Î»ÎÊÌâµÄÌØÊâ±ê¼Ç¡£
+        /// OBSæœåŠ¡ç«¯è¿”å›çš„ç”¨äºå®šä½é—®é¢˜çš„ç‰¹æ®Šæ ‡è®°ã€‚
         /// </summary>
         [Obsolete]
         public string ObsId2 { get; set; }
 
         /// <summary>
-        /// ·şÎñ¶ËID¡£
+        /// æœåŠ¡ç«¯IDã€‚
         /// </summary>
         public string HostId
         {
