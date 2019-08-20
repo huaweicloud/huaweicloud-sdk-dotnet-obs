@@ -16,7 +16,7 @@ using System.Collections.Generic;
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取桶元数据信息的请求参数。
+    /// Parameters in a request for obtaining bucket metadata
     /// </summary>
     public class GetBucketMetadataRequest : ObsBucketWebServiceRequest
     {
@@ -24,11 +24,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 预请求指定的跨域请求Origin（通常为域名）。
+        /// Origin of the cross-origin request specified by the pre-request. Generally, it is a domain name.
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string Origin
@@ -39,11 +39,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        ///  跨域请求可以使用的HTTP头域。
+        /// HTTP headers in a cross-origin request
         ///  </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public IList<string> AccessControlRequestHeaders
@@ -60,3 +60,5 @@ namespace OBS.Model
     }
 }
     
+
+

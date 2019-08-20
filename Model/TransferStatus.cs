@@ -19,7 +19,7 @@ using System.Text;
 namespace OBS.Model
 {
     /// <summary>
-    /// 数据传输状态。
+    /// Data transmission status
     /// </summary>
     public class TransferStatus : EventArgs
     {
@@ -46,7 +46,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 瞬时速率。
+        /// Instantaneous rate
         /// </summary>
         public double InstantaneousSpeed
         {
@@ -65,7 +65,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 平均速率。
+        /// Average rate
         /// </summary>
         public double AverageSpeed
         {
@@ -73,7 +73,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 传输进度。
+        /// Transmission progress
         /// </summary>
         public int TransferPercentage
         {
@@ -90,7 +90,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 新增的字节数。
+        /// Number of bytes transmitted since last progress refresh
         /// </summary>
         public long NewlyTransferredBytes
         {
@@ -98,7 +98,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 已传输的字节数。
+        /// Number of bytes that have been transmitted
         /// </summary>
         public long TransferredBytes
         {
@@ -106,7 +106,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 待传输的总字节数。
+        /// Number of bytes being transmitted
         /// </summary>
         public long TotalBytes
         {

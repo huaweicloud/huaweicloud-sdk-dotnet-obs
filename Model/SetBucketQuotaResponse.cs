@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 设置桶配额的响应结果。
+    /// Response to a request for setting bucket quotas
     /// </summary>
     public class SetBucketQuotaResponse : ObsWebServiceResponse
     {
@@ -23,3 +23,5 @@ namespace OBS.Model
     }
 }
     
+
+

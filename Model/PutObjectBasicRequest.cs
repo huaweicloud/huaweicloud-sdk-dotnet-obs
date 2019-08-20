@@ -25,11 +25,11 @@ namespace OBS.Model
         private MetadataCollection metadataCollection;
 
         /// <summary>
-        /// 对象的自定义元数据。
+        /// Customized metadata of the object
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public MetadataCollection Metadata
@@ -46,11 +46,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象的MIME类型。
+        /// MIME type of the object
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string ContentType
@@ -60,11 +60,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象的存储类型。
+        /// Object storage class
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public StorageClassEnum? StorageClass
@@ -74,11 +74,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象的重定向链接，可以将获取这个对象的请求重定向到桶内另一个对象或一个外部的URL。
+        /// Redirection link which can redirect the request to another object in the bucket or to an external URL 
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string WebsiteRedirectLocation
@@ -88,10 +88,10 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 为用户授予OBS对象扩展权限。
+        /// Grant the OBS extension permissions to a user.
         /// </summary>
-        /// <param name="domainId">用户的domainId。</param>
-        /// <param name="extensionPermissionEnum">OBS扩展权限。</param>
+        /// <param name="domainId">ID of the domain to which the user belongs</param>
+        /// <param name="extensionPermissionEnum">OBS extension permissions</param>
         public void GrantExtensionPermission(string domainId, ExtensionObjectPermissionEnum extensionPermissionEnum)
         {
             if (string.IsNullOrEmpty(domainId))
@@ -117,10 +117,10 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 撤回用户的OBS对象扩展权限。
+        /// Withdraw the user's OBS extension permissions.
         /// </summary>
-        /// <param name="domainId">用户的domainId。</param>
-        /// <param name="extensionPermissionEnum">OBS扩展权限。</param>
+        /// <param name="domainId">ID of the domain to which the user belongs</param>
+        /// <param name="extensionPermissionEnum">OBS extension permissions</param>
         public void WithDrawExtensionPermission(string domainId, ExtensionObjectPermissionEnum extensionPermissionEnum)
         {
             if (string.IsNullOrEmpty(domainId))
@@ -146,11 +146,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象的访问权限。
+        /// Object ACL
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public CannedAclEnum? CannedAcl
@@ -160,11 +160,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 请求操作响应成功后的重定向地址。
+        /// Redirection address after a successfully responded request
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string SuccessRedirectLocation
@@ -174,11 +174,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象名。
+        /// Object name
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public string ObjectKey
@@ -188,11 +188,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象内容SSE加密头域信息。
+        /// SSE decryption headers of the object content
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public SseHeader SseHeader
@@ -203,3 +203,5 @@ namespace OBS.Model
     }
 }
     
+
+

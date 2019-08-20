@@ -15,14 +15,14 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 上传对象的响应结果。
+    /// Response to an object upload request
     /// </summary>
     public class PutObjectResponse : ObsWebServiceResponse
     {
        
 
         /// <summary>
-        /// 对象的ETag校验值。 
+        /// ETag of the object 
         /// </summary>
         public string ETag
         {
@@ -31,7 +31,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象版本号。
+        /// Object version ID
         /// </summary>
         public string VersionId
         {
@@ -41,7 +41,7 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 对象存储类型。
+        /// Object storage class
         /// </summary>
         public StorageClassEnum? StorageClass
         {
@@ -50,7 +50,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象的全路径。
+        /// Full path to the object
         /// </summary>
         public string ObjectUrl
         {
@@ -62,3 +62,5 @@ namespace OBS.Model
     }
 }
     
+
+

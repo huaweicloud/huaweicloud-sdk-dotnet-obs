@@ -15,10 +15,12 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 设置桶多版本配置的响应结果。
+    /// Response to a request for setting bucket versioning
     /// </summary>
     public class SetBucketVersioningResponse : ObsWebServiceResponse
     {
     }
 }
     
+
+

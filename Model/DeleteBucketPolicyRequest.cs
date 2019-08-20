@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 删除桶策略的请求参数。
+    /// Parameters in a request for deleting bucket policies
     /// </summary>
     public partial class DeleteBucketPolicyRequest : ObsBucketWebServiceRequest
     {
@@ -28,3 +28,5 @@ namespace OBS.Model
     }
 }
     
+
+

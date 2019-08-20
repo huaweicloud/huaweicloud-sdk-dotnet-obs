@@ -15,14 +15,14 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 上传段的响应结果。
+    /// Response to a part upload request
     /// </summary>
     public class UploadPartResponse : ObsWebServiceResponse
     {
 
 
         /// <summary>
-        /// 分段的ETag校验值。
+        /// Part ETag
         /// </summary>
         public string ETag
         {
@@ -31,7 +31,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 分段号。
+        /// Part number
         /// </summary>
         public int PartNumber
         {
@@ -43,3 +43,5 @@ namespace OBS.Model
     }
 }
     
+
+

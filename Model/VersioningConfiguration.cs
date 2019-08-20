@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 桶的多版本配置。
+    /// Bucket versioning configuration
     /// </summary>
 
     public class VersioningConfiguration
@@ -23,11 +23,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 桶的多版本状态。
+        /// Bucket versioning status
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public VersionStatusEnum? Status
@@ -37,3 +37,5 @@ namespace OBS.Model
         }
     }
 }
+
+

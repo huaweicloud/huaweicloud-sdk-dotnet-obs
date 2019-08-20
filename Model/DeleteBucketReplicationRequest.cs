@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 删除桶跨区域复制配置的请求参数。
+    /// Parameters of a request for deleting the cross-region copy configuration of a bucket
     /// </summary>
     public class DeleteBucketReplicationRequest : ObsBucketWebServiceRequest
     {
@@ -28,3 +28,5 @@ namespace OBS.Model
     }
 }
     
+
+

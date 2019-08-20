@@ -15,11 +15,13 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 取消分段上传的响应结果。
+    /// Response to a request for aborting a multipart upload
     /// </summary>
     public class AbortMultipartUploadResponse : ObsWebServiceResponse
     {
     }
 }
     
+
+
 

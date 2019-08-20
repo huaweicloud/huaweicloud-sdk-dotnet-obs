@@ -15,10 +15,12 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 设置桶访问日志配置的响应结果。
+    /// Response to a request for setting bucket logging
     /// </summary>
     public partial class SetBucketLoggingResponse : ObsWebServiceResponse
     {
     }
 }
     
+
+

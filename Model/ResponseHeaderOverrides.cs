@@ -15,13 +15,13 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 下载对象时可重写的响应消息头信息。 
+    /// Response headers that can be rewritten during object download 
     /// </summary>
     public class ResponseHeaderOverrides
     {
 
         /// <summary>
-        /// 重写响应中的Content-Type头。
+        /// Rewrite the "Content-Type" header in the response.
         /// </summary>
 
         public string ContentType
@@ -31,7 +31,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 重写响应中的Content-Language头。
+        /// Rewrite the "Content-Language" header in the response.
         /// </summary>
         public string ContentLanguage
         {
@@ -40,7 +40,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 重写响应中的Expires头。
+        /// Rewrite the "Expires" header in the response.
         /// </summary>
         public string Expires
         {
@@ -49,7 +49,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 重写响应中的Cache-Control头。
+        /// Rewrite the "Cache-Control" header in the response.
         /// </summary>
         public string CacheControl
         {
@@ -58,7 +58,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 重写响应中的Content-Disposition头。
+        /// Rewrite the "Content-Disposition" header in the response.
         /// </summary>
         public string ContentDisposition
         {
@@ -67,7 +67,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 重写响应中的Content-Encoding头。
+        /// Rewrite the "Content-Disposition" header in the response.
         /// </summary>
         public string ContentEncoding
         {
@@ -76,3 +76,5 @@ namespace OBS.Model
         }
     }
 }
+
+

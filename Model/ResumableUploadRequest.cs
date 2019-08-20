@@ -19,11 +19,8 @@ namespace OBS.Model
 
     public abstract class ResumableUploadRequest : PutObjectBasicRequest
     {
-        //首次调用：
-        //默认enableCheckpoint和checkSum为false（默认均不开启）
 
-        // 分片大小，单位字节，默认5MB
-        protected long partSize = 1024 * 1024 * 5L;
+        protected long partSize = 1024 * 1024 * 9L;
 
         protected double _metric;
 
@@ -33,15 +30,15 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 默认的构造函数。
+        /// Default constructor
         /// </summary>
         public ResumableUploadRequest()
         { }
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
-        /// <param name="bucketName">桶名</param>
-        /// <param name="objectKey">对象名</param>
+        /// <param name="bucketName">Bucket name</param>
+        /// <param name="objectKey">Object name</param>
         public ResumableUploadRequest(string bucketName, string objectKey)
         {
             this.BucketName = bucketName;
@@ -50,11 +47,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 上传进度反馈方式，默认为ByBytes。
+        /// Mode for presenting the upload progress. The default value is "ByBytes".
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选，仅在设置了UploadProgress时有效。
+        /// Optional parameter, which is effective only when "UploadProgress" is set.
         /// </para>
         /// </remarks>
         public ProgressTypeEnum ProgressType
@@ -64,11 +61,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 上传进度反馈间隔，默认为100KB或1秒。
+        /// Interval for refreshing the upload progress. The default value is 100 KB or 1 second.
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选，仅在设置了UploadProgress时有效。
+        /// Optional parameter, which is effective only when "UploadProgress" is set.
         /// </para>
         /// </remarks>
         public double ProgressInterval
@@ -84,11 +81,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 上传进度回调函数。
+        /// Upload progress callback function
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public EventHandler<TransferStatus> UploadProgress
@@ -98,11 +95,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 上传事件回调函数。
+        /// Upload event callback function
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public EventHandler<ResumableUploadEvent> UploadEventHandler
@@ -113,11 +110,11 @@ namespace OBS.Model
         
 
         /// <summary>
-        /// 上传时的分段大小。
+        /// Part size
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选，单位字节，取值范围是100KB~5GB，默认为5M。
+        /// Optional parameter. The unit is byte. The value ranges from 100 KB to 5 GB and defaults to 9 MB.
         /// </para>
         /// </remarks>
         public long UploadPartSize
@@ -136,11 +133,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 是否开启断点续传模式标识。
+        /// Identifier specifying whether the resumable mode is enabled
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public bool EnableCheckpoint
@@ -150,11 +147,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 记录上传进度的文件。
+        /// File used to record the upload progress
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选，默认与UploadFile同目录。
+        /// Optional parameter. This file is saved in the same directory as the "UploadFile".
         /// </para>
         /// </remarks>
         public virtual string CheckpointFile
@@ -164,11 +161,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 是否校验待上传内容标识。
+        /// Identifier specifying whether the to-be-uploaded content will be verified
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public bool EnableCheckSum
@@ -179,11 +176,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 生成的最终对象的过期时间。
+        /// Expiration time of the generated object
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public int? Expires

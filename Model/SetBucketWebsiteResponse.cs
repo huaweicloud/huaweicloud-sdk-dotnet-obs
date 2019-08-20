@@ -15,10 +15,12 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 设置桶Website（托管）配置的响应结果。
+    /// Response to a request for setting bucket website hosting rules
     /// </summary>
     public class SetBucketWebsiteResponse : ObsWebServiceResponse
     {
     }
 }
     
+
+

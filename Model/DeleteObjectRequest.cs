@@ -16,7 +16,7 @@ using System;
 namespace OBS.Model
 {
     /// <summary>
-    /// 删除对象的请求参数。
+    /// Parameters in an object deletion request
     /// </summary>
     public class DeleteObjectRequest : ObsBucketWebServiceRequest
     {
@@ -27,11 +27,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象名。
+        /// Object name
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public string ObjectKey
@@ -41,11 +41,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 待删除对象的版本号。
+        /// Version ID of the to-be-deleted object
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string VersionId
@@ -57,3 +57,5 @@ namespace OBS.Model
     }
 }
     
+
+

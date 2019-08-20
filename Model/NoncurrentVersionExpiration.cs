@@ -11,20 +11,21 @@
 // CONDITIONS OF ANY KIND, either express or implied.  See the License for the
 // specific language governing permissions and limitations under the License.
 //----------------------------------------------------------------------------------*/
+
 namespace OBS.Model
 {
     /// <summary>
-    /// 历史版本对象过期时间配置。
+    /// Expiration time of an object noncurrent version
     /// </summary>
     public class NoncurrentVersionExpiration
     {
 
         /// <summary>
-        /// 历史版本对象过期时间，表示对象在成为历史版本之后第几天时过期。
+        /// Expiration time of the noncurrent object version, which indicates the number of days after which the object expires since it becomes a noncurrent version
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public int NoncurrentDays
@@ -36,3 +37,5 @@ namespace OBS.Model
     }
 
 }
+
+

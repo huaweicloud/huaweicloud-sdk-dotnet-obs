@@ -15,14 +15,14 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 被授权的用户/用户组及其对应的权限信息。
+    /// Authorized user/user group (grantee) and permission information
     /// </summary>
     public class Grant
     {
         
 
         /// <summary>
-        /// 被授权的用户/用户组。
+        /// Grantee (group) name
         /// </summary>
         public Grantee Grantee
         {
@@ -31,7 +31,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 权限信息。
+        /// Permission information
         /// </summary>
         public PermissionEnum? Permission
         {
@@ -40,7 +40,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 桶的访问权限传递标识，只对桶权限有效。
+        /// Identifier specifying whether to deliver the bucket ACL. (This is only applicable to bucket ACLs.)
         /// </summary>
         public bool Delivered
         {
@@ -50,3 +50,5 @@ namespace OBS.Model
 
     }
 }
+
+

@@ -15,13 +15,13 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 初始化分段上传任务的响应结果。
+    /// Response to a request for initializing a multipart upload
     /// </summary>
     public class InitiateMultipartUploadResponse : ObsWebServiceResponse
     {
 
         /// <summary>
-        /// 桶名。
+        /// Bucket name
         /// </summary>
         public string BucketName
         {
@@ -30,7 +30,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象名。
+        /// Object name
         /// </summary>
         public string ObjectKey
         {
@@ -39,7 +39,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 分段上传任务的ID号
+        /// Multipart upload ID
         /// </summary>
         public string UploadId
         {
@@ -50,3 +50,5 @@ namespace OBS.Model
     }
 }
     
+
+

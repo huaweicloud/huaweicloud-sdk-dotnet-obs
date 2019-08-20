@@ -16,7 +16,7 @@ using System.Collections.Generic;
 namespace OBS.Model
 {
     /// <summary>
-    /// 合并段的请求参数。
+    /// Parameters in the request for combining parts
     /// </summary>
     public class CompleteMultipartUploadRequest : ObsBucketWebServiceRequest
     {
@@ -29,11 +29,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 对象名。
+        /// Object name
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         ///  </para> 
         /// </remarks>
         public string ObjectKey
@@ -44,11 +44,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 待合并的段列表。
+        /// List of parts to be combined
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         ///  </para> 
         /// </remarks>
         public IList<PartETag> PartETags
@@ -61,9 +61,9 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 添加段信息到待合并的段列表。
+        /// Add part information to the to-be-comibined part list.
         /// </summary>
-        /// <param name="partETags">待添加段信息。</param>
+        /// <param name="partETags">Information about the part to be added</param>
         public void AddPartETags(params PartETag[] partETags)
         {
             foreach (PartETag part in partETags)
@@ -73,9 +73,9 @@ namespace OBS.Model
         }
 
         /// <summary>
-        ///  添加段信息到待合并的段列表。
+        /// Add part information to the to-be-comibined part list.
         /// </summary>
-        /// <param name="partETags">待添加段信息。</param>
+        /// <param name="partETags">Information about the part to be added</param>
         public void AddPartETags(IEnumerable<PartETag> partETags)
         {
             foreach (PartETag part in partETags)
@@ -85,9 +85,9 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 从分段上传的响应中取出段信息，添加到待合并的段列表。
+        /// Obtain the part information from the response to the multipart upload and add the information to the to-be-combined part list.
         /// </summary>
-        /// <param name="responses">分段上传的响应。</param>
+        ///  <param name="responses">Response to the multipart upload</param>
         public void AddPartETags(params UploadPartResponse[] responses)
         {
             foreach (UploadPartResponse response in responses)
@@ -97,9 +97,9 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 从分段上传的响应中取出段信息，添加到待合并的段列表。
+        /// Obtain the part information from the response to the multipart upload and add the information to the to-be-combined part list.
         /// </summary>
-        /// <param name="responses">分段上传的响应。</param>
+        /// <param name="responses">Response to the multipart upload</param>
         public void AddPartETags(IEnumerable<UploadPartResponse> responses)
         {
             foreach (UploadPartResponse response in responses)
@@ -109,9 +109,9 @@ namespace OBS.Model
         }
 
         /// <summary>
-        ///从拷贝段的响应中取出段信息，添加到待合并的段列表。
+        /// Obtain the part information from the response to the multipart copy and add the information to the to-be-combined part list.
         /// </summary>
-        /// <param name="responses">拷贝段的响应。</param>
+        /// <param name="responses">Response to the multipart copy</param>
         public void AddPartETags(params CopyPartResponse[] responses)
         {
             foreach (CopyPartResponse response in responses)
@@ -121,9 +121,9 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 从拷贝段的响应中取出段信息，添加到待合并的段列表。
+        /// Obtain the part information from the response to the multipart copy and add the information to the to-be-combined part list.
         /// </summary>
-        /// <param name="responses">拷贝段的响应。</param>
+        /// <param name="responses">Response to the multipart copy</param>
         public void AddPartETags(IEnumerable<CopyPartResponse> responses)
         {
             foreach (CopyPartResponse response in responses)
@@ -133,11 +133,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 分段上传任务的ID。
+        /// Multipart upload ID
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         ///  </para> 
         /// </remarks>
         public string UploadId
@@ -149,3 +149,5 @@ namespace OBS.Model
     }
 }
     
+
+

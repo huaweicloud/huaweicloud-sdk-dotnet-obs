@@ -18,7 +18,7 @@ using System.Collections.Generic;
 namespace OBS.Model
 {
     /// <summary>
-    /// 自定义元数据信息。
+    /// Customized metadata information
     /// </summary>
     public sealed class MetadataCollection
     {
@@ -26,10 +26,10 @@ namespace OBS.Model
         private IDictionary<string, string> values = new Dictionary<string, string>();
 
         /// <summary>
-        /// 自定义元数据。
+        /// Customized metadata
         /// </summary>
-        /// <param name="name">元数据元素名。</param>
-        /// <returns>元数据元素值。</returns>
+        /// <param name="name">Metadata element name</param>
+        /// <returns>Metadata element value</returns>
         public string this[string name]
         {
             get
@@ -49,17 +49,17 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 添加自定义元数据。
+        /// Add customized metadata.
         /// </summary>
-        /// <param name="name">元数据元素名。</param>
-        /// <param name="value">元数据元素值。</param>
+        /// <param name="name">Metadata element name</param>
+        /// <param name="value">Metadata element value</param>
         public void Add(string name, string value)
         {
             this[name] = value;
         }
 
         /// <summary>
-        /// 对应元数据头域个数。
+        /// Number of corresponding metadata headers
         /// </summary>
         public int Count
         {
@@ -67,7 +67,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 元数据元素名集合。
+        /// Set of metadata element names
         /// </summary>
         public ICollection<string> Keys
         {
@@ -75,7 +75,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 元数据元素值集合。
+        /// Set of metadata element values
         /// </summary>
         public ICollection<string> Values
         {
@@ -83,7 +83,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 元数据键值对。
+        /// Metadata key-value pairs
         /// </summary>
         public IList<KeyValuePair<string, string>> KeyValuePairs
         {
@@ -91,3 +91,5 @@ namespace OBS.Model
         }
     }
 }
+
+

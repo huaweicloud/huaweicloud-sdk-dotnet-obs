@@ -16,7 +16,7 @@ using System.Collections.Generic;
 namespace OBS.Model
 {   
     /// <summary>
-    /// 简单通知服务配置.
+    /// Event notification configuration
     /// </summary>
     public class TopicConfiguration
     {
@@ -24,33 +24,33 @@ namespace OBS.Model
         List<FilterRule> _filterRules;
 
         /// <summary>
-        /// 简单通知服务配置ID.
+        /// Event notification configuration ID
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string Id { get; set; }
 
 
         /// <summary>
-        /// 事件通知主题的URN，当OBS检测到桶中发生特定的事件后，将会发布通知消息至该主题。
+        /// URN of the event notification topic. After detecting a specific event in the bucket, OBS sends a message to the topic.
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public string Topic { get; set; }
 
        
         /// <summary>
-        /// 需要发布通知消息的事件类型列表。
+        /// List of event types that need to be notified
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public List<EventTypeEnum> Events
@@ -63,11 +63,11 @@ namespace OBS.Model
         }
         
         /// <summary>
-        /// 事件通知配置的过滤规则列表.
+        /// List of filtering rules configured for event notification
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public List<FilterRule> FilterRules

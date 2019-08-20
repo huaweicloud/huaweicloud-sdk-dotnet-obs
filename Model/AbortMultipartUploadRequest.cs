@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 取消分段上传任务的请求参数。
+    /// Parameters in a request for aborting a multipart upload
     /// </summary>
     public class AbortMultipartUploadRequest : ObsBucketWebServiceRequest
     {
@@ -26,11 +26,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象名。
+        /// Object name
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public string ObjectKey
@@ -40,11 +40,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 分段上传任务ID号。
+        /// Multipart upload ID
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public string UploadId
@@ -56,3 +56,5 @@ namespace OBS.Model
     }
 }
     
+
+

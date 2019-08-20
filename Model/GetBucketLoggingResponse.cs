@@ -15,13 +15,13 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取桶访问日志配置的响应结果。
+    /// Response to a request for obtaining bucket logging configuration
     /// </summary>
     public class GetBucketLoggingResponse : ObsWebServiceResponse
     {
 
         /// <summary>
-        /// 桶的访问日志配置。
+        /// Bucket logging configuration
         /// </summary>
         public LoggingConfiguration Configuration
         {
@@ -31,3 +31,5 @@ namespace OBS.Model
     }
 }
     
+
+

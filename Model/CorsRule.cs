@@ -16,7 +16,7 @@ using System.Collections.Generic;
 namespace OBS.Model
 {
     /// <summary>
-    /// 桶的跨域资源共享规则（CORS）。
+    /// Bucket CORS rules
     /// </summary>
     public class CorsRule
     {
@@ -26,11 +26,11 @@ namespace OBS.Model
         private IList<string> allowedHeaders;
 
         /// <summary>
-        /// 跨域规则中允许的方法列表。
+        /// Method list of the CORS rules 
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public IList<HttpVerb> AllowedMethods
@@ -42,11 +42,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 跨域规则中允许的请求来源列表（表示域名的字符串）。
+        /// List of origins (character strings representing domain names) allowed by the CORS rules
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public IList<string> AllowedOrigins
@@ -58,12 +58,12 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 跨域规则ID。
+        /// CORS rule ID
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
-        /// 由不超过255个字符的字符串组成。
+        /// Optional parameter
+        /// A rule ID is a string of 1 to 255 characters.
         /// </para>
         /// </remarks>
         public string Id
@@ -73,11 +73,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 跨域规则允许响应中可返回的头域列表。
+        /// Response headers allowed by the CORS rules
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public IList<string> ExposeHeaders
@@ -89,11 +89,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 客户端对请求结果的缓存时间，以秒为单位。
+        /// Cache duration (in seconds) of the request result on the OBS client
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public int? MaxAgeSeconds
@@ -104,11 +104,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 跨域规则中允许请求中可携带的头域列表。
+        /// Request headers allowed by the CORS rules
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public IList<string> AllowedHeaders
@@ -121,3 +121,5 @@ namespace OBS.Model
 
     }
 }
+
+

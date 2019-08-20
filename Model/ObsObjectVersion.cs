@@ -11,16 +11,17 @@
 // CONDITIONS OF ANY KIND, either express or implied.  See the License for the
 // specific language governing permissions and limitations under the License.
 //----------------------------------------------------------------------------------*/
+
 namespace OBS.Model
 {
     /// <summary>
-    /// 多版本对象信息。
+    /// Versioning object information
     /// </summary>
     public class ObsObjectVersion : ObsObject
     {
 
         /// <summary>
-        /// 是否是最新版本。
+        /// Whether the object is of the current version
         /// </summary>
         public bool IsLatest
         {
@@ -29,7 +30,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 版本号。
+        /// Version number
         /// </summary>
         public string VersionId
         {
@@ -38,7 +39,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 是否设置对象删除标记。
+        /// Whether object delete markers are configured
         /// </summary>
         public bool IsDeleteMarker
         {
@@ -47,3 +48,5 @@ namespace OBS.Model
         }
     }
 }
+
+

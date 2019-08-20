@@ -15,13 +15,13 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取桶跨区域复制配置的响应结果。
+    /// Response to a request for obtaining the cross-region copy configuration of a bucket
     /// </summary>
     public class GetBucketReplicationResponse : ObsWebServiceResponse
     {
 
         /// <summary>
-        /// 桶的跨区域复制配置。
+        /// Cross-region copy configuration of a bucket
         /// </summary>
         public ReplicationConfiguration Configuration
         {
@@ -31,3 +31,5 @@ namespace OBS.Model
     }
 }
     
+
+

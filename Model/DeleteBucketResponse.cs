@@ -15,10 +15,12 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 删除桶的响应结果。
+    /// Response to a bucket deletion request
     /// </summary>
     public class DeleteBucketResponse : ObsWebServiceResponse
     {
     }
 }
     
+
+

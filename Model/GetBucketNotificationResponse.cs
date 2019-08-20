@@ -16,13 +16,13 @@ namespace OBS.Model
 {
 
     /// <summary>
-    ///  获取桶消息通知配置的响应结果。
+    /// Response to a request for obtaining bucket notification configuration
     /// </summary>
     public class GetBucketNotificationReponse : ObsWebServiceResponse
     {
 
         /// <summary>
-        /// 桶的消息通知配置。
+        /// Bucket notification configuration
         /// </summary>
         public NotificationConfiguration Configuration
         {
@@ -33,3 +33,5 @@ namespace OBS.Model
     }
 }
     
+
+

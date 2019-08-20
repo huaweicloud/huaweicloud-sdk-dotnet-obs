@@ -15,7 +15,7 @@ using System.Collections.Generic;
 namespace OBS.Model
 {
     /// <summary>
-    /// 生命周期规则。
+    /// Bucket lifecycle rules
     /// </summary>
     public class LifecycleRule
     {
@@ -24,11 +24,11 @@ namespace OBS.Model
         private IList<NoncurrentVersionTransition> noncurrentVersionTransitions;
 
         /// <summary>
-        /// 对象过期时间配置。
+        /// Expiration time of an object
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public Expiration Expiration
@@ -38,11 +38,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        ///  规则ID，由不超过255个字符的字符串组成。
+        /// Rule ID, which consists of 1 to 255 characters
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string Id
@@ -53,11 +53,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 规则所匹配的对象名前缀。  
+        /// Object name prefix that identifies objects to which the rule applies  
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选，用以标识哪些对象可以匹配到当前这条规则。可为空字符串，代表匹配桶内所有对象。
+        /// Mandatory parameter, which identifies one or more objects to which the rule applies. The value can be empty, indicating that the rule applies to all objects in the bucket. 
         /// </para>
         /// </remarks>
         public string Prefix
@@ -68,11 +68,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 规则状态。
+        /// Rule status.
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public RuleStatusEnum Status
@@ -82,11 +82,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象转换策略。
+        /// Object transition policy
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public IList<Transition> Transitions
@@ -97,11 +97,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 历史版本对象过期时间配置。
+        /// Expiration time of an object noncurrent version
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public NoncurrentVersionExpiration NoncurrentVersionExpiration
@@ -111,11 +111,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 历史版本对象转换策略。
+        /// Transition policy for noncurrent versions
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public IList<NoncurrentVersionTransition> NoncurrentVersionTransitions
@@ -127,3 +127,5 @@ namespace OBS.Model
 
     }
 }
+
+

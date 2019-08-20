@@ -47,6 +47,8 @@ namespace OBS.Internal
                 response = context.ObsConfig.AsyncSocketTimeout < 0 ? result.Get() : result.Get(context.ObsConfig.AsyncSocketTimeout);
                 new MergeResponseHeaderHandler(this.GetIHeaders(context));
                 int statusCode = Convert.ToInt32(response.StatusCode);
+                new MergeResponseHeaderHandler(this.GetIHeaders(context)).Handle(response);
+
                 if (LoggerMgr.IsDebugEnabled)
                 {
                     LoggerMgr.Debug(string.Format("Response with statusCode {0} and headers {1}", statusCode, CommonUtil.ConvertHeadersToString(response.Headers)));

@@ -18,13 +18,13 @@ using System.Text.RegularExpressions;
 namespace OBS.Model
 {
     /// <summary>
-    /// 对象的取回状态。
+    /// Restore status of an object
     /// </summary>
     public class RestoreStatus
     {
 
         /// <summary>
-        /// 取回后的失效时间。
+        /// Expiration time of the restored object
         /// </summary>
         public DateTime? ExpiryDate
         {
@@ -33,7 +33,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 标识对象的取回状态。
+        /// Identifier specifying the restore status of the object
         /// </summary>
         public bool Restored
         {
@@ -42,3 +42,5 @@ namespace OBS.Model
         }
     }
 }
+
+

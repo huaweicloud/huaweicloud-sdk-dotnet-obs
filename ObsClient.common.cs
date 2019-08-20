@@ -24,7 +24,7 @@ using System.Text;
 namespace OBS
 {
     /// <summary>
-    /// 访问OBS的客户端。
+    /// Access an instance of ObsClient.
     /// </summary>
     public partial class ObsClient
     {
@@ -39,46 +39,46 @@ namespace OBS
 
 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
-        /// <param name="accessKeyId">访问密钥中的AK</param>
-        /// <param name="secretAccessKey">访问密钥中的SK</param>
-        /// <param name="obsConfig">OBS客户端配置参数</param>
+        /// <param name="accessKeyId">AK in the access key</param>
+        /// <param name="secretAccessKey">SK in the access key</param>
+        /// <param name="obsConfig">Configuration parameters of ObsClient</param>
         public ObsClient(string accessKeyId, string secretAccessKey, ObsConfig obsConfig) : this(accessKeyId, secretAccessKey, "", obsConfig)
         {
 
         }
 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
-        /// <param name="accessKeyId">访问密钥中的AK</param>
-        /// <param name="secretAccessKey">访问密钥中的SK</param>
-        /// <param name="securityToken">安全令牌</param>
-        /// <param name="obsConfig">OBS客户端配置参数</param>
+        /// <param name="accessKeyId">AK in the access key</param>
+        /// <param name="secretAccessKey">SK in the access key</param>
+        /// <param name="securityToken">Security token</param>
+        /// <param name="obsConfig">Configuration parameters of ObsClient</param>
         public ObsClient(string accessKeyId, string secretAccessKey, string securityToken, ObsConfig obsConfig)
         {
             this.init(accessKeyId, secretAccessKey, securityToken, obsConfig);
         }
 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
-        /// <param name="accessKeyId">访问密钥中的AK</param>
-        /// <param name="secretAccessKey">访问密钥中的SK</param>
-        /// <param name="endpoint">OBS的服务地址</param>
+        /// <param name="accessKeyId">AK in the access key</param>
+        /// <param name="secretAccessKey">SK in the access key</param>
+        /// <param name="endpoint">OBS endpoint</param>
         public ObsClient(string accessKeyId, string secretAccessKey, string endpoint) : this(accessKeyId, secretAccessKey, "", endpoint)
         {
 
         }
 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
-        /// <param name="accessKeyId">访问密钥中的AK</param>
-        /// <param name="secretAccessKey">访问密钥中的SK</param>
-        /// <param name="securityToken">安全令牌</param>
-        /// <param name="endpoint">OBS的服务地址</param>
+        /// <param name="accessKeyId">AK in the access key</param>
+        /// <param name="secretAccessKey">SK in the access key</param>
+        /// <param name="securityToken">Security token</param>
+        /// <param name="endpoint">OBS endpoint</param>
         public ObsClient(string accessKeyId, string secretAccessKey, string securityToken, string endpoint)
         {
             ObsConfig obsConfig = new ObsConfig()
@@ -169,11 +169,11 @@ namespace OBS
         }
 
         /// <summary>
-        /// 刷新临时访问密钥接口。
+        /// Refresh the temporary access key.
         /// </summary>
-        /// <param name="accessKeyId">访问密钥中的AK</param>
-        /// <param name="secretAccessKey">访问密钥中的SK</param>
-        /// <param name="securityToken">安全令牌</param>
+        /// <param name="accessKeyId">AK in the access key</param>
+        /// <param name="secretAccessKey">SK in the access key</param>
+        /// <param name="securityToken">Security token</param>
         public void Refresh(string accessKeyId, string secretAccessKey, string securityToken)
         {
             SecurityProvider sp = new SecurityProvider();

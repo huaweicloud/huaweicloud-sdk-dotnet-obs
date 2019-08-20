@@ -16,7 +16,7 @@ using System.Collections.Generic;
 namespace OBS.Model
 {
     /// <summary>
-    /// 桶的消息通知配置。
+    /// Bucket notification configuration
     /// </summary>
     public class NotificationConfiguration
     {
@@ -26,11 +26,11 @@ namespace OBS.Model
         private IList<FunctionGraphConfiguration> functionGraphConfigurations;
 
         /// <summary>
-        /// 事件通知配置列表。
+        /// List of bucket event notification settings
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public IList<TopicConfiguration> TopicConfigurations
@@ -43,14 +43,7 @@ namespace OBS.Model
             set { this.topicConfigurations = value; }
         }
 
-        /// <summary>
-        /// 函数工作流服务配置列表。
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// 参数可选。
-        /// </para>
-        /// </remarks>
+
         public IList<FunctionGraphConfiguration> FunctionGraphConfigurations
         {
             get

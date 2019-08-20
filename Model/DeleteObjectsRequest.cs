@@ -17,7 +17,7 @@ using System.Xml.Serialization;
 namespace OBS.Model
 {
     /// <summary>
-    /// 批量删除对象的请求参数。
+    /// Parameters in an object batch deletion request
     /// </summary>
     public partial class DeleteObjectsRequest : ObsBucketWebServiceRequest
     {
@@ -29,11 +29,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 待删除的对象列表。
+        /// List of objects to be deleted
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public IList<KeyVersion> Objects
@@ -46,11 +46,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 批量删除对象的响应模式。
+        /// Response mode of the object batch deletion request
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选，为false时使用verbose模式, 为true时使用quiet模式，默认为verbose模式。
+        /// This parameter is optional. Value "false" indicates that the verbose mode is used, and value "true" indicates that the quiet mode is used. The default mode is verbose.
         /// </para>
         /// </remarks>
         public bool? Quiet
@@ -62,3 +62,5 @@ namespace OBS.Model
     }
 }
     
+
+

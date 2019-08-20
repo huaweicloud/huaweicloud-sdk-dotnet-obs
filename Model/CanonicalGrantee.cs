@@ -16,7 +16,7 @@ using System;
 namespace OBS.Model
 {
     /// <summary>
-    /// 被授权用户信息。
+    /// Grantee information
     /// </summary>
     public class CanonicalGrantee : Grantee
     {
@@ -27,16 +27,16 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
-        /// <param name="id">被授权用户的DomainId。</param>
+        /// <param name="id">ID of the domain to which the grantee belongs</param></param>
         public CanonicalGrantee(string id)
         {
             this.Id = id;
         }
 
         /// <summary>
-        /// 被授权用户的用户名。
+        /// Grantee name
         /// </summary>
         [Obsolete]       
         public string DisplayName
@@ -47,7 +47,7 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 被授权用户的DomainId。
+        /// ID of the domain to which the grantee belongs
         /// </summary>
         public string Id
         {
@@ -86,3 +86,5 @@ namespace OBS.Model
         }
     }
 }
+
+

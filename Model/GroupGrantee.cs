@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 被授权的用户组信息。
+    /// Authorized user group information
     /// </summary>
     public class GroupGrantee : Grantee
     {
@@ -26,20 +26,20 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
-        /// <param name="groupGranteeType">被授权用户组类型。</param>
+        /// <param name="groupGranteeType">Type of the authorized user group</param>
         public GroupGrantee(GroupGranteeEnum groupGranteeType)
         {
             this.GroupGranteeType = groupGranteeType;
         }
 
         /// <summary>
-        /// 被授权用户组类型。
+        /// Type of the authorized user group
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public GroupGranteeEnum? GroupGranteeType
@@ -71,3 +71,5 @@ namespace OBS.Model
 
     }
 }
+
+

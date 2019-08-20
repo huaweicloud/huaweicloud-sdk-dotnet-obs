@@ -23,10 +23,10 @@ namespace OBS
     public partial class ObsClient
     {
         /// <summary>
-        /// 生成临时鉴权参数。
+        /// Generate parameters for a temporary authentication request.
         /// </summary>
-        /// <param name="request">请求参数。</param>
-        /// <returns>响应结果。</returns>
+        /// <param name="request">Request parameters</param>
+        /// <returns>Response</returns>
         public CreateTemporarySignatureResponse CreateTemporarySignature(CreateTemporarySignatureRequest request)
         {
             HttpRequest httpRequest = new HttpRequest();
@@ -225,10 +225,10 @@ namespace OBS
 
 
         /// <summary>
-        /// 生成POST表单鉴权参数，暂未实现。 
+        /// Generate browser-based authentication parameters. Currently, this function is not supported. 
         /// </summary>
-        /// <param name="request">请求参数。</param>
-        /// <returns>响应结果。</returns>
+        /// <param name="request">Request parameters</param>
+        /// <returns>Response</returns>
         public CreatePostSignatureResponse CreatePostSignature(CreatePostSignatureRequest request)
         {
             throw new NotImplementedException();

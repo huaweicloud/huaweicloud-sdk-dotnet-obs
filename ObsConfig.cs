@@ -18,7 +18,7 @@ namespace OBS
 {
 
     /// <summary>
-    /// 客户端配置参数。
+    /// Configuration parameters of ObsClient
     /// </summary>
     public partial class ObsConfig
     {
@@ -28,7 +28,7 @@ namespace OBS
 
         #region Constructor 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
         public ObsConfig()
         {
@@ -38,16 +38,13 @@ namespace OBS
         #endregion
 
         /// <summary>
-        /// 初始化。
+        /// Initialization
         /// </summary>
         protected virtual void Initialize()
         {
         }
 
-        /// <summary>
-        /// 判断是否采用路径访问方式，true使用路径访问方式，false使用虚拟主机访问方式，默认值：false。
-        /// 注意：如果设置了路径方式，无法使用OBS 3.0版本桶的新特性。
-        /// </summary>
+
         [Obsolete]
         public bool PathStyle
         {
@@ -56,7 +53,7 @@ namespace OBS
         }
 
         /// <summary>
-        /// 连接OBS的服务地址。
+        /// OBS endpoint
         /// </summary>
         public string Endpoint
         {

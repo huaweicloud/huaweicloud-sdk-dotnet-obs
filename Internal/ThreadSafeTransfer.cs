@@ -65,7 +65,7 @@ namespace OBS.Internal
 
             long _newlyTransferredBytes = Interlocked.Read(ref newlyTransferredBytes);
             long _transferredBytes = Interlocked.Read(ref transferredBytes);
-            if (_newlyTransferredBytes >= this.interval && _transferredBytes < totalBytes)
+            if (_newlyTransferredBytes >= this.interval && (_transferredBytes < totalBytes || totalBytes == -1))
             {
                 if (Interlocked.CompareExchange(ref newlyTransferredBytes, 0, _newlyTransferredBytes) == _newlyTransferredBytes)
                 {

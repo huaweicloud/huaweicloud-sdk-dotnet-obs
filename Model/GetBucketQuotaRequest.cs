@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取桶配额的请求参数。
+    /// Parameters in a request for obtaining bucket quotas
     /// </summary>
     public class GetBucketQuotaRequest : ObsBucketWebServiceRequest
     {
@@ -28,3 +28,5 @@ namespace OBS.Model
     }
 }
     
+
+

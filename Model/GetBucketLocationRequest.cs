@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取桶区域位置的请求参数。
+    /// Parameters in a request for obtaining the bucket location
     /// </summary>
     public class GetBucketLocationRequest : ObsBucketWebServiceRequest
     {
@@ -26,3 +26,5 @@ namespace OBS.Model
     }
 }
     
+
+

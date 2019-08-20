@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 设置桶生命周期配置的请求参数。
+    /// Parameters in a request for setting bucket lifecycle rules
     /// </summary>
     public class SetBucketLifecycleRequest : ObsBucketWebServiceRequest
     {
@@ -26,11 +26,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 桶的生命周期配置。
+        /// Bucket lifecycle rules
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public LifecycleConfiguration Configuration
@@ -42,3 +42,5 @@ namespace OBS.Model
     }
 }
     
+
+

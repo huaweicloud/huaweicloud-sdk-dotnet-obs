@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 设置桶跨区域复制配置的请求参数。
+    /// Parameters in a request for setting cross-region replication of a bucket
     /// </summary>
     public class SetBucketReplicationRequest : ObsBucketWebServiceRequest
     {
@@ -26,11 +26,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 桶的跨区域复制配置。
+        /// Cross-region replication configuration of a bucket
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public ReplicationConfiguration Configuration
@@ -41,3 +41,5 @@ namespace OBS.Model
     }
 }
     
+
+

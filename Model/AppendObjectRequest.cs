@@ -14,11 +14,10 @@
 using System.Collections.Generic;
 using System.IO;
 
-
 namespace OBS.Model
 {
     /// <summary>
-    /// 追加上传对象的请求参数。
+    /// Parameters in an appendable upload request
     /// </summary>
     public class AppendObjectRequest : PutObjectRequest
     {
@@ -29,11 +28,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 追加上传的位置。
+        /// Start postion for the appendable upload
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public long Position
@@ -44,5 +43,6 @@ namespace OBS.Model
 
     }
 }
+    
 
 

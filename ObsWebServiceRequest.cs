@@ -17,7 +17,7 @@ using System.Collections.Generic;
 namespace OBS
 {
     /// <summary>
-    /// 服务请求参数的基类。 
+    /// Base class of service request parameters  
     /// </summary>
     public abstract class ObsWebServiceRequest
     {
@@ -34,7 +34,7 @@ namespace OBS
         }
 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
         protected ObsWebServiceRequest()
         {
@@ -42,3 +42,5 @@ namespace OBS
 
     }
 }
+
+

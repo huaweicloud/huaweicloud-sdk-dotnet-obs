@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 设置桶访问日志配置的请求参数。
+    /// Parameters in a request for setting bucket logging
     /// </summary>
     public class SetBucketLoggingRequest : ObsBucketWebServiceRequest
     {
@@ -26,11 +26,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 桶的访问日志配置。
+        /// Bucket logging configuration
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public LoggingConfiguration Configuration { get; set; }
@@ -38,3 +38,5 @@ namespace OBS.Model
     }
 }
     
+
+

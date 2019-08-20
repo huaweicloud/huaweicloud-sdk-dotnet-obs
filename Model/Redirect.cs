@@ -15,17 +15,17 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 重定向配置。
+    /// Redirection configuration
     /// </summary>
     public class Redirect : RedirectBasic
     {
 
         /// <summary>
-        /// HTTP状态码配置。
+        /// Configuration of the HTTP status code
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string HttpRedirectCode
@@ -37,11 +37,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 重定向请求时使用的对象名前缀。  
+        /// Object name prefix used for redirecting the request  
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string ReplaceKeyPrefixWith
@@ -53,11 +53,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 重定向请求时使用的对象名。
+        /// Object name used for redirecting the request
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选，不可与ReplaceKeyPrefixWith同时存在。
+        /// Optional parameter, which is exclusive with "ReplaceKeyPrefixWith".
         /// </para>
         /// </remarks>
         public string ReplaceKeyWith
@@ -69,3 +69,5 @@ namespace OBS.Model
 
     }
 }
+
+

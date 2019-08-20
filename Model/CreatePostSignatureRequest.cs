@@ -16,7 +16,7 @@ using System.Collections.Generic;
 namespace OBS.Model
 {
     /// <summary>
-    /// POST表单鉴权请求参数。 
+    /// Parameters of a browser-based authentication request 
     /// </summary>
     public class CreatePostSignatureRequest : ObsBucketWebServiceRequest
     {
@@ -29,11 +29,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 桶名。
+        /// Bucket name
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public override string BucketName
@@ -43,11 +43,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象名。
+        /// Object name
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string ObjectKey
@@ -58,11 +58,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 过期时间。
+        /// Expiration time
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public DateTime? Expires
@@ -73,11 +73,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 表单参数。
+        /// Form parameters
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public IDictionary<String, String> FormParameters
@@ -95,3 +95,4 @@ namespace OBS.Model
 
     }
 }
+

@@ -16,13 +16,13 @@ using System;
 namespace OBS.Model
 {
     /// <summary>
-    /// 复制对象的响应结果。
+    /// Response to a request for copying an object
     /// </summary>
     public class CopyObjectResponse : ObsWebServiceResponse
     {
 
         /// <summary>
-        /// 目标对象的etag值。
+        /// ETag value of the target object
         /// </summary>
         public string ETag
         {
@@ -31,7 +31,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 目标对象的最后修改时间。
+        /// Last modification time of the target object
         /// </summary>
         public DateTime? LastModified
         {
@@ -40,7 +40,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 目标对象的存储类型。
+        /// Storage class of the target object
         /// </summary>
         public StorageClassEnum? StorageClass
         {
@@ -49,7 +49,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 源对象的版本号。
+        /// Version ID of the target object
         /// </summary>
         public string SourceVersionId
         {
@@ -58,7 +58,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 目标对象的版本号。
+        /// Version ID of the target object
         /// </summary>
         public string VersionId
         {
@@ -69,3 +69,5 @@ namespace OBS.Model
     }
 }
     
+
+

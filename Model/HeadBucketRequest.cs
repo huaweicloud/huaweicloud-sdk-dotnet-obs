@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 查询桶是否存在的请求参数。
+    /// Parameters in a request for querying whether a bucket exists
     /// </summary>
     public class HeadBucketRequest : ObsBucketWebServiceRequest
     {
@@ -26,3 +26,5 @@ namespace OBS.Model
     }
 }
     
+
+

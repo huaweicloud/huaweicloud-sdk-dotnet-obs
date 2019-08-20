@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取桶的跨域资源共享配置的请求参数。
+    /// Parameters in a request for obtaining bucket CORS configuration
     /// </summary>
     public class GetBucketCorsRequest : ObsBucketWebServiceRequest
     {
@@ -28,3 +28,5 @@ namespace OBS.Model
     }
 }
     
+
+

@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取对象访问权限的请求参数。
+    /// Parameters in a request for obtaining object ACLs
     /// </summary>
     public class GetObjectAclRequest : ObsBucketWebServiceRequest
     {
@@ -26,21 +26,21 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象名。
+        /// Object name
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public string ObjectKey { get; set; }
 
         /// <summary>
-        /// 对象版本号。
+        /// Object version ID
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string VersionId { get; set; }
@@ -49,3 +49,5 @@ namespace OBS.Model
     }
 }
     
+
+

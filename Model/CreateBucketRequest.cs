@@ -17,7 +17,7 @@ using System.Collections.Generic;
 namespace OBS.Model
 {
     /// <summary>
-    /// 创建桶请求参数。
+    /// Parameters in a bucket creation request
     /// </summary>
     public class CreateBucketRequest : ObsBucketWebServiceRequest
     {
@@ -25,10 +25,10 @@ namespace OBS.Model
         private IDictionary<ExtensionBucketPermissionEnum, IList<string>> extensionPermissionMap;
 
         /// <summary>
-        /// 为用户授予OBS桶扩展权限。
+        /// Grant the OBS extension permissions to a user.
         /// </summary>
-        /// <param name="domainId">用户的domainId。</param>
-        /// <param name="extensionPermissionEnum">OBS扩展权限。</param>
+        /// <param name="domainId">ID of the domain to which the user belongs</param>
+        /// <param name="extensionPermissionEnum">OBS extension permissions</param>
         public void GrantExtensionPermission(string domainId, ExtensionBucketPermissionEnum extensionPermissionEnum)
         {
             if(string.IsNullOrEmpty(domainId))
@@ -54,10 +54,10 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 撤回用户的OBS桶扩展权限。
+        /// Withdraw the user's OBS extension permissions.
         /// </summary>
-        /// <param name="domainId">用户的domainId。</param>
-        /// <param name="extensionPermissionEnum">OBS扩展权限。</param>
+        /// <param name="domainId">ID of the domain to which the user belongs</param>
+        /// <param name="extensionPermissionEnum">OBS extension permissions</param>
         public void WithDrawExtensionPermission(string domainId, ExtensionBucketPermissionEnum extensionPermissionEnum)
         {
             if (string.IsNullOrEmpty(domainId))
@@ -83,11 +83,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 创桶时可指定的桶的存储类型。
+        /// Bucket storage class that can be pre-defined during the bucket creation
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public StorageClassEnum? StorageClass
@@ -98,11 +98,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 创桶时可指定的预定义访问策略。
+        /// ACL that can be pre-defined during the bucket creation
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public CannedAclEnum? CannedAcl
@@ -112,14 +112,7 @@ namespace OBS.Model
         }
 
 
-        /// <summary>
-        /// 创桶时可指定的集群类型。
-        /// </summary>
-        /// <remarks>
-        /// <para>
-        /// 参数可选。
-        /// </para>
-        /// </remarks>
+
         public AvailableZoneEnum? AvailableZone
         {
             get;
@@ -127,17 +120,17 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 桶名。
+        /// Bucket name
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
-        /// 桶命名规则如下：
-        /// 1. 3～63个字符，数字或字母开头，支持小写字母、数字、“-”、“.”。
-        /// 2. 禁止使用IP地址。
-        /// 3.禁止以“-”或“.”开头及结尾。
-        /// 4.禁止两个“.”相邻（如：“my..bucket”）。
-        /// 5.禁止“.”和“-”相邻（如：“my-.bucket”和“my.-bucket”）。
+        /// Mandatory parameter
+        /// A bucket name must comply with the following rules:
+        /// 1. Contains 3 to 63 characters, starts with a digit or letter, and supports lowercase letters, digits, hyphens (-), and periods (.).
+        /// 2. Cannot be an IP address.
+        /// 3. Cannot start or end with a hyphen (-) or period (.).
+        /// 4. Cannot contain two consecutive periods (.), for example, "my..bucket".
+        /// 5. Cannot contain periods (.) and hyphens (-) adjacent to each other, for example, "my-.bucket" or "my.-bucket".
         /// </para>
         /// </remarks>
         public override string BucketName
@@ -148,12 +141,12 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 桶所在的区域。
+        /// Bucket location
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
-        /// 创建桶的区域， 如果使用的终端节点归属于默认区域，可以不携带此参数；如果使用的终端节点归属于其他区域，则必须携带此参数
+        /// Optional parameter
+        /// Bucket location. This parameter is mandatory unless the endpoint belongs to the default region. 
         /// </para>
         /// </remarks>
         public string Location

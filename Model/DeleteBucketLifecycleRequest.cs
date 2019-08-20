@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 删除桶生命周期配置的请求参数。
+    /// Parameters in a request for deleting bucket lifecycle rules
     /// </summary>
     public class DeleteBucketLifecycleRequest : ObsBucketWebServiceRequest
     {
@@ -28,3 +28,5 @@ namespace OBS.Model
     }
 }
     
+
+

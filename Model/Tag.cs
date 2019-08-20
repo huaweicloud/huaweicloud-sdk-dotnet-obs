@@ -11,22 +11,23 @@
 // CONDITIONS OF ANY KIND, either express or implied.  See the License for the
 // specific language governing permissions and limitations under the License.
 //----------------------------------------------------------------------------------*/
+
 namespace OBS.Model
 {
     /// <summary>
-    /// 桶标签。
+    /// Bucket tagging
     /// </summary>
     public class Tag
     {
         
 
         /// <summary>
-        /// 标签键。 
+        /// Tag key 
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
-        /// 最大36个字符。可以包含：A-Z，a-z，0-9，’-’，’_’以及Unicode(\u4E00-\u9FFF)。同一个桶，Tag的Key不能重复。
+        /// Mandatory parameter
+        /// A tag key consists of up to 36 characters, chosen from A-Z, a-z, 0-9, underscores (_), hyphens (-), and Unicode (\u4E00-\u9FFF) characters. The tag keys in one bucket must be unique.
         /// </para>
         /// </remarks>
         public string Key
@@ -36,12 +37,12 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 标签值。 
+        /// Tag value 
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
-        /// 最大值为43个字符。可以包含：A-Z，a-z，0-9，’-’，’_’，’.’以及Unicode(\u4E00-\u9FFF)。
+        /// Mandatory parameter
+        /// A tag value consists of up to 43 characters, chosen from A-Z, a-z, 0-9, underscores (_), hyphens (-), and Unicode (\u4E00-\u9FFF) characters. 
         /// </para>
         /// </remarks>
         public string Value
@@ -52,3 +53,5 @@ namespace OBS.Model
 
     }
 }
+
+

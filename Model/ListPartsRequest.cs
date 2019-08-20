@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 列举已上传段的请求参数。
+    /// Parameters in a request for listing uploaded parts
     /// </summary>
     public class ListPartsRequest : ObsBucketWebServiceRequest
     {
@@ -26,11 +26,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象名。
+        /// Object name
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         ///  </para> 
         /// </remarks>
         public string ObjectKey
@@ -40,11 +40,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 列举已上传的段返回结果最大段数目。  
+        /// Maximum number of uploaded parts that can be listed  
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         ///  </para> 
         /// </remarks>
         public int? MaxParts
@@ -54,11 +54,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 待列出段的起始位置。
+        /// Start position for listing parts
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         ///  </para> 
         /// </remarks>
         public int? PartNumberMarker
@@ -69,11 +69,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 分段上传任务的ID号。
+        /// Multipart upload ID
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         ///  </para> 
         /// </remarks>
         public string UploadId
@@ -85,3 +85,5 @@ namespace OBS.Model
     }
 }
     
+
+

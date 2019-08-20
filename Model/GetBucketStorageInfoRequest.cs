@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// ��ȡͰ������Ϣ�����������
+    /// Parameters in a request for obtaining bucket storage information
     /// </summary>
     public class GetBucketStorageInfoRequest: ObsBucketWebServiceRequest
     {
@@ -28,3 +28,5 @@ namespace OBS.Model
     }
 }
     
+
+

@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 追加上传对象的响应结果。
+    /// Response to an appendable upload request
     /// </summary>
     public class AppendObjectResponse : ObsWebServiceResponse
     {
@@ -23,7 +23,7 @@ namespace OBS.Model
         private long _nextPosition = -1;
 
         /// <summary>
-        /// 本次追加内容的etag校验值。 
+        /// ETag verification value of the appended data 
         /// </summary>
         public string ETag
         {
@@ -32,7 +32,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 下次追加上传的位置。
+        /// Start postion for next appendable upload
         /// </summary>
         public long NextPosition
         {
@@ -47,7 +47,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象存储类型。
+        /// Object storage class
         /// </summary>
         public StorageClassEnum? StorageClass
         {
@@ -56,7 +56,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象的全路径。
+        /// Full path to the object
         /// </summary>
         public string ObjectUrl
         {
@@ -68,3 +68,5 @@ namespace OBS.Model
     }
 }
     
+
+

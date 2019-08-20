@@ -21,7 +21,7 @@ using System.IO;
 namespace OBS.Model
 {
     /// <summary>
-    /// 下载对象的响应结果。
+    /// Response to an object download request
     /// </summary>
     public class GetObjectResponse : GetObjectMetadataResponse, IDisposable
     {
@@ -84,7 +84,7 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 对象的数据流。 
+        /// Object data stream 
         /// </summary>
         public Stream OutputStream
         {
@@ -103,19 +103,19 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 将对象内容写入文件。
+        /// Write the object content to a file.
         /// </summary>
-        /// <param name="filePath">文件路径。</param>
+        /// <param name="filePath">File path</param>
         public void WriteResponseStreamToFile(string filePath)
         {
             this.WriteResponseStreamToFile(filePath, false);
         }
 
         /// <summary>
-        /// 将对象内容写入文件。
+        /// Write the object content to a file.
         /// </summary>
-        /// <param name="filePath">文件路径。</param>
-        /// <param name="append">写入方式。</param>
+        /// <param name="filePath">File path</param>
+        /// <param name="append">Write mode</param>
         public void WriteResponseStreamToFile(string filePath, bool append)
         {
             try

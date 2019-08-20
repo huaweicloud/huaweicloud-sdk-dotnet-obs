@@ -17,13 +17,13 @@ using System.Collections.Generic;
 namespace OBS.Model
 {
     /// <summary>
-    /// POST表单鉴权响应结果。
+    /// Response to a browser-based authentication request
     /// </summary>
     public class CreatePostSignatureResponse
     {
 
         /// <summary>
-        /// 签名串，用于填充表单。
+        /// Signature string, which is set in the form
         /// </summary>
         public string Signature
         {
@@ -34,3 +34,5 @@ namespace OBS.Model
     }
 }
     
+
+

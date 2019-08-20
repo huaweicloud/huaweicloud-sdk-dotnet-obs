@@ -20,10 +20,10 @@ namespace OBS
     public partial class ObsClient
     {
         /// <summary>
-        /// 上传对象。
+        /// Upload an object.
         /// </summary>
-        /// <param name="request">上传对象的请求参数。</param>
-        /// <returns>上传对象的响应结果。</returns>
+        /// <param name="request">Parameters in an object upload request</param>
+        /// <returns> Response to an object upload request</returns>
         public PutObjectResponse PutObject(PutObjectRequest request)
         {
             return this.DoRequest<PutObjectRequest, PutObjectResponse>(request, delegate ()
@@ -36,10 +36,10 @@ namespace OBS
         }
 
         /// <summary>
-        /// 追加上传对象。
+        /// Perform an appendable upload.
         /// </summary>
-        /// <param name="request">追加上传对象的请求参数。</param>
-        /// <returns>追加上传对象的响应结果。</returns>
+        /// <param name="request">Parameters in an appendable upload request</param>
+        /// <returns>Response to an appendable upload request</returns>
         public AppendObjectResponse AppendObject(AppendObjectRequest request)
         {
             return this.DoRequest<AppendObjectRequest, AppendObjectResponse>(request, delegate ()
@@ -53,10 +53,10 @@ namespace OBS
 
 
         /// <summary>
-        /// 复制对象。
+        /// Copy an object.
         /// </summary>
-        /// <param name="request">复制对象的请求参数。</param>
-        /// <returns>复制对象的响应结果。</returns>
+        /// <param name="request">Parameters in a request for copying an object</param>
+        /// <returns> Response to an object copy request</returns>
         public CopyObjectResponse CopyObject(CopyObjectRequest request)
         {
             return this.DoRequest<CopyObjectRequest, CopyObjectResponse>(request, delegate ()
@@ -78,10 +78,10 @@ namespace OBS
 
 
         /// <summary>
-        /// 上传段。
+        /// Upload a part.
         /// </summary>
-        /// <param name="request">上传段的请求参数。</param>
-        /// <returns>上传段的响应结果。</returns>
+        /// <param name="request">Parameters in a request for uploading a part</param>
+        /// <returns>Response to a part upload request</returns>
         public UploadPartResponse UploadPart(UploadPartRequest request)
         {
             UploadPartResponse response = this.DoRequest<UploadPartRequest, UploadPartResponse>(request, delegate ()
@@ -108,10 +108,10 @@ namespace OBS
 
 
         /// <summary>
-        /// 复制段。
+        /// Copy a part.
         /// </summary>
-        /// <param name="request">复制段的请求参数。</param>
-        /// <returns>复制段的响应结果。</returns>
+        /// <param name="request">Parameters in a request for copying a part</param>
+        /// <returns> Response to a part copy request</returns>
         public CopyPartResponse CopyPart(CopyPartRequest request)
         {
             CopyPartResponse response = this.DoRequest<CopyPartRequest, CopyPartResponse>(request, delegate ()
@@ -144,10 +144,10 @@ namespace OBS
         }
 
         /// <summary>
-        /// 下载对象。
+        /// Download an object. 
         /// </summary>
-        /// <param name="request">下载对象的请求参数。</param>
-        /// <returns>下载对象的响应结果。</returns>
+        /// <param name="request">Parameters in an object download request</param>
+        /// <returns>Response to an object download request</returns>
         public GetObjectResponse GetObject(GetObjectRequest request)
         {
             GetObjectResponse response = this.DoRequest<GetObjectRequest, GetObjectResponse>(request, delegate ()
@@ -163,10 +163,10 @@ namespace OBS
         }
 
         /// <summary>
-        /// 获取对象属性。
+        /// Obtain object properties.
         /// </summary>
-        /// <param name="request">获取对象属性的请求参数。</param>
-        /// <returns>获取对象属性的响应结果。</returns>
+        /// <param name="request">Parameters in a request for obtaining object properties</param>
+        /// <returns>Response to a request for obtaining object properties</returns>
         public GetObjectMetadataResponse GetObjectMetadata(GetObjectMetadataRequest request)
         {
             GetObjectMetadataResponse response = this.DoRequest<GetObjectMetadataRequest, GetObjectMetadataResponse>(request, delegate ()
@@ -183,10 +183,10 @@ namespace OBS
 
 
         /// <summary>
-        /// 初始化分段上传任务。
+        /// Initialize a multipart upload.
         /// </summary>
-        /// <param name="request">初始化分段上传任务的请求参数。</param>
-        /// <returns>初始化分段上传任务的响应结果。</returns>
+        /// <param name="request">Parameters in a request for initializing a multipart upload</param>
+        /// <returns>Response to a request for initializing a multipart upload</returns>
 
         public InitiateMultipartUploadResponse InitiateMultipartUpload(InitiateMultipartUploadRequest request)
         {
@@ -200,11 +200,11 @@ namespace OBS
         }
 
         /// <summary>
-        /// 获取对象属性。
+        /// Obtain object properties.
         /// </summary>
-        /// <param name="bucketName">桶名。</param>
-        /// <param name="objectKey">对象名。</param>
-        /// <returns>获取对象属性的响应结果。</returns>
+        /// <param name="bucketName">Bucket name</param>
+        /// <param name="objectKey">Object name</param>
+        /// <returns>Response to a request for obtaining object properties</returns>
         public GetObjectMetadataResponse GetObjectMetadata(string bucketName, string objectKey)
         {
             GetObjectMetadataRequest request = new GetObjectMetadataRequest();
@@ -215,12 +215,12 @@ namespace OBS
 
 
         /// <summary>
-        /// 获取对象属性。
+        /// Obtain object properties.
         /// </summary>
-        /// <param name="bucketName">桶名。</param>
-        /// <param name="objectKey">对象名。</param>
-        /// <param name="versionId">版本号。</param>
-        /// <returns>获取对象属性的响应结果。</returns>
+        /// <param name="bucketName">Bucket name</param>
+        /// <param name="objectKey">Object name</param>
+        /// <param name="versionId">Version ID</param>
+        /// <returns>Response to a request for obtaining object properties</returns>
         public GetObjectMetadataResponse GetObjectMetadata(string bucketName, string objectKey, string versionId)
         {
             GetObjectMetadataRequest request = new GetObjectMetadataRequest();
@@ -232,10 +232,10 @@ namespace OBS
 
 
         /// <summary>
-        /// 合并段。
+        /// Combine parts.
         /// </summary>
-        /// <param name="request">合并段的请求参数。</param>
-        /// <returns>合并段的响应结果。</returns>
+        /// <param name="request">Parameters in a request for combining parts</param>
+        /// <returns>Response to the request for combining parts</returns>
         public CompleteMultipartUploadResponse CompleteMultipartUpload(CompleteMultipartUploadRequest request)
         {
             return this.DoRequest<CompleteMultipartUploadRequest, CompleteMultipartUploadResponse>(request, delegate ()
@@ -253,10 +253,10 @@ namespace OBS
 
 
         /// <summary>
-        /// 取消分段上传任务。
+        /// Abort a multipart upload.
         /// </summary>
-        /// <param name="request">取消分段上传任务的请求参数。</param>
-        /// <returns>取消分段上传的响应结果。</returns>
+        /// <param name="request">Parameters in a request for aborting a multipart upload</param>
+        /// <returns>Response to the request for aborting a multipart upload</returns>
         public AbortMultipartUploadResponse AbortMultipartUpload(AbortMultipartUploadRequest request)
         {
             return this.DoRequest<AbortMultipartUploadRequest, AbortMultipartUploadResponse>(request, delegate()
@@ -274,10 +274,10 @@ namespace OBS
 
 
         /// <summary>
-        /// 列举已上传的段。
+        /// List uploaded parts.
         /// </summary>
-        /// <param name="request">列举已上传段的请求参数。</param>
-        /// <returns>列举已上传段的响应结果。</returns>
+        /// <param name="request">Parameters in a request for listing uploaded parts</param>
+        /// <returns>Response to a request for listing uploaded parts</returns>
         public ListPartsResponse ListParts(ListPartsRequest request)
         {
             return this.DoRequest<ListPartsRequest, ListPartsResponse>(request, delegate ()
@@ -294,10 +294,10 @@ namespace OBS
         }
 
         /// <summary>
-        /// 删除对象。
+        /// Delete an object.
         /// </summary>
-        /// <param name="request">删除对象的请求参数。</param>
-        /// <returns>删除对象的响应结果。</returns>
+        /// <param name="request">Parameters in an object deletion request</param>
+        /// <returns>Response to the object deletion request</returns>
         public DeleteObjectResponse DeleteObject(DeleteObjectRequest request)
         {
             return this.DoRequest<DeleteObjectRequest, DeleteObjectResponse>(request, delegate ()
@@ -311,20 +311,20 @@ namespace OBS
 
 
         /// <summary>
-        /// 批量删除对象。
+        /// Delete objects in a batch.
         /// </summary>
-        /// <param name="request">批量删除对象的请求参数。</param>
-        /// <returns>批量删除对象的响应结果。</returns>
+        /// <param name="request">Parameters in a request for deleting objects in a batch</param>
+        /// <returns>Response to an object batch deletion request</returns>
         public DeleteObjectsResponse DeleteObjects(DeleteObjectsRequest request)
         {
             return this.DoRequest<DeleteObjectsRequest, DeleteObjectsResponse>(request);
         }
 
         /// <summary>
-        /// 取回归档存储对象。
+        /// Restore an Archive object.
         /// </summary>
-        /// <param name="request">取回归档存储对象的请求参数。</param>
-        /// <returns>取回归档存储对象的响应结果。</returns>
+        /// <param name="request">Parameters in a request for restoring an Archive object</param>
+        /// <returns>Response to a request for restoring an Archive object</returns>
         public RestoreObjectResponse RestoreObject(RestoreObjectRequest request)
         {
             return this.DoRequest<RestoreObjectRequest, RestoreObjectResponse>(request, delegate ()
@@ -337,10 +337,10 @@ namespace OBS
         }
 
         /// <summary>
-        /// 获取对象访问权限。
+        /// Obtain an object ACL.
         /// </summary>
-        /// <param name="request">获取对象访问权限请求参数。</param>
-        /// <returns>获取对象访问权限响应结果。</returns>
+        /// <param name="request">Parameters in a request for obtaining an object ACL</param>
+        /// <returns>Response to a request for obtaining an object ACL</returns>
         public GetObjectAclResponse GetObjectAcl(GetObjectAclRequest request)
         {
             return this.DoRequest<GetObjectAclRequest, GetObjectAclResponse>(request, delegate ()
@@ -354,10 +354,10 @@ namespace OBS
 
 
         /// <summary>
-        /// 设置对象访问权限。
+        /// Set an object ACL.
         /// </summary>
-        /// <param name="request">设置对象访问权限的请求参数。</param>
-        /// <returns>设置对象访问权限的响应结果。</returns>
+        /// <param name="request">Parameters in a request for configuring an object ACL</param>
+        /// <returns>Response to a request for configuring an object ACL</returns>
         public SetObjectAclResponse SetObjectAcl(SetObjectAclRequest request)
         {
             return this.DoRequest<SetObjectAclRequest, SetObjectAclResponse>(request, delegate ()
@@ -372,3 +372,5 @@ namespace OBS
 
     }
 }
+
+

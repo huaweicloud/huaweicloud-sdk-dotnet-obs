@@ -16,12 +16,12 @@ using System.Collections.Generic;
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取桶元数据的响应结果。
+    /// Response to a request for obtaining bucket metadata
     /// </summary>
     public class GetBucketMetadataResponse : ObsWebServiceResponse
     {
         /// <summary>
-        /// 桶的存储类型。
+        /// Bucket storage class
         /// </summary>
         public StorageClassEnum? StorageClass
         {
@@ -30,7 +30,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 桶的区域位置。
+        /// Bucket location
         /// </summary>
         public string Location
         {
@@ -39,7 +39,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// OBS服务的版本。
+        /// OBS version
         /// </summary>
         public string ObsVersion
         {
@@ -47,9 +47,6 @@ namespace OBS.Model
             internal set;
         }
 
-        /// <summary>
-        /// 桶的集群类型。
-        /// </summary>
         public AvailableZoneEnum AvailableZone
         {
             get;

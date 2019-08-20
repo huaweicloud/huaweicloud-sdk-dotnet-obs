@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取桶策略的请求参数。
+    /// Parameters in a request for obtaining bucket policies
     /// </summary>
     public class GetBucketPolicyRequest : ObsBucketWebServiceRequest
     {
@@ -28,3 +28,5 @@ namespace OBS.Model
     }
 }
     
+
+

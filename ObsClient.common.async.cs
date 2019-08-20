@@ -122,7 +122,7 @@ namespace OBS
                         request.Sender = null;
                     }
 
-                    CommonUtil.CloseIDisposable(result);
+                    CommonUtil.CloseIDisposable(result.HttpRequest);
                 }
 
                 if (LoggerMgr.IsInfoEnabled)

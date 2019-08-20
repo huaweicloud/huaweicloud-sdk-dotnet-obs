@@ -15,14 +15,16 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取对象访问权限的响应结果。
+    /// Response to a request for obtaining object ACLs
     /// </summary>
     public class GetObjectAclResponse : ObsWebServiceResponse
     {
         /// <summary>
-        /// 被授权用户权限信息列表。
+        /// List of grantees' permission information
         /// </summary>
         public AccessControlList AccessControlList { get; internal set; }
     }
 }
     
+
+

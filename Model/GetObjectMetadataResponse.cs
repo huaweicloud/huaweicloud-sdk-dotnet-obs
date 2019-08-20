@@ -16,7 +16,7 @@ using System;
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取对象元数据的响应结果。
+    /// Response to a request for obtaining object metadata
     /// </summary>
     public class GetObjectMetadataResponse : ObsWebServiceResponse
     {
@@ -27,7 +27,7 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 桶名。
+        /// Bucket name
         /// </summary>
         public string BucketName
         {
@@ -36,7 +36,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象名。
+        /// Object name
         /// </summary>
         public string ObjectKey
         {
@@ -45,7 +45,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象自定义的元数据。
+        /// Customized metadata of the object
         /// </summary>
         public MetadataCollection Metadata
         {
@@ -57,7 +57,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象的MIME类型。
+        /// MIME type of the object
         /// </summary>
         public string ContentType
         {
@@ -66,7 +66,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象的长度。
+        /// Object length
         /// </summary>
         public override long ContentLength
         {
@@ -75,7 +75,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象的存储类型。
+        /// Object storage class
         /// </summary>
         public StorageClassEnum? StorageClass
         {
@@ -84,7 +84,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象删除标记。  
+        /// Object delete marker  
         /// </summary>
         public bool DeleteMarker
         {
@@ -94,7 +94,7 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 对象的详细过期信息。
+        /// Expiration details of the object
         /// </summary>
         public ExpirationDetail ExpirationDetail
         {
@@ -103,7 +103,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 归档存储类型对象的取回状态，如果对象不为归档存储类型，则该值为空。
+        /// Restore status of the Archive object. If the object is not in the OBS Archive storage class, the value is null.
         /// </summary>
         public RestoreStatus RestoreStatus
         {
@@ -113,7 +113,7 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 对象的最后修改时间。
+        /// Last modification time of the object
         /// </summary>
         public DateTime? LastModified
         {
@@ -122,7 +122,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象的etag校验值。
+        /// ETag of the object
         /// </summary>
         public string ETag
         {
@@ -132,7 +132,7 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 对象版本号。
+        /// Object version ID
         /// </summary>
         public string VersionId
         {
@@ -142,8 +142,8 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 将请求重定向到该属性指定的桶内的另一个对象或外部的URL。
-        /// 当桶设置了Website配置，就可以设置对象元数据的这个属性。
+        /// Redirect the request to another object in the bucket or to an external URL.
+        /// If the bucket is configured with website hosting, the object metadata property can be set.
         /// </summary>
         public string WebsiteRedirectLocation
         {
@@ -152,7 +152,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象是否可被追加写。
+        /// Whether the object is an appendable object
         /// </summary>
         public bool Appendable
         {
@@ -161,7 +161,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 下次追加上传的位置, 仅在Appendable为true且大于0时有效。
+        /// Start position for next appendable upload. This parameter is valid only when its value is larger than "0" and when "Appendable" is set to "true".
         /// </summary>
         public long NextPosition
         {
@@ -178,3 +178,5 @@ namespace OBS.Model
     }
 }
     
+
+

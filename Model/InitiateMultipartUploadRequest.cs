@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 初始化分段上传任务的请求参数。
+    /// Parameters in a request for initializing a multipart upload
     /// </summary>
     public class InitiateMultipartUploadRequest : PutObjectBasicRequest
     {
@@ -25,11 +25,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 生成的最终对象的过期时间。
+        /// Expiration time of the generated object
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public int? Expires
@@ -41,3 +41,5 @@ namespace OBS.Model
     }
 }
     
+
+

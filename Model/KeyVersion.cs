@@ -11,17 +11,18 @@
 // CONDITIONS OF ANY KIND, either express or implied.  See the License for the
 // specific language governing permissions and limitations under the License.
 //----------------------------------------------------------------------------------*/
+
 namespace OBS.Model
 {
     /// <summary>
-    /// 待删除的对象信息。
+    /// Information about the object to be deleted
     /// </summary>
     public class KeyVersion
     {
         
 
         /// <summary>
-        /// 对象名。
+        /// Object name
         /// </summary>
         public string Key
         {
@@ -32,7 +33,7 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 对象版本号。
+        /// Object version ID
         /// </summary>
         public string VersionId
         {
@@ -43,3 +44,5 @@ namespace OBS.Model
 
     }
 }
+
+

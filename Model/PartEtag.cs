@@ -16,13 +16,13 @@ using System;
 namespace OBS.Model
 {
     /// <summary>
-    /// 分段的信息。
+    /// Part information
     /// </summary>
     public class PartETag : IComparable<PartETag>
     {
 
         /// <summary>
-        /// 默认构造函数。
+        /// Default constructor
         /// </summary>
         public PartETag()
         {
@@ -30,10 +30,10 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
-        /// <param name="partNumber">分段号</param>
-        /// <param name="etag">分段的etag校验值</param>
+        /// <param name="partNumber">Part number</param>
+        /// <param name="etag">Part ETag</param>
         public PartETag(int partNumber, string etag)
         {
             this.PartNumber = partNumber;
@@ -41,10 +41,10 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 与其他段信息比较。
+        /// Compare with another part.
         /// </summary>
-        /// <param name="other">其他段信息</param>
-        /// <returns>为真表示已两个段段号相等。</returns>
+        /// <param name="other">Information of the other part</param>
+        /// <returns>If the value is true, the two part numbers are the same.</returns>
         public int CompareTo(PartETag other)
         {
             if (other == null)
@@ -55,11 +55,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 分段号。
+        /// Part numberc
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         ///  </para> 
         /// </remarks>
         public int PartNumber
@@ -70,11 +70,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 分段的etag校验值。
+        /// Part ETag
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         ///  </para> 
         /// </remarks>
         public string ETag
@@ -85,3 +85,5 @@ namespace OBS.Model
 
     }
 }
+
+

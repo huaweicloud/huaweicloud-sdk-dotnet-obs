@@ -22,11 +22,11 @@ namespace OBS.Model
         private IList<Grant> grants;
 
         /// <summary>
-        /// 用户/用户组的权限列表。
+        /// User or user group ACL
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public IList<Grant> Grants
@@ -42,10 +42,10 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 为用户/用户组指定权限。
+        /// Grant permissions to a user or user group (grantee).
         /// </summary>
-        /// <param name="grantee">被授权的用户/用户组</param>
-        /// <param name="permission">权限信息</param>
+        /// <param name="grantee"> Grantee name </param>
+        /// <param name="permission">Permission information</param>
         public void AddGrant(Grantee grantee, PermissionEnum permission)
         {
             Grant grant = new Grant { };
@@ -55,10 +55,10 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 移除用户/用户组的指定权限。
+        /// Remove permissions from a grantee.
         /// </summary>
-        /// <param name="grantee">被授权的用户/用户组</param>
-        /// <param name="permission">权限信息</param>
+        /// <param name="grantee"> Grantee name </param>
+        /// <param name="permission">Permission information</param>
         public void RemoveGrant(Grantee grantee, PermissionEnum permission)
         {
             foreach (Grant grant in Grants)
@@ -72,9 +72,9 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 移除用户/用户组的所有权限。
+        /// Remove all permissions from a grantee.
         /// </summary>
-        /// <param name="grantee">被授权的用户</param>
+        /// <param name="grantee"> Grantee name </param>
         public void RemoveGrant(Grantee grantee)
         {
             IList<Grant> removeList = new List<Grant>();
@@ -92,3 +92,5 @@ namespace OBS.Model
         }
     }
 }
+
+

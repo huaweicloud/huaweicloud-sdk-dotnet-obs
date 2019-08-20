@@ -16,7 +16,7 @@ using System.Collections.Generic;
 namespace OBS.Model
 {
     /// <summary>
-    /// 桶的跨域资源共享配置。
+    /// Bucket CORS configuration
     /// </summary>
     public class CorsConfiguration
     {
@@ -24,11 +24,11 @@ namespace OBS.Model
         private IList<CorsRule> rules;
 
         /// <summary>
-        /// 桶的跨域资源共享规则列表.
+        /// Bucket CORS rule list
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public IList<CorsRule> Rules
@@ -41,3 +41,5 @@ namespace OBS.Model
 
     }
 }
+
+

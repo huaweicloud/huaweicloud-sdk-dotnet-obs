@@ -18,13 +18,13 @@ using System.Text.RegularExpressions;
 namespace OBS.Model
 {
     /// <summary>
-    /// 对象的详细过期信息。
+    /// Expiration details of an object
     /// </summary>
     public class ExpirationDetail
     {
 
         /// <summary>
-        /// 过期时间。
+        /// Expiration time
         /// </summary>
         public DateTime? ExpiryDate
         {
@@ -33,7 +33,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// ID号。
+        /// ID
         /// </summary>
         public string RuleId
         {
@@ -42,3 +42,5 @@ namespace OBS.Model
         }
     }
 }
+
+

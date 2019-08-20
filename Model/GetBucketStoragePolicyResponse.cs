@@ -15,13 +15,13 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取桶存储策略的响应结果。
+    /// Response to a request for obtaining bucket storage policies
     /// </summary>
     public class GetBucketStoragePolicyResponse : ObsWebServiceResponse
     {
 
         /// <summary>
-        /// 桶的存储类型。
+        /// Bucket storage class
         /// </summary>
         public StorageClassEnum? StorageClass
         {
@@ -31,3 +31,5 @@ namespace OBS.Model
     }
 }
     
+
+

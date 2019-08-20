@@ -15,13 +15,13 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 合并段的响应结果。
+    /// Response to the request for combining parts
     /// </summary>
     public class CompleteMultipartUploadResponse : ObsWebServiceResponse
     {
 
         /// <summary>
-        /// 合并段后得到的对象的url。
+        /// URL of the object obtained after part combination
         /// </summary>
         public string Location
         {
@@ -30,7 +30,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 合并段所在的桶。
+        /// Bucket in which parts are combined
         /// </summary>
         public string BucketName
         {
@@ -40,7 +40,7 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 合并段后得到的对象名。
+        /// Name of the object obtained after part combination
         /// </summary>
         public string ObjectKey
         {
@@ -49,7 +49,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 合并段后根据各个段的ETag值计算出的结果。
+        /// ETag calculated based on the ETags of all combined parts
         /// </summary>
         public string ETag
         {
@@ -58,7 +58,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 合并段后得到的对象版本号。
+        /// Version ID of the object obtained after part combination
         /// </summary>
         public string VersionId
         {
@@ -67,7 +67,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 合并段后得到的对象的全路径。
+        /// Full path to the object obtained after part combination
         /// </summary>
         public string ObjectUrl
         {
@@ -77,3 +77,5 @@ namespace OBS.Model
     }
 }
     
+
+

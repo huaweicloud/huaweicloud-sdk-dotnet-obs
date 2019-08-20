@@ -11,19 +11,20 @@
 // CONDITIONS OF ANY KIND, either express or implied.  See the License for the
 // specific language governing permissions and limitations under the License.
 //----------------------------------------------------------------------------------*/
+
 namespace OBS.Model
 {
     /// <summary>
-    /// 请求重定向规则。
+    /// Request redirection rule
     /// </summary>
     public class RoutingRule
     {
         /// <summary>
-        /// 请求重定向条件。
+        /// Request redirection conditions
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public Condition Condition
@@ -34,11 +35,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 请求重定向配置。
+        /// Redirection configuration
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public Redirect Redirect
@@ -49,3 +50,5 @@ namespace OBS.Model
 
     }
 }
+
+

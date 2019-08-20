@@ -15,14 +15,14 @@ using System;
 namespace OBS.Model
 {
     /// <summary>
-    /// 分段上传任务。
+    /// Multipart upload
     /// </summary>
     public class MultipartUpload
     {
 
 
         /// <summary>
-        /// 分段上传任务的创建时间。 
+        /// Creation time of the multipart upload 
         /// </summary>
         public DateTime? Initiated
         {
@@ -31,7 +31,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 分段上传任务的创建者。
+        /// Creator of the multipart upload
         /// </summary>
         public Initiator Initiator
         {
@@ -40,7 +40,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象名。 
+        /// Object name 
         /// </summary>
         public string ObjectKey
         {
@@ -50,7 +50,7 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 分段上传任务的所有者。
+        /// Owner of the multipart upload
         /// </summary>
         public Owner Owner
         {
@@ -59,7 +59,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 分段上传任务对象的存储类型。  
+        /// Storage class of the object uploaded in multipart mode  
         /// </summary>
         public StorageClassEnum? StorageClass
         {
@@ -68,7 +68,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 分段上传任务的ID号。
+        /// Multipart upload ID
         /// </summary>
         public string UploadId
         {
@@ -78,3 +78,5 @@ namespace OBS.Model
 
     }
 }
+
+

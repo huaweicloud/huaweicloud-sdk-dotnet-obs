@@ -17,12 +17,12 @@ using System.Collections.Generic;
 namespace OBS.Model
 {
     /// <summary>
-    /// POST表单鉴权响应结果。
+    /// Response to a browser-based authentication request
     /// </summary>
     public class CreateV4PostSignatureResponse : CreatePostSignatureResponse
     {
         /// <summary>
-        /// 签名算法，用于填充表单。
+        /// Signature algorithm, which is set in the form
         /// </summary>
         public string Algorithm
         {
@@ -31,7 +31,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// Credential信息，用于填充表单。
+        /// Credential information, which is set in the form
         /// </summary>
         public string Credential
         {
@@ -40,7 +40,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// ISO 8601格式日期，用于填充表单。
+        /// Date in the ISO 8601 format, which is set in the form
         /// </summary>
         public string Date
         {
@@ -51,3 +51,5 @@ namespace OBS.Model
     }
 }
     
+
+

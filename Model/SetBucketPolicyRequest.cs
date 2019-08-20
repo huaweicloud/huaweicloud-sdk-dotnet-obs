@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 设置桶策略的请求参数。
+    /// Parameters in a request for setting bucket policies
     /// </summary>
     public class SetBucketPolicyRequest : ObsBucketWebServiceRequest
     {
@@ -26,22 +26,22 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 桶策略内容的MD5值。 
+        /// MD5 value of the bucket policy content 
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string ContentMD5 { get; set; }
 
 
         /// <summary>
-        /// 桶策略内容， JSON格式的字符串。
+        /// Policy content, in the JSON format
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public string Policy { get; set; }
@@ -49,3 +49,5 @@ namespace OBS.Model
     }
 }
     
+
+

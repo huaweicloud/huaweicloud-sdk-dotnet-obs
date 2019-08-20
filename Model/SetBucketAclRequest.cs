@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 设置桶访问权限的请求参数。
+    /// Parameters in a request for setting bucket ACLs
     /// </summary>
     public class SetBucketAclRequest : ObsBucketWebServiceRequest
     {
@@ -26,11 +26,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 预定义访问策略。  
+        /// Pre-defined access control policy  
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public CannedAclEnum? CannedAcl
@@ -41,11 +41,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 被授权者和访问权限列表。
+        /// Authorized user and ACL
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public AccessControlList AccessControlList
@@ -57,3 +57,5 @@ namespace OBS.Model
     }
 }
     
+
+

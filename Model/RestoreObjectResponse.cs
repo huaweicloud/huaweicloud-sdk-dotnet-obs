@@ -15,10 +15,12 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 取回归档存储对象的响应结果。
+    /// Response to a request for restoring an Archive object
     /// </summary>
     public class RestoreObjectResponse : ObsWebServiceResponse
     {
     }
 }
     
+
+

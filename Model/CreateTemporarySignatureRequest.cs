@@ -16,7 +16,7 @@ using System.Collections.Generic;
 namespace OBS.Model
 {
     /// <summary>
-    /// 临时鉴权请求参数。 
+    /// Parameters of a temporary authentication request 
     /// </summary>
     public class CreateTemporarySignatureRequest : ObsBucketWebServiceRequest
     {
@@ -31,11 +31,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 桶名。
+        /// Bucket name
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public override string BucketName
@@ -45,11 +45,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象名。
+        /// Object name
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string ObjectKey
@@ -60,11 +60,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 过期时间，单位秒。
+        /// Expiration time, in seconds
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public long? Expires
@@ -76,11 +76,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 请求方法。
+        /// Request method
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public HttpVerb Method
@@ -91,11 +91,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 请求头域。
+        /// Request headers
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public IDictionary<string, string> Headers
@@ -112,11 +112,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 自定义元数据，仅在上传对象、初始化分段上传任务、复制对象时可用。
+        /// Customized metadata, which can be used when you upload objects, initialize multipart uploads, and copy objects
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public MetadataCollection Metadata
@@ -133,11 +133,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 子资源。
+        /// Sub-resources
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public SubResourceEnum? SubResource
@@ -147,11 +147,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 请求查询参数。
+        /// Request query parameters
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public IDictionary<String, String> Parameters
@@ -169,3 +169,4 @@ namespace OBS.Model
 
     }
 }
+

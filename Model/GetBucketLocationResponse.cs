@@ -15,13 +15,13 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取桶区域位置的响应结果。
+    /// Response to a request for obtaining the bucket location
     /// </summary>
     public class GetBucketLocationResponse : ObsWebServiceResponse
     {
 
         /// <summary>
-        /// 桶的区域位置。
+        /// Bucket location
         /// </summary>
         public string Location
         {
@@ -31,3 +31,5 @@ namespace OBS.Model
     }
 }
     
+
+

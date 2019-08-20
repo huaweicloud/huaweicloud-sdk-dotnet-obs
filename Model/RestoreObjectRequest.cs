@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 取回归档存储对象的请求参数。
+    /// Parameters in a request for restoring an Archive object
     /// </summary>
     public class RestoreObjectRequest : ObsBucketWebServiceRequest
     {
@@ -26,11 +26,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象名。
+        /// Object name
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public string ObjectKey
@@ -40,11 +40,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 取回对象的保存时间。
+        /// Retention period of the restored object
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public int Days
@@ -54,11 +54,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象版本号。
+        /// Object version ID
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string VersionId
@@ -69,11 +69,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 取回选项。
+        /// Restore option
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public RestoreTierEnum? Tier
@@ -84,3 +84,5 @@ namespace OBS.Model
 
     }
 }    
+
+

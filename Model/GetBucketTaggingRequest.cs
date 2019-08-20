@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取桶标签的请求参数。
+    /// Parameters in a request for obtaining bucket tags
     /// </summary>
     public class GetBucketTaggingRequest : ObsBucketWebServiceRequest
     {
@@ -28,3 +28,5 @@ namespace OBS.Model
     }
 }
     
+
+

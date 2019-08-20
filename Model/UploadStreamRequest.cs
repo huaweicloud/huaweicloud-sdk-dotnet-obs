@@ -18,11 +18,11 @@ using System.IO;
 namespace OBS.Model
 {
 	/// <summary>
-	/// ÉÏ´«Êı¾İÁ÷µÄÇëÇó²ÎÊı
+	/// Parameters in a data stream upload request
 	/// </summary>
     public class UploadStreamRequest : ResumableUploadRequest
     {
-        //UplaodStream·½Ê½²»Ö§³Ö¶àÏß³Ì²¢·¢ÉÏ´«£¬ÎŞtaskNum²ÎÊı
+        //UplaodStream*1/2ï¿½1/2ï¿½"Ö§ï¿½Ö¶ï¿½ï¿½ß³Ì²ï¿½ï¿½ï¿½ï¿½Ï´"ï¿½ï¿½ï¿½ï¿½taskNumï¿½ï¿½ï¿½ï¿½
 
         private Stream uploadStream;
 
@@ -32,26 +32,26 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// Ä¬ÈÏµÄ¹¹Ôìº¯Êı¡£
+        /// Default constructor
         /// </summary>
         public UploadStreamRequest()
         { }
         /// <summary>
-        /// ¹¹Ôìº¯Êı¡£
+        /// Constructor
         /// </summary>
-        /// <param name="bucketName">Í°Ãû</param>
-        /// <param name="objectKey">¶ÔÏóÃû</param>
+        /// <param name="bucketName">Bucket name</param>
+        /// <param name="objectKey">Object name</param>
         public UploadStreamRequest(string bucketName, string objectKey) :base(bucketName, objectKey)
         {
 
         }
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı¡£
+        /// Constructor
         /// </summary>
-        /// <param name="uploadStream">´ıÉÏ´«µÄÊı¾İÁ÷£¬±ØĞë¿É²éÕÒ</param>
-        /// <param name="bucketName">Í°Ãû</param>
-        /// <param name="objectKey">¶ÔÏóÃû</param>
+        /// <param name="uploadStream">Data stream to be uploaded, which must be queryable</param>
+        /// <param name="bucketName">Bucket name</param>
+        /// <param name="objectKey">Object name</param>
         public UploadStreamRequest(Stream uploadStream, string bucketName, string objectKey) 
             : this(bucketName, objectKey)
         {
@@ -59,12 +59,12 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı¡£
+        /// Constructor
         /// </summary>
-        /// <param name="bucketName">Í°Ãû</param>
-        /// <param name="objectKey">¶ÔÏóÃû</param>
-        /// <param name="uploadStream">´ıÉÏ´«µÄÊı¾İÁ÷£¬±ØĞë¿É²éÕÒ</param>
-        /// <param name="partSize">·ÖÆ¬´óĞ¡</param>
+        /// <param name="bucketName">Bucket name</param>
+        /// <param name="objectKey">Object name</param>
+        /// <param name="uploadStream">Data stream to be uploaded, which must be queryable</param>
+        /// <param name="partSize">Part size</param>
         public UploadStreamRequest(string bucketName, string objectKey, Stream uploadStream, long partSize)
             :this(uploadStream, bucketName, objectKey)
         {
@@ -72,12 +72,12 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı¡£
+        /// Constructor
         /// </summary>
-        /// <param name="bucketName">Í°Ãû</param>
-        /// <param name="objectKey">¶ÔÏóÃû</param>
-        /// <param name="uploadStream">´ıÉÏ´«µÄÊı¾İÁ÷£¬±ØĞë¿É²éÕÒ</param>
-        /// <param name="partSize">·ÖÆ¬´óĞ¡</param>
+        /// <param name="bucketName">Bucket name</param>
+        /// <param name="objectKey">Object name</param>
+        /// <param name="uploadStream">Data stream to be uploaded, which must be queryable</param>
+        /// <param name="partSize">Part size</param>
         /// <param name="enableCheckpoint"></param>
         public UploadStreamRequest(string bucketName, string objectKey, Stream uploadStream, long partSize, bool enableCheckpoint)
             : this(bucketName, objectKey, uploadStream, partSize, enableCheckpoint, null)
@@ -85,14 +85,14 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı¡£
+        /// Constructor
         /// </summary>
-        /// <param name="bucketName">Í°Ãû</param>
-        /// <param name="objectKey">¶ÔÏóÃû</param>
-        /// <param name="uploadStream">´ıÉÏ´«µÄÊı¾İÁ÷£¬±ØĞë¿É²éÕÒ</param>
-        /// <param name="partSize">·ÖÆ¬´óĞ¡</param>
-        /// <param name="enableCheckpoint">ÊÇ·ñ¿ªÆô¶ÏµãĞø´«Ä£Ê½</param>
-        /// <param name="checkpointFile">¶ÏµãĞø´«Ä£Ê½ÏÂ£¬¼ÇÂ¼ÉÏ´«½ø¶ÈµÄÎÄ¼ş</param>
+        /// <param name="bucketName">Bucket name</param>
+        /// <param name="objectKey">Object name</param>
+        /// <param name="uploadStream">Data stream to be uploaded, which must be queryable</param>
+        /// <param name="partSize">Part size</param>
+        /// <param name="enableCheckpoint">Whether to use the resumable mode</param>
+        /// <param name="checkpointFile">File used to record progresses of resumable uploads</param>
         public UploadStreamRequest(string bucketName, string objectKey, Stream uploadStream, long partSize, bool enableCheckpoint, string checkpointFile)
             : this(bucketName, objectKey)
         { 
@@ -103,11 +103,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// ¼ÇÂ¼ÉÏ´«½ø¶ÈµÄÎÄ¼ş¡£
+        /// File used to record the upload progress
         /// </summary>
         /// <remarks>
         /// <para>
-        /// ²ÎÊı¿ÉÑ¡£¬Ä¬ÈÏÎªµ±Ç°³ÌĞòÔËĞĞµÄÄ¿Â¼¡£
+        /// Optional parameter. The default value is the directory under which the current program runs.
         /// </para>
         /// </remarks>
         public override string CheckpointFile
@@ -118,11 +118,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// ´ıÉÏ´«µÄÊı¾İÁ÷£¬±ØĞë¿É²éÕÒ¡£
+        /// Data stream to be uploaded, which must be queryable
         /// </summary>
         /// <remarks>
         /// <para>
-        /// ²ÎÊı¿ÉÑ¡¡£
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public Stream UploadStream
@@ -134,4 +134,6 @@ namespace OBS.Model
 
     }
 }
+
+
 

@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 删除桶标签的请求参数。
+    /// Parameters in a bucket tag deletion request
     /// </summary>
     public class DeleteBucketTaggingRequest : ObsBucketWebServiceRequest
     {
@@ -28,3 +28,5 @@ namespace OBS.Model
     }
 }
     
+
+

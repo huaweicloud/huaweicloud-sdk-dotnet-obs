@@ -17,24 +17,24 @@ using System.Collections.Generic;
 namespace OBS.Model
 {
     /// <summary>
-    /// 访问权限。
+    /// ACL
     /// </summary>
     public class AccessControlList : AbstractAccessControlList
     {
 
         /// <summary>
-        /// 所有者。
+        /// Owner
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public Owner Owner { get; set; }
 
 
         /// <summary>
-        /// 对象的访问权限传递标识，只对对象权限有效。
+        /// Identifier specifying whether to deliver the object ACL. (This is only applicable to object ACLs.)
         /// </summary>
         public bool Delivered
         {
@@ -43,3 +43,5 @@ namespace OBS.Model
         }
     }
 }
+
+

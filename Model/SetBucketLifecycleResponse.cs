@@ -15,10 +15,12 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 设置桶生命周期的响应结果。
+    /// Response to a request for setting bucket lifecycle rules
     /// </summary>
     public class SetBucketLifecycleResponse : ObsWebServiceResponse
     {
     }
 }
     
+
+

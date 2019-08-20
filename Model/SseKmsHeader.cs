@@ -18,12 +18,12 @@ using System.Text;
 namespace OBS.Model
 {
     /// <summary>
-    /// SSE-KMS加密方式头域信息。
+    /// SSE-KMS encryption headers
     /// </summary>
     public class SseKmsHeader : SseHeader
     {
         /// <summary>
-        /// SSE-KMS加密方式下的算法。
+        /// SSE-KMS encryption algorithm
         /// </summary>
         public SseKmsAlgorithmEnum Algorithm
         {
@@ -32,11 +32,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// SSE-KMS加密方式下使用的主密钥。
+        /// Master key used in the SSE-KMS encryption mode
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string Key
@@ -46,3 +46,5 @@ namespace OBS.Model
         }
     }
 }
+
+

@@ -16,7 +16,7 @@ using System;
 namespace OBS.Model
 {
     /// <summary>
-    /// 下载文件的请求参数。
+    /// Parameters in a request for downloading a file
     /// </summary>
     public class DownloadFileRequest : GetObjectRequest
     {
@@ -25,23 +25,23 @@ namespace OBS.Model
             return "DownloadFile";
         }
 
-        // 分段下载时的最大并发数，默认为1
+       
         private int taskNum = 1;
 
-        // 分片大小，单位字节，默认5M
-        private long partSize = 5 * 1024 * 1024L;
+       
+        private long partSize = 9 * 1024 * 1024L;
 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
         public DownloadFileRequest()
         { }
 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
-        /// <param name="bucketName">桶名。</param>
-        /// <param name="objectKey">对象名。</param>
+        /// <param name="bucketName">Bucket name</param>
+        /// <param name="objectKey">Object name</param>
         public DownloadFileRequest(string bucketName, string objectKey)
         {
             this.BucketName = bucketName;
@@ -49,11 +49,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
-        /// <param name="bucketName">桶名。</param>
-        /// <param name="objectKey">对象名。</param>
-        /// <param name="downloadFile">下载对象的本地文件全路径。</param>
+        /// <param name="bucketName">Bucket name</param>
+        /// <param name="objectKey">Object name</param>
+        /// <param name="downloadFile">Full path to which the object is downloaded</param>
         public DownloadFileRequest(string bucketName, string objectKey, string downloadFile)
             : this(bucketName, objectKey)
         {
@@ -61,12 +61,12 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
-        /// <param name="bucketName">桶名。</param>
-        /// <param name="objectKey">对象名。</param>
-        /// <param name="downloadFile">下载对象的本地文件全路径。</param>
-        /// <param name="partSize">分段大小。</param>
+        /// <param name="bucketName">Bucket name</param>
+        /// <param name="objectKey">Object name</param>
+        /// <param name="downloadFile">Full path to which the object is downloaded</param>
+        /// <param name="partSize">Part size</param>
         public DownloadFileRequest(string bucketName, string objectKey, string downloadFile, long partSize)
             :this(bucketName, objectKey)
         {
@@ -75,29 +75,29 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
-        /// <param name="bucketName">桶名。</param>
-        /// <param name="objectKey">对象名。</param>
-        /// <param name="downloadFile">下载对象的本地文件全路径。</param>
-        /// <param name="partSize">分段大小。</param>
-        /// <param name="taskNum">分片上传线程数。</param>
-        /// <param name="enableCheckpoint">是否开启断点续传模式。</param>
+        /// <param name="bucketName">Bucket name</param>
+        /// <param name="objectKey">Object name</param>
+        /// <param name="downloadFile">Full path to which the object is downloaded</param>
+        /// <param name="partSize">Part size</param>
+        /// <param name="taskNum">Number of threads for uploading parts</param>
+        /// <param name="enableCheckpoint">Whether to use the resumable mode</param>
         public DownloadFileRequest(string bucketName, string objectKey, string downloadFile, long partSize, int taskNum,
                 bool enableCheckpoint): this(bucketName, objectKey, downloadFile, partSize, taskNum, enableCheckpoint, null)
         {           
         }
 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
-        /// <param name="bucketName">桶名。</param>
-        /// <param name="objectKey">对象名。</param>
-        /// <param name="downloadFile">下载对象的本地文件全路径。</param>
-        /// <param name="partSize">分段大小。</param>
-        /// <param name="taskNum">分片上传线程数。</param>
-        /// <param name="enableCheckpoint">是否开启断点续传模式。</param>
-        /// <param name="checkpointFile">记录下载进度的文件。</param>
+        /// <param name="bucketName">Bucket name</param>
+        /// <param name="objectKey">Object name</param>
+        /// <param name="downloadFile">Full path to which the object is downloaded</param>
+        /// <param name="partSize">Part size</param>
+        /// <param name="taskNum">Number of threads for uploading parts</param>
+        /// <param name="enableCheckpoint">Whether to use resumable upload</param>
+        /// <param name="checkpointFile">File used to record the download progress</param>
         public DownloadFileRequest(string bucketName, string objectKey, string downloadFile, long partSize, int taskNum,
                 bool enableCheckpoint, string checkpointFile)
             : this(bucketName, objectKey)
@@ -110,15 +110,15 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
-        /// <param name="bucketName">桶名。</param>
-        /// <param name="objectKey">对象名。</param>
-        /// <param name="downloadFile">下载对象的本地文件全路径。</param>
-        /// <param name="partSize">分段大小。</param>
-        /// <param name="enableCheckpoint">是否开启断点续传模式。</param>
-        /// <param name="checkpointFile">记录下载进度的文件。</param>
-        /// <param name="versionId">对象版本号。</param>
+        /// <param name="bucketName">Bucket name</param>
+        /// <param name="objectKey">Object name</param>
+        /// <param name="downloadFile">Full path to which the object is downloaded</param>
+        /// <param name="partSize">Part size</param>
+        /// <param name="enableCheckpoint">Whether to use the resumable mode</param>
+        /// <param name="checkpointFile">File used to record the download progress</param>
+        /// <param name="versionId">Object version ID</param>
         public DownloadFileRequest(string bucketName, string objectKey, string downloadFile, long partSize, 
                 bool enableCheckpoint, string checkpointFile, string versionId)
             : this(bucketName, objectKey)
@@ -132,11 +132,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 下载事件回调。
+        /// Download event callback
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public EventHandler<ResumableDownloadEvent> DownloadEventHandler
@@ -147,11 +147,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 分段下载时的最大并发数
+        /// Maximum number of parts that can be concurrently downloaded
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选，默认为1
+        /// Optional parameter. The default value is "1".
         /// </para>
         /// </remarks>
         public int TaskNum
@@ -167,11 +167,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 分段大小。
+        /// Part size
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选，单位字节，取值范围是100KB~5GB，默认为5M。
+        /// Optional parameter. The unit is byte. The value ranges from 100 KB to 5 GB and defaults to 9 MB.
         /// </para>
         /// </remarks>
         public long DownloadPartSize
@@ -189,11 +189,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 分段大小。
+        /// Part size
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选，单位字节，取值范围是100KB~5GB，默认为5M。
+        /// Optional parameter. The unit is byte. The value ranges from 100 KB to 5 GB and defaults to 5 MB.
         /// </para>
         /// </remarks>
         [Obsolete]
@@ -210,11 +210,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 下载对象的本地文件全路径。
+        /// Local path to which the object is downloaded
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选，当该值为空时，默认为当前程序的运行目录。
+        /// Optional parameter. If the value is null, the downloaded object is saved in the directory where the program is executed.
         /// </para>
         /// </remarks>
         public string DownloadFile
@@ -224,11 +224,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 是否开启断点续传模式。
+        /// Whether to enable the resumable mode.
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选，默认为false，表示不开启。
+        /// Optional parameter. The default value is "false", indicating that the resumable mode is not enabled.
         /// </para>
         /// </remarks>
         public bool EnableCheckpoint
@@ -238,11 +238,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 记录下载进度的文件。
+        /// File used to record the download progress
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选，只在断点续传模式下有效。当该值为空时，默认与下载对象的本地文件路径同目录。
+        /// Optional parameter, which is effective only in the resumable mode. If the value is null, the file is in the same local directory as the downloaded object.
         /// </para>
         /// </remarks>
         public string CheckpointFile
@@ -252,7 +252,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 下载时的临时文件。
+        /// Temporary file generated during the download
         /// </summary>
         public string TempDownloadFile
         {
@@ -260,4 +260,6 @@ namespace OBS.Model
         }
     }
 }
+
+
 

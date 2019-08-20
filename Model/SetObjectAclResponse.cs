@@ -15,10 +15,12 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 设置对象访问权限的响应结果。
+    /// Response to a request for setting an object ACL
     /// </summary>
     public class SetObjectAclResponse : ObsWebServiceResponse
     {
     }
 }
     
+
+

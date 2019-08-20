@@ -15,13 +15,13 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取桶Website（托管）配置的响应结果。
+    /// Response to a request for obtaining bucket website hosting rules
     /// </summary>
     public class GetBucketWebsiteResponse : ObsWebServiceResponse
     {
 
         /// <summary>
-        /// 桶的Website（托管）配置。
+        /// Website hosting configuration of a bucket
         /// </summary>
         public WebsiteConfiguration Configuration
         {
@@ -32,3 +32,5 @@ namespace OBS.Model
     }
 }
     
+
+

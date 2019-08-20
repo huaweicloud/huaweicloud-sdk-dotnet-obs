@@ -15,22 +15,22 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 下载或复制对象的范围
+    /// Content range of the object to be downloaded or copied
     /// </summary>
     public class ByteRange
     {
         /// <summary>
-        /// 默认构造函数。
+        /// Default constructor
         /// </summary>
         public ByteRange()
         {
         }
 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
-        /// <param name="start">起始位置。</param>
-        /// <param name="end">结束位置。</param>
+        /// <param name="start">Start position</param>
+        /// <param name="end">End position</param>
         public ByteRange(long start, long end)
         {
             this.Start = start;
@@ -38,7 +38,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 起始位置，单位字节。
+        /// Start position, that is the sequence number of the byte from which the download or copy starts
         /// </summary>
         public long Start
         {
@@ -47,7 +47,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 结束位置，单位字节。
+        /// End position, that is the sequence number of the byte from which the download or copy ends
         /// </summary>
         public long End
         {
@@ -57,3 +57,5 @@ namespace OBS.Model
 
     }
 }
+
+

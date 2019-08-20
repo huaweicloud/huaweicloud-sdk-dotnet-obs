@@ -15,15 +15,17 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取桶策略的响应结果。
+    /// Response to a request for obtaining bucket policies
     /// </summary>
     public class GetBucketPolicyResponse : ObsWebServiceResponse
     {
         /// <summary>
-        /// 策略内容，JSON格式的字符串。
+        /// Policy content in the JSON format
         /// </summary>
         public string Policy { get; internal set; }
 
     }
 }
     
+
+

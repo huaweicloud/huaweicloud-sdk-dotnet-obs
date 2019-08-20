@@ -16,17 +16,17 @@ using System;
 namespace OBS.Model
 {
     /// <summary>
-    /// 对象过期时间配置。
+    /// Expiration time of an object
     /// </summary>
     public class Expiration
     {
         
         /// <summary>
-        /// 对象过期日期， 表示对象过期的具体日期。 
+        /// A specified date in which the object will expire 
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 如果没有设置Days则必选。
+        /// If this parameter is not set, the "Days" parameter is mandatory.
         /// </para>
         /// </remarks>
         public DateTime? Date
@@ -36,11 +36,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象过期时间，表示在对象创建时间后第几天时过期。
+        /// Object expiration time, specifying how many days after creation will the object expire
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 如果没有设置Date则必选。
+        /// If this parameter is not set, the "Date" parameter is mandatory.
         /// </para>
         /// </remarks>
         public int? Days
@@ -50,3 +50,5 @@ namespace OBS.Model
         }
     }
 }
+
+

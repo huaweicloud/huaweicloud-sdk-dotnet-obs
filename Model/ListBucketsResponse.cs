@@ -16,14 +16,14 @@ using System.Collections.Generic;
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取桶列表的响应结果。
+    /// Response to a request for obtaining bucket list
     /// </summary>
     public class ListBucketsResponse : ObsWebServiceResponse
     {
         private IList<ObsBucket> buckets;
 
         /// <summary>
-        /// 桶列表。
+        /// Bucket list
         /// </summary>
         public IList<ObsBucket> Buckets
         {
@@ -34,7 +34,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 桶的所有者。
+        /// Bucket owner
         /// </summary>
         public Owner Owner
         {
@@ -45,3 +45,5 @@ namespace OBS.Model
     }
 }
     
+
+

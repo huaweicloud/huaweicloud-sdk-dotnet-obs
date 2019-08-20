@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 设置桶配额的请求参数。
+    /// Parameters in a request for setting bucket quotas
     /// </summary>
     public class SetBucketQuotaRequest : ObsBucketWebServiceRequest
     {
@@ -26,12 +26,12 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 配额。
+        /// Quota
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选，为字符串类型，需要将整数值转化为字符串。
-        /// 单位为字节，支持的最大值为2^63 - 1的字符串形式，配额值设为“0”表示桶的配额没有上限。
+        /// Optional parameter. The value must be a character string and thus an integer must be converted to be a character string. 
+        /// A bucket quota must be expressed in bytes and the maximum value is 263-1. Value "0" indicates that no upper limit is set for the bucket quota.
         /// </para>
         /// </remarks>
         public long StorageQuota
@@ -43,3 +43,5 @@ namespace OBS.Model
     }
 }
     
+
+

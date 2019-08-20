@@ -16,7 +16,7 @@ using System.Collections.Generic;
 namespace OBS.Model
 {
     /// <summary>
-    /// 桶的生命周期配置。
+    /// Bucket lifecycle rules
     /// </summary>
     public class LifecycleConfiguration
     {
@@ -24,11 +24,11 @@ namespace OBS.Model
         private IList<LifecycleRule> rules;
 
         /// <summary>
-        /// 桶的生命周期规则列表。
+        /// List of bucket lifecycle rules
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public IList<LifecycleRule> Rules
@@ -41,3 +41,5 @@ namespace OBS.Model
 
     }
 }
+
+

@@ -16,18 +16,18 @@ using System;
 namespace OBS.Model
 {
     /// <summary>
-    /// 对象转换策略。
+    /// Object transition policy
     /// </summary>
     public class Transition
     {
         
 
         /// <summary>
-        /// 对象转换日期， 表示对象转换的具体日期。
+        /// Transition date of an object, indicating on which date the object will be transited
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 如果没有设置Days则必选。
+        /// If this parameter is not set, the "Days" parameter is mandatory.
         /// </para>
         /// </remarks>
         public DateTime? Date
@@ -38,11 +38,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 对象转换时间，表示在对象创建时间后第几天时自动转换。 
+        /// Object transition time, indicating the number of days after which an object will be transited since its creation 
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 如果没有设置Date则必选。
+        /// If this parameter is not set, the "Date" parameter is mandatory.
         /// </para>
         /// </remarks>
         public int? Days
@@ -53,11 +53,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 对象转换后的存储类别。
+        /// Storage class of the object after transition
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public StorageClassEnum? StorageClass
@@ -67,3 +67,5 @@ namespace OBS.Model
         }
     }
 }
+
+

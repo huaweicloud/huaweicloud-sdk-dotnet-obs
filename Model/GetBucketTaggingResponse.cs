@@ -17,14 +17,14 @@ using System.Collections.Generic;
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取桶标签的响应结果。
+    /// Response to a request for obtaining bucket tags
     /// </summary>
     public class GetBucketTaggingResponse : ObsWebServiceResponse
     {
 
         private IList<Tag> tags;
         /// <summary>
-        /// 桶标签列表。
+        /// Bucket tag set
         /// </summary>
         public IList<Tag> Tags
         {
@@ -37,3 +37,5 @@ namespace OBS.Model
     }
 }
     
+
+

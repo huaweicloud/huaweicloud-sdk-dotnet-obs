@@ -16,14 +16,14 @@ using System;
 namespace OBS.Model
 {
     /// <summary>
-    /// 分段的详细信息。
+    /// Part details
     /// </summary>
     public class PartDetail : PartETag
     {
 
 
         /// <summary>
-        /// 分段的最后修改时间。
+        /// Last modification time of the part
         /// </summary>
         public DateTime? LastModified
         {
@@ -32,7 +32,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 分段的大小。
+        /// Part size
         /// </summary>
         public long Size
         {
@@ -42,3 +42,5 @@ namespace OBS.Model
 
     }
 }
+
+

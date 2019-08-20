@@ -14,18 +14,18 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 事件通知配置的过滤规则。
+    /// Filtering rules configured for event notification
     /// </summary>
     public class FilterRule
     {
 
 
         /// <summary>
-        /// 按对象名的前缀或后缀进行过滤标识。
+        /// Filtering identifier that specifies objects are filtered by object name prefix or suffix
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public FilterNameEnum? Name
@@ -35,11 +35,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象名关键字。 
+        /// Object name keyword 
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string Value
@@ -50,3 +50,5 @@ namespace OBS.Model
 
     }
 }
+
+

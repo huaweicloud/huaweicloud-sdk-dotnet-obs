@@ -15,10 +15,12 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 设置桶消息通知配置的响应结果。
+    /// Response to a request for setting bucket notification
     /// </summary>
     public class SetBucketNotificationResponse : ObsWebServiceResponse
     {
     }
 }
     
+
+

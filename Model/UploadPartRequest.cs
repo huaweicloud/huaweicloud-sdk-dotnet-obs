@@ -18,7 +18,7 @@ using System.IO;
 namespace OBS.Model
 {
     /// <summary>
-    /// 上传段的请求参数。
+    /// Parameters in a part upload request
     /// </summary>
 
     public class UploadPartRequest : ObsBucketWebServiceRequest
@@ -34,11 +34,11 @@ namespace OBS.Model
         private double _metric;
 
         /// <summary>
-        /// 上传进度条统计方式，默认为ByBytes。
+        /// Mode for presenting the upload progress. The default value is "ByBytes".
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选，仅在设置了UploadProgress时有效。
+        /// Optional parameter, which is effective only when "UploadProgress" is set.
         /// </para>
         /// </remarks>
         public ProgressTypeEnum ProgressType
@@ -48,11 +48,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 进度条统计标准，默认为100KB或1秒。
+        /// A progress bar is provided to show the progress. The default value is 100 KB or 1 second.
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选，仅在设置了UploadProgress时有效。
+        /// Optional parameter, which is effective only when "UploadProgress" is set.
         /// </para>
         /// </remarks>
         public double ProgressInterval
@@ -81,11 +81,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 上传数据进度条。
+        /// Progress bar
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public EventHandler<TransferStatus> UploadProgress
@@ -95,11 +95,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 是否自动关闭输入流，默认为true。
+        /// Whether to automatically close the input stream. The default value is "true".
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选，仅在设置了InputStream时有效。
+        /// Optional parameter, which is effective only when "InputStream" is set.
         /// </para>
         /// </remarks>
         public bool AutoClose
@@ -115,11 +115,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 待上传段的数据流。
+        /// Data stream of the to-be-uploaded part
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选，不可与FilePath一起使用。
+        /// Optional parameter, which cannot be used with "FilePath".
         /// </para>
         /// </remarks>
         public Stream InputStream
@@ -129,11 +129,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 待上传段的源文件路径，必须指定为文件的全路径。
+        /// Path to the source file of the part
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选，不可与InputStream一起使用。
+        /// Optional parameter, which cannot be used with "InputStream".
         /// </para>
         /// </remarks>
         public string FilePath
@@ -144,11 +144,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 对象名。
+        /// Object name
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public string ObjectKey
@@ -158,11 +158,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 分段号。
+        /// Part number
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选，取值范围：1~10000。
+        /// Mandatory parameter, whose value ranges from 1 to 10000
         /// </para>
         /// </remarks>
         public int PartNumber
@@ -172,11 +172,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 分段大小。
+        /// Part size
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选，除最后一段的大小范围是0~5GB外，其他段的大小范围是100KB~5GB。
+        /// Optional parameter. Except for the part lastly being uploaded whose size ranging from 0 to 5 GB, sizes of the other parts range from 100 KB to 5 GB.
         /// </para>
         /// </remarks>
         public long? PartSize
@@ -186,11 +186,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 分段上传任务的ID号。
+        /// Multipart upload ID
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public string UploadId
@@ -201,11 +201,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 待上传段内容经过base64编码的MD5值，用于服务端校验一致性。
+        /// Base64-encoded MD5 value of the part to be uploaded, used for consistency verification on the server
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string ContentMd5
@@ -215,11 +215,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 待上传文件中某一分段的起始偏移大小。
+        /// Start offset of the part in the source file
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选，默认值为0，单位为字节。
+        /// Optional parameter. The default value is 0 and the unit is byte.
         /// </para>
         /// </remarks>
         public long? Offset
@@ -229,11 +229,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 段内容SSE-C加密头域信息。
+        /// SSE-C encryption headers of the part
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public SseCHeader SseCHeader
@@ -245,4 +245,6 @@ namespace OBS.Model
 
     }
 }
+
+
 

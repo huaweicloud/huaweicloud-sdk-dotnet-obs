@@ -16,7 +16,7 @@ using System.Collections.Generic;
 namespace OBS.Model
 {
     /// <summary>
-    /// 列举桶内多版本对象的响应结果。
+    /// Response to a request for listing versioning objects in a bucket
     /// </summary>
     public class ListVersionsResponse : ObsWebServiceResponse
     {
@@ -25,8 +25,8 @@ namespace OBS.Model
         private IList<string> commonPrefixes;
 
         /// <summary>
-        /// 判断列举结果是否被截断。
-        ///  true表示截断，本次没有返回全部结果；false表示未截断，本次已经返回了全部结果。
+        /// Check whether the listing results are truncated. 
+        /// Value "true" indicates that the results are incomplete while value "false" indicates that the results are complete.
         /// </summary>
         public bool IsTruncated
         {
@@ -36,7 +36,7 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 本次请求的起始位置（按对象名排序）。
+        /// Start position for this listing (sorted by object name)
         /// </summary>
         public string KeyMarker
         {
@@ -46,7 +46,7 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 本次请求的起始位置（按对象版本号排序）。
+        /// Start position for this listing (sorted by version ID)
         /// </summary>
         public string VersionIdMarker
         {
@@ -56,7 +56,7 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 下次请求的起始位置（按对象名排序）。
+        /// Start position for next listing (sorted by object name)
         /// </summary>
         public string NextKeyMarker
         {
@@ -66,7 +66,7 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 下次请求的起始位置（按对象版本号排序）。
+        /// Start position for next listing (sorted by version ID)
         /// </summary>
         public string NextVersionIdMarker
         {
@@ -76,7 +76,7 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 多版本对象列表。
+        /// List of versioning objects
         /// </summary>
         public IList<ObsObjectVersion> Versions
         {
@@ -88,7 +88,7 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 桶名。
+        /// Bucket name
         /// </summary>
         public string BucketName
         {
@@ -97,7 +97,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 本次请求的对象名前缀。
+        /// Object name prefix used in this request
         /// </summary>
         public string Prefix
         {
@@ -106,7 +106,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 本次请求的最大条目数。
+        /// Maximum number of objects to be listed for this request
         /// </summary>
         public int? MaxKeys
         {
@@ -115,7 +115,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 分组后的对象名前缀列表。
+        /// List of prefixes to the names of grouped objects
         /// </summary>
         public IList<string> CommonPrefixes
         {
@@ -126,7 +126,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 本次请求对对象名进行分组的字符。
+        /// Character for grouping object names used in this request
         /// </summary>
         public string Delimiter
         {
@@ -135,7 +135,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 桶的区域位置
+        /// Bucket location
         /// </summary>
         public string Location
         {
@@ -146,3 +146,5 @@ namespace OBS.Model
     }
 }
     
+
+

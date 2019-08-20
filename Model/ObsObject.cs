@@ -16,13 +16,13 @@ using System;
 namespace OBS.Model
 {
     /// <summary>
-    /// 对象信息。
+    /// Object information
     /// </summary>
     public class ObsObject
     {
 
         /// <summary>
-        /// 对象的etag校验值。
+        /// ETag of the object
         /// </summary>
         public string ETag
         {
@@ -31,7 +31,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象名。
+        /// Object name
         /// </summary>
         public string ObjectKey
         {
@@ -40,7 +40,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象的最后修改时间。
+        /// Last modification time of the object
         /// </summary>
         public DateTime? LastModified
         {
@@ -49,7 +49,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象的所有者。
+        /// Object owner
         /// </summary>
         public Owner Owner
         {
@@ -58,7 +58,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象大小。
+        /// Object size
         /// </summary>
         public long Size
         {
@@ -67,7 +67,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象的存储类型。
+        /// Object storage class
         /// </summary>
         public StorageClassEnum? StorageClass
         {
@@ -76,7 +76,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象是否可被追加写。
+        /// Whether the object is an appendable object
         /// </summary>
         public bool Appendable
         {
@@ -86,3 +86,5 @@ namespace OBS.Model
 
     }
 }
+
+

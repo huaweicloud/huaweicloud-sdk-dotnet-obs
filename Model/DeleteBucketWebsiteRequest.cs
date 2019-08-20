@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 删除桶Website（托管）配置的请求参数。
+    /// Parameters in a request for deleting bucket website hosting rules
     /// </summary>
     public class DeleteBucketWebsiteRequest : ObsBucketWebServiceRequest
     {
@@ -28,3 +28,5 @@ namespace OBS.Model
     }
 }
     
+
+

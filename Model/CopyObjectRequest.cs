@@ -16,7 +16,7 @@ using System;
 namespace OBS.Model
 {
     /// <summary>
-    /// 复制对象的请求参数。
+    /// Parameters in a request for copying an object
     /// </summary>
     public class CopyObjectRequest : PutObjectBasicRequest
     {
@@ -27,11 +27,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 源桶名。
+        /// Source bucket name
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public string SourceBucketName
@@ -41,11 +41,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 源对象名。
+        /// Source object name
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public string SourceObjectKey
@@ -55,11 +55,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 源对象的版本号。
+        /// Version ID of the source object
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string SourceVersionId
@@ -70,11 +70,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 如果源对象的ETag值与该参数值相同，则进行复制，否则返回异常码。
+        /// Copy the source object if its ETag is the same as the one specified by this parameter; otherwise, an error code is returned.
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string IfMatch
@@ -85,11 +85,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 如果源对象的ETag值与该参数值不相同，则进行复制，否则返回异常码。
+        /// Copy the source object if its ETag is different from the one specified by this parameter; otherwise, an error code is returned.
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string IfNoneMatch
@@ -99,11 +99,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 如果源对象的修改时间晚于该参数值指定的时间，则进行复制，否则返回异常码。
+        /// Copy the source object if it is changed after the time specified by this parameter; otherwise, an error code is returned.
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public DateTime? IfModifiedSince
@@ -114,11 +114,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 如果源对象的修改时间早于该参数值指定的时间，则进行复制，否则返回异常码。
+        /// Copy the source object if it is changed before the time specified by this parameter; otherwise, an error code is returned.
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public DateTime? IfUnmodifiedSince
@@ -129,11 +129,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 复制策略。
+        /// Replication policy
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public MetadataDirectiveEnum MetadataDirective
@@ -143,11 +143,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 源对象SSE-C解密头域信息。
+        /// SSE-C encryption headers of the source object
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public SseCHeader SourceSseCHeader
@@ -159,3 +159,5 @@ namespace OBS.Model
     }
 }
     
+
+

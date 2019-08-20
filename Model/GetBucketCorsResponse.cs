@@ -15,13 +15,13 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取桶跨域资源共享配置的响应结果。
+    /// Response to a request for obtaining bucket CORS configuration
     /// </summary>
     public class GetBucketCorsResponse : ObsWebServiceResponse
     {
 
         /// <summary>
-        /// 桶的跨域资源共享配置。
+        /// Bucket CORS configuration
         /// </summary>
         public CorsConfiguration Configuration
         {
@@ -32,3 +32,5 @@ namespace OBS.Model
     }
 }
     
+
+

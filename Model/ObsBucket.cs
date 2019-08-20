@@ -16,14 +16,14 @@ using System;
 namespace OBS.Model
 {
     /// <summary>
-    /// 桶信息。
+    /// Bucket information
     /// </summary>
     public class ObsBucket
     {
         
 
         /// <summary>
-        /// 桶的创建时间。
+        /// Creation time of the bucket
         /// </summary>
         public DateTime? CreationDate
         {
@@ -32,7 +32,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 桶名。
+        /// Bucket name
         /// </summary>
         public string BucketName
         {
@@ -41,7 +41,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 桶的区域位置
+        /// Bucket location
         /// </summary>
         public string Location
         {
@@ -56,3 +56,5 @@ namespace OBS.Model
 
     }
 }
+
+

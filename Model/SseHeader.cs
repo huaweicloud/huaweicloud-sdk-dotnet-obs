@@ -18,10 +18,12 @@ using System.Text;
 namespace OBS.Model
 {
     /// <summary>
-    /// SSE加密头域。
+    /// SSE encryption headers
     /// </summary>
     public interface SseHeader
     {
 
     }
 }
+
+

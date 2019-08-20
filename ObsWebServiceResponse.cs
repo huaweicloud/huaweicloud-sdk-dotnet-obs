@@ -19,7 +19,7 @@ using System.Net;
 namespace OBS
 {
     /// <summary>
-    /// 服务响应结果的基类。 
+    /// Base class of service responses 
     /// </summary>
     public class ObsWebServiceResponse
     {
@@ -32,7 +32,7 @@ namespace OBS
         }
 
         /// <summary>
-        /// OBS服务端返回的请求Id号，唯一的标识一个请求。
+        /// Request ID returned by the OBS server, which uniquely identities a request
         /// </summary>
         public string RequestId
         {
@@ -41,7 +41,7 @@ namespace OBS
         }
 
         /// <summary>
-        ///  响应头域信息。
+        ///  Response headers
         /// </summary>
         public IDictionary<string, string> Headers
         {
@@ -56,7 +56,7 @@ namespace OBS
         }
 
         /// <summary>
-        /// HTTP响应内容长度。
+        /// Content length of the HTTP response
         /// </summary>
         public virtual long ContentLength
         {
@@ -65,7 +65,7 @@ namespace OBS
         }
 
         /// <summary>
-        /// HTTP响应状态码。
+        /// HTTP status code
         /// </summary>
         public HttpStatusCode StatusCode
         {
@@ -74,3 +74,5 @@ namespace OBS
         }
     }
 }
+
+

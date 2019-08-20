@@ -11,20 +11,21 @@
 // CONDITIONS OF ANY KIND, either express or implied.  See the License for the
 // specific language governing permissions and limitations under the License.
 //----------------------------------------------------------------------------------*/
+
 namespace OBS.Model
 {
     /// <summary>
-    /// 历史版本对象转换策略。
+    /// Transition policy for noncurrent versions
     /// </summary>
     public class NoncurrentVersionTransition
     {
 
         /// <summary>
-        /// 历史版本对象转换时间，表示对象在成为历史版本之后第几天时自动转换。
+        /// Transition time of the noncurrent object version, which indicates the number of days after which the object will be transit since it becomes a noncurrent version
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public int NoncurrentDays
@@ -35,11 +36,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 历史版本对象转换后的存储类别。
+        /// Storage class of the noncurrent object version after transition
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public StorageClassEnum? StorageClass
@@ -51,3 +52,5 @@ namespace OBS.Model
 
     }
 }
+
+

@@ -16,7 +16,7 @@ using System.Collections.Generic;
 namespace OBS.Model
 {
     /// <summary>
-    /// 批量删除对象的响应结果。
+    /// Response to an object batch deletion request
     /// </summary>
     public class DeleteObjectsResponse : ObsWebServiceResponse
     {
@@ -24,7 +24,7 @@ namespace OBS.Model
         private IList<DeleteError> errors;
 
         /// <summary>
-        /// 删除成功的对象列表。
+        /// List of objects that have been deleted successfully
         /// </summary>
         public IList<DeletedObject> DeletedObjects
         {
@@ -36,7 +36,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 删除失败的结果列表。
+        /// List of objects failed to be deleted
         /// </summary>
         public IList<DeleteError> DeleteErrors
         {
@@ -50,3 +50,5 @@ namespace OBS.Model
     }
 }
     
+
+

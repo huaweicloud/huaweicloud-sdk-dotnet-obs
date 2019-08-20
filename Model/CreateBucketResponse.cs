@@ -11,11 +11,10 @@
 // CONDITIONS OF ANY KIND, either express or implied.  See the License for the
 // specific language governing permissions and limitations under the License.
 //----------------------------------------------------------------------------------*/
-
 namespace OBS.Model
 {
     /// <summary>
-    /// 创建桶的响应结果。
+    /// Response to a bucket creation request
     /// </summary>
     public class CreateBucketResponse : ObsWebServiceResponse
     {
@@ -23,3 +22,5 @@ namespace OBS.Model
     }
 }
     
+
+

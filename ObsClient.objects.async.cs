@@ -20,12 +20,12 @@ namespace OBS
     public partial class ObsClient
     {
         /// <summary>
-        /// 开始对上传对象的异步请求。
+        /// Start the asynchronous request for uploading an object.
         /// </summary>
-        /// <param name="request">上传对象的请求参数。</param>
-        /// <param name="callback">异步请求回调函数。</param>
-        /// <param name="state">异步请求状态对象。</param>
-        /// <returns>异步请求的响应结果。</returns>
+        /// <param name="request">Parameters in an object upload request</param>
+        /// <param name="callback">Asynchronous request callback function</param>
+        /// <param name="state">Asynchronous request status object</param>
+        /// <returns>Response to the asynchronous request</returns>
         public IAsyncResult BeginPutObject(PutObjectRequest request, AsyncCallback callback, object state)
         {
             return this.BeginDoRequest<PutObjectRequest>(request, delegate ()
@@ -38,22 +38,22 @@ namespace OBS
         }
 
         /// <summary>
-        /// 结束对上传对象的异步请求。
+        /// End the asynchronous request for uploading an object.
         /// </summary>
-        /// <param name="ar">异步请求的响应结果。</param>
-        /// <returns>上传对象的响应结果。</returns>
+        /// <param name="ar">Response to the asynchronous request</param>
+        /// <returns> Response to an object upload request</returns>
         public PutObjectResponse EndPutObject(IAsyncResult ar)
         {
             return this.EndDoRequest<PutObjectRequest, PutObjectResponse>(ar);
         }
 
         /// <summary>
-        /// 开始对追加上传对象的异步请求。
+        /// Start the asynchronous request for an appendable upload.
         /// </summary>
-        /// <param name="request">追加上传对象的请求参数。</param>
-        /// <param name="callback">异步请求回调函数。</param>
-        /// <param name="state">异步请求状态对象。</param>
-        /// <returns>异步请求的响应结果。</returns>
+        /// <param name="request">Parameters in an appendable upload request</param>
+        /// <param name="callback">Asynchronous request callback function</param>
+        /// <param name="state">Asynchronous request status object</param>
+        /// <returns>Response to the asynchronous request</returns>
         public IAsyncResult BeginAppendObject(AppendObjectRequest request, AsyncCallback callback, object state)
         {
             return this.BeginDoRequest<AppendObjectRequest>(request, delegate ()
@@ -66,22 +66,22 @@ namespace OBS
         }
 
         /// <summary>
-        /// 结束对追加上传对象的异步请求。
+        /// End the asynchronous appendable upload request.
         /// </summary>
-        /// <param name="ar">异步请求的响应结果。</param>
-        /// <returns>追加上传对象的响应结果。</returns>
+        /// <param name="ar">Response to the asynchronous request</param>
+        /// <returns>Response to an appendable upload request</returns>
         public AppendObjectResponse EndAppendObject(IAsyncResult ar)
         {
             return this.EndDoRequest<AppendObjectRequest, AppendObjectResponse>(ar);
         }
 
         /// <summary>
-        /// 开始对复制对象的异步请求。
+        /// Start the asynchronous request for copying an object.
         /// </summary>
-        /// <param name="request">复制对象的请求参数。</param>
-        /// <param name="callback">异步请求回调函数。</param>
-        /// <param name="state">异步请求状态对象。</param>
-        /// <returns>异步请求的响应结果。</returns>
+        /// <param name="request">Parameters in a request for copying an object</param>
+        /// <param name="callback">Asynchronous request callback function</param>
+        /// <param name="state">Asynchronous request status object</param>
+        /// <returns>Response to the asynchronous request</returns>
         public IAsyncResult BeginCopyObject(CopyObjectRequest request, AsyncCallback callback, object state)
         {
             return this.BeginDoRequest<CopyObjectRequest>(request, delegate ()
@@ -102,22 +102,22 @@ namespace OBS
         }
 
         /// <summary>
-        /// 结束对复制对象的异步请求。
+        /// End the asynchronous request for copying an object.
         /// </summary>
-        /// <param name="ar">异步请求的响应结果。</param>
-        /// <returns>复制对象的响应结果。</returns>
+        /// <param name="ar">Response to the asynchronous request</param>
+        /// <returns> Response to an object copy request</returns>
         public CopyObjectResponse EndCopyObject(IAsyncResult ar)
         {
             return this.EndDoRequest<CopyObjectRequest, CopyObjectResponse>(ar);
         }
 
         /// <summary>
-        /// 开始对上传段的异步请求。
+        /// Start the asynchronous request for uploading a part.
         /// </summary>
-        /// <param name="request">上传段的请求参数。</param>
-        /// <param name="callback">异步请求回调函数。</param>
-        /// <param name="state">异步请求状态对象。</param>
-        /// <returns>异步请求的响应结果。</returns>
+        /// <param name="request">Parameters in a request for uploading a part</param>
+        /// <param name="callback">Asynchronous request callback function</param>
+        /// <param name="state">Asynchronous request status object</param>
+        /// <returns>Response to the asynchronous request</returns>
         public IAsyncResult BeginUploadPart(UploadPartRequest request, AsyncCallback callback, object state)
         {
             return this.BeginDoRequest<UploadPartRequest>(request, delegate ()
@@ -139,26 +139,27 @@ namespace OBS
         }
 
         /// <summary>
-        /// 结束对上传段的异步请求。
+        /// End the asynchronous request for uploading a part.
         /// </summary>
-        /// <param name="ar">异步请求的响应结果。</param>
-        /// <returns>上传段的响应结果。</returns>
+        /// <param name="ar">Response to the asynchronous request</param>
+        /// <returns>Response to a part upload request</returns>
         public UploadPartResponse EndUploadPart(IAsyncResult ar)
         {
             UploadPartResponse response = this.EndDoRequest<UploadPartRequest, UploadPartResponse>(ar);
             HttpObsAsyncResult result = ar as HttpObsAsyncResult;
-            UploadPartRequest request = result.AdditionalState as UploadPartRequest;
+            object[] additionalState = result.AdditionalState as object[];
+            UploadPartRequest request = additionalState[0] as UploadPartRequest;
             response.PartNumber = request.PartNumber;
             return response;
         }
 
         /// <summary>
-        /// 开始对复制段的异步请求。
+        /// Start the asynchronous request for copying a part.
         /// </summary>
-        /// <param name="request">复制段的请求参数。</param>
-        /// <param name="callback">异步请求回调函数。</param>
-        /// <param name="state">异步请求状态对象。</param>
-        /// <returns>异步请求的响应结果。</returns>
+        /// <param name="request">Parameters in a request for copying a part</param>
+        /// <param name="callback">Asynchronous request callback function</param>
+        /// <param name="state">Asynchronous request status object</param>
+        /// <returns>Response to the asynchronous request</returns>
         public IAsyncResult BeginCopyPart(CopyPartRequest request, AsyncCallback callback, object state)
         {
             return this.BeginDoRequest<CopyPartRequest>(request, delegate ()
@@ -190,26 +191,27 @@ namespace OBS
         }
 
         /// <summary>
-        /// 结束对复制段的异步请求。
+        /// End the asynchronous request for copying a part.
         /// </summary>
-        /// <param name="ar">异步请求的响应结果。</param>
-        /// <returns>复制段的响应结果。</returns>
+        /// <param name="ar">Response to the asynchronous request</param>
+        /// <returns> Response to a part copy request</returns>
         public CopyPartResponse EndCopyPart(IAsyncResult ar)
         {
             CopyPartResponse response = this.EndDoRequest<CopyPartRequest, CopyPartResponse>(ar);
             HttpObsAsyncResult result = ar as HttpObsAsyncResult;
-            CopyPartRequest request = result.AdditionalState as CopyPartRequest;
+            object[] additionalState = result.AdditionalState as object[];
+            CopyPartRequest request = additionalState[0] as CopyPartRequest;
             response.PartNumber = request.PartNumber;
             return response;
         }
 
         /// <summary>
-        /// 开始对下载对象的异步请求。
+        /// End the asynchronous request for downloading an object.
         /// </summary>
-        /// <param name="request">下载对象的请求参数。</param>
-        /// <param name="callback">异步请求回调函数。</param>
-        /// <param name="state">异步请求状态对象。</param>
-        /// <returns>异步请求的响应结果。</returns>
+        /// <param name="request">Parameters in an object download request</param>
+        /// <param name="callback">Asynchronous request callback function</param>
+        /// <param name="state">Asynchronous request status object</param>
+        /// <returns>Response to the asynchronous request</returns>
         public IAsyncResult BeginGetObject(GetObjectRequest request, AsyncCallback callback, object state)
         {
             return this.BeginDoRequest<GetObjectRequest>(request, delegate ()
@@ -223,27 +225,28 @@ namespace OBS
         }
 
         /// <summary>
-        /// 结束对下载对象的异步请求。
+        /// End the asynchronous request for downloading an object.
         /// </summary>
-        /// <param name="ar">异步请求的响应结果。</param>
-        /// <returns>下载对象的响应结果。</returns>
+        /// <param name="ar">Response to the asynchronous request</param>
+        /// <returns>Response to an object download request</returns>
         public GetObjectResponse EndGetObject(IAsyncResult ar)
         {
             GetObjectResponse response = this.EndDoRequest<GetObjectRequest, GetObjectResponse>(ar);
             HttpObsAsyncResult result = ar as HttpObsAsyncResult;
-            GetObjectRequest request = result.AdditionalState as GetObjectRequest;
+            object[] additionalState = result.AdditionalState as object[];
+            GetObjectRequest request = additionalState[0] as GetObjectRequest;
             response.BucketName = request.BucketName;
             response.ObjectKey = request.ObjectKey;
             return response;
         }
 
         /// <summary>
-        /// 开始对获取对象属性的异步请求。
+        /// Start the asynchronous request for obtaining object properties.
         /// </summary>
-        /// <param name="request">获取对象属性的请求参数。</param>
-        /// <param name="callback">异步请求回调函数。</param>
-        /// <param name="state">异步请求状态对象。</param>
-        /// <returns>异步请求的响应结果。</returns>
+        /// <param name="request">Parameters in a request for obtaining object properties</param>
+        /// <param name="callback">Asynchronous request callback function</param>
+        /// <param name="state">Asynchronous request status object</param>
+        /// <returns>Response to the asynchronous request</returns>
         public IAsyncResult BeginGetObjectMetadata(GetObjectMetadataRequest request, AsyncCallback callback, object state)
         {
             return this.BeginDoRequest<GetObjectMetadataRequest>(request, delegate ()
@@ -257,27 +260,28 @@ namespace OBS
         }
 
         /// <summary>
-        /// 结束对获取对象属性的异步请求。
+        /// End the asynchronous request for obtaining object properties.
         /// </summary>
-        /// <param name="ar">异步请求的响应结果。</param>
-        /// <returns>获取对象属性的响应结果。</returns>
+        /// <param name="ar">Response to the asynchronous request</param>
+        /// <returns>Response to a request for obtaining object properties</returns>
         public GetObjectMetadataResponse EndGetObjectMetadata(IAsyncResult ar)
         {
             GetObjectMetadataResponse response = this.EndDoRequest<GetObjectMetadataRequest, GetObjectMetadataResponse>(ar);
             HttpObsAsyncResult result = ar as HttpObsAsyncResult;
-            GetObjectMetadataRequest request = result.AdditionalState as GetObjectMetadataRequest;
+            object[] additionalState = result.AdditionalState as object[];
+            GetObjectMetadataRequest request = additionalState[0] as GetObjectMetadataRequest;
             response.BucketName = request.BucketName;
             response.ObjectKey = request.ObjectKey;
             return response;
         }
 
         /// <summary>
-        /// 开始对初始化分段上传任务的异步请求。
+        /// Start the asynchronous request for initializing a multipart upload.
         /// </summary>
-        /// <param name="request">初始化分段上传任务的请求参数。</param>
-        /// <param name="callback">异步请求回调函数。</param>
-        /// <param name="state">异步请求状态对象。</param>
-        /// <returns>异步请求的响应结果。</returns>
+        /// <param name="request">Parameters in a request for initializing a multipart upload</param>
+        /// <param name="callback">Asynchronous request callback function</param>
+        /// <param name="state">Asynchronous request status object</param>
+        /// <returns>Response to the asynchronous request</returns>
         public IAsyncResult BeginInitiateMultipartUpload(InitiateMultipartUploadRequest request, AsyncCallback callback, object state)
         {
             return this.BeginDoRequest<InitiateMultipartUploadRequest>(request, delegate ()
@@ -290,22 +294,22 @@ namespace OBS
         }
 
         /// <summary>
-        /// 结束对初始化分段上传任务的异步请求。
+        /// End the asynchronous request for initializing a multipart upload.
         /// </summary>
-        /// <param name="ar">异步请求的响应结果。</param>
-        /// <returns>初始化分段上传任务的响应结果。</returns>
+        /// <param name="ar">Response to the asynchronous request</param>
+        /// <returns>Response to a request for initializing a multipart upload</returns>
         public InitiateMultipartUploadResponse EndInitiateMultipartUpload(IAsyncResult ar)
         {
             return this.EndDoRequest<InitiateMultipartUploadRequest, InitiateMultipartUploadResponse>(ar);
         }
 
         /// <summary>
-        /// 开始对合并段的异步请求。
+        /// Start the asynchronous request for combining parts.
         /// </summary>
-        /// <param name="request">合并段的请求参数。</param>
-        /// <param name="callback">异步请求回调函数。</param>
-        /// <param name="state">异步请求状态对象。</param>
-        /// <returns>异步请求的响应结果。</returns>
+        /// <param name="request">Parameters in a request for combining parts</param>
+        /// <param name="callback">Asynchronous request callback function</param>
+        /// <param name="state">Asynchronous request status object</param>
+        /// <returns>Response to the asynchronous request</returns>
         public IAsyncResult BeginCompleteMultipartUpload(CompleteMultipartUploadRequest request, AsyncCallback callback, object state)
         {
             return this.BeginDoRequest<CompleteMultipartUploadRequest>(request, delegate ()
@@ -322,10 +326,10 @@ namespace OBS
         }
 
         /// <summary>
-        /// 结束对合并段的异步请求。
+        /// End the asynchronous request for combining parts.
         /// </summary>
-        /// <param name="ar">异步请求的响应结果。</param>
-        /// <returns>合并段的响应结果。</returns>
+        /// <param name="ar">Response to the asynchronous request</param>
+        /// <returns>Response to the request for combining parts</returns>
         public CompleteMultipartUploadResponse EndCompleteMultipartUpload(IAsyncResult ar)
         {
             return this.EndDoRequest<CompleteMultipartUploadRequest, CompleteMultipartUploadResponse>(ar);
@@ -333,12 +337,12 @@ namespace OBS
 
 
         /// <summary>
-        /// 开始对取消分段上传任务的异步请求。
+        /// Start the asynchronous request for aborting a multipart upload.
         /// </summary>
-        /// <param name="request">取消分段上传任务的请求参数。</param>
-        /// <param name="callback">异步请求回调函数。</param>
-        /// <param name="state">异步请求状态对象。</param>
-        /// <returns>异步请求的响应结果。</returns>
+        /// <param name="request">Parameters in a request for aborting a multipart upload</param>
+        /// <param name="callback">Asynchronous request callback function</param>
+        /// <param name="state">Asynchronous request status object</param>
+        /// <returns>Response to the asynchronous request</returns>
         public IAsyncResult BeginAbortMultipartUpload(AbortMultipartUploadRequest request, AsyncCallback callback, object state)
         {
             return this.BeginDoRequest<AbortMultipartUploadRequest>(request, delegate ()
@@ -355,10 +359,10 @@ namespace OBS
         }
 
         /// <summary>
-        /// 结束对取消分段上传任务的异步请求。
+        /// End the asynchronous request for aborting a multipart upload.
         /// </summary>
-        /// <param name="ar">异步请求的响应结果。</param>
-        /// <returns>取消分段上传的响应结果。</returns>
+        /// <param name="ar">Response to the asynchronous request</param>
+        /// <returns>Response to the request for aborting a multipart upload</returns>
         public AbortMultipartUploadResponse EndAbortMultipartUpload(IAsyncResult ar)
         {
             return this.EndDoRequest<AbortMultipartUploadRequest, AbortMultipartUploadResponse>(ar);
@@ -366,12 +370,12 @@ namespace OBS
 
 
         /// <summary>
-        /// 开始对列举已上传的段的异步请求。
+        /// Start the asynchronous request for listing uploaded parts.
         /// </summary>
-        /// <param name="request">列举已上传段的请求参数。</param>
-        /// <param name="callback">异步请求回调函数。</param>
-        /// <param name="state">异步请求状态对象。</param>
-        /// <returns>异步请求的响应结果。</returns>
+        /// <param name="request">Parameters in a request for listing uploaded parts</param>
+        /// <param name="callback">Asynchronous request callback function</param>
+        /// <param name="state">Asynchronous request status object</param>
+        /// <returns>Response to the asynchronous request</returns>
         public IAsyncResult BeginListParts(ListPartsRequest request, AsyncCallback callback, object state)
         {
             return this.BeginDoRequest<ListPartsRequest>(request, delegate ()
@@ -388,22 +392,22 @@ namespace OBS
         }
 
         /// <summary>
-        /// 结束对列举已上传的段的异步请求。
+        /// End the asynchronous request for listing uploaded parts.
         /// </summary>
-        /// <param name="ar">异步请求的响应结果。</param>
-        /// <returns>列举已上传段的响应结果。</returns>
+        /// <param name="ar">Response to the asynchronous request</param>
+        /// <returns>Response to a request for listing uploaded parts</returns>
         public ListPartsResponse EndListParts(IAsyncResult ar)
         {
             return this.EndDoRequest<ListPartsRequest, ListPartsResponse>(ar);
         }
 
         /// <summary>
-        /// 开始对删除对象的异步请求。
+        /// Start the asynchronous request for deleting an object.
         /// </summary>
-        /// <param name="request">删除对象的请求参数。</param>
-        /// <param name="callback">异步请求回调函数。</param>
-        /// <param name="state">异步请求状态对象。</param>
-        /// <returns>异步请求的响应结果。</returns>
+        /// <param name="request">Parameters in an object deletion request</param>
+        /// <param name="callback">Asynchronous request callback function</param>
+        /// <param name="state">Asynchronous request status object</param>
+        /// <returns>Response to the asynchronous request</returns>
         public IAsyncResult BeginDeleteObject(DeleteObjectRequest request, AsyncCallback callback, object state)
         {
             return this.BeginDoRequest<DeleteObjectRequest>(request, delegate ()
@@ -416,10 +420,10 @@ namespace OBS
         }
 
         /// <summary>
-        /// 结束对删除对象的异步请求。
+        /// End the asynchronous object deletion request.
         /// </summary>
-        /// <param name="ar">异步请求的响应结果。</param>
-        /// <returns>删除对象的响应结果。</returns>
+        /// <param name="ar">Response to the asynchronous request</param>
+        /// <returns>Response to the object deletion request</returns>
         public DeleteObjectResponse EndDeleteObject(IAsyncResult ar)
         {
             return this.EndDoRequest<DeleteObjectRequest, DeleteObjectResponse>(ar);
@@ -427,22 +431,22 @@ namespace OBS
 
 
         /// <summary>
-        /// 开始对批量删除对象的异步请求。
+        /// Start the asynchronous request for deleting objects in a batch.
         /// </summary>
-        /// <param name="request">批量删除对象的请求参数。</param>
-        /// <param name="callback">异步请求回调函数。</param>
-        /// <param name="state">异步请求状态对象。</param>
-        /// <returns>异步请求的响应结果。</returns>
+        /// <param name="request">Parameters in a request for deleting objects in a batch</param>
+        /// <param name="callback">Asynchronous request callback function</param>
+        /// <param name="state">Asynchronous request status object</param>
+        /// <returns>Response to the asynchronous request</returns>
         public IAsyncResult BeginDeleteObjects(DeleteObjectsRequest request, AsyncCallback callback, object state)
         {
             return this.BeginDoRequest<DeleteObjectsRequest>(request, callback, state);
         }
 
         /// <summary>
-        /// 结束对批量删除对象的异步请求。
+        /// End the asynchronous request for deleting objects in a batch.
         /// </summary>
-        /// <param name="ar">异步请求的响应结果。</param>
-        /// <returns>批量删除对象的响应结果。</returns>
+        /// <param name="ar">Response to the asynchronous request</param>
+        /// <returns>Response to an object batch deletion request</returns>
         public DeleteObjectsResponse EndDeleteObjects(IAsyncResult ar)
         {
             return this.EndDoRequest<DeleteObjectsRequest, DeleteObjectsResponse>(ar);
@@ -450,12 +454,12 @@ namespace OBS
 
 
         /// <summary>
-        /// 开始对取回归档存储对象的异步请求。
+        /// Start the asynchronous request for restoring an Archive object.
         /// </summary>
-        /// <param name="request">取回归档存储对象的请求参数。</param>
-        /// <param name="callback">异步请求回调函数。</param>
-        /// <param name="state">异步请求状态对象。</param>
-        /// <returns>异步请求的响应结果。</returns>
+        /// <param name="request">Parameters in a request for restoring an Archive object</param>
+        /// <param name="callback">Asynchronous request callback function</param>
+        /// <param name="state">Asynchronous request status object</param>
+        /// <returns>Response to the asynchronous request</returns>
         public IAsyncResult BeginRestoreObject(RestoreObjectRequest request, AsyncCallback callback, object state)
         {
             return this.BeginDoRequest<RestoreObjectRequest>(request, delegate ()
@@ -468,22 +472,22 @@ namespace OBS
         }
 
         /// <summary>
-        /// 结束对取回归档存储对象的异步请求。
+        /// End the asynchronous request for restoring an Archive object.
         /// </summary>
-        /// <param name="ar">异步请求的响应结果。</param>
-        /// <returns>取回归档存储对象的响应结果。</returns>
+        /// <param name="ar">Response to the asynchronous request</param>
+        /// <returns>Response to a request for restoring an Archive object</returns>
         public RestoreObjectResponse EndRestoreObject(IAsyncResult ar)
         {
             return this.EndDoRequest<RestoreObjectRequest, RestoreObjectResponse>(ar);
         }
 
         /// <summary>
-        /// 开始对获取对象访问权限的异步请求。
+        /// Start the asynchronous request for obtaining an object ACL.
         /// </summary>
-        /// <param name="request">获取对象访问权限请求参数。</param>
-        /// <param name="callback">异步请求回调函数。</param>
-        /// <param name="state">异步请求状态对象。</param>
-        /// <returns>异步请求的响应结果。</returns>
+        /// <param name="request">Parameters in a request for obtaining an object ACL</param>
+        /// <param name="callback">Asynchronous request callback function</param>
+        /// <param name="state">Asynchronous request status object</param>
+        /// <returns>Response to the asynchronous request</returns>
         public IAsyncResult BeginGetObjectAcl(GetObjectAclRequest request, AsyncCallback callback, object state)
         {
             return this.BeginDoRequest<GetObjectAclRequest>(request, delegate ()
@@ -496,10 +500,10 @@ namespace OBS
         }
 
         /// <summary>
-        /// 结束对获取对象访问权限的异步请求。
+        /// End the asynchronous request for obtaining an object ACL.
         /// </summary>
-        /// <param name="ar">异步请求的响应结果。</param>
-        /// <returns>获取对象访问权限响应结果。</returns>
+        /// <param name="ar">Response to the asynchronous request</param>
+        /// <returns>Response to a request for obtaining an object ACL</returns>
         public GetObjectAclResponse EndGetObjectAcl(IAsyncResult ar)
         {
             return this.EndDoRequest<GetObjectAclRequest, GetObjectAclResponse>(ar);
@@ -507,12 +511,12 @@ namespace OBS
 
 
         /// <summary>
-        /// 开始对设置对象访问权限的异步请求。
+        /// Start the asynchronous request for configuring an object ACL.
         /// </summary>
-        /// <param name="request">设置对象访问权限的请求参数。</param>
-        /// <param name="callback">异步请求回调函数。</param>
-        /// <param name="state">异步请求状态对象。</param>
-        /// <returns>异步请求的响应结果。</returns>
+        /// <param name="request">Parameters in a request for configuring an object ACL</param>
+        /// <param name="callback">Asynchronous request callback function</param>
+        /// <param name="state">Asynchronous request status object</param>
+        /// <returns>Response to the asynchronous request</returns>
         public IAsyncResult BeginSetObjectAcl(SetObjectAclRequest request, AsyncCallback callback, object state)
         {
             return this.BeginDoRequest<SetObjectAclRequest>(request, delegate ()
@@ -525,10 +529,10 @@ namespace OBS
         }
 
         /// <summary>
-        /// 结束对设置对象访问权限的异步请求。
+        /// End the asynchronous request for configuring an object ACL.
         /// </summary>
-        /// <param name="ar">异步请求的响应结果。</param>
-        /// <returns>设置对象访问权限的响应结果。</returns>
+        /// <param name="ar">Response to the asynchronous request</param>
+        /// <returns>Response to a request for configuring an object ACL</returns>
         public SetObjectAclResponse EndSetObjectAcl(IAsyncResult ar)
         {
             return this.EndDoRequest<SetObjectAclRequest, SetObjectAclResponse>(ar);
@@ -537,3 +541,5 @@ namespace OBS
 
     }
 }
+
+

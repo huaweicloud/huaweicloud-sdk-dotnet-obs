@@ -11,21 +11,22 @@
 // CONDITIONS OF ANY KIND, either express or implied.  See the License for the
 // specific language governing permissions and limitations under the License.
 //----------------------------------------------------------------------------------*/
+
 namespace OBS.Model
 {
     /// <summary>
-    /// 跨区域复制配置规则。
+    /// Cross-region replication configuration rule
     /// </summary>
     public class ReplicationRule
     {
 
 
         /// <summary>
-        ///  规则ID，由不超过255个字符的字符串组成。
+        /// Rule ID, which consists of 1 to 255 characters
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string Id
@@ -35,11 +36,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 规则所匹配的对象名前缀。  
+        /// Object name prefix that identifies objects to which the rule applies  
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选，用以标识哪些对象可以匹配到当前这条规则。可为空字符串，代表匹配桶内所有对象。
+        /// Mandatory parameter, which identifies one or more objects to which the rule applies. The value can be empty, indicating that the rule applies to all objects in the bucket. 
         /// </para>
         /// </remarks>
         public string Prefix
@@ -49,11 +50,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 规则状态。
+        /// Rule status
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public RuleStatusEnum Status
@@ -63,11 +64,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 目标桶名。
+        /// Destination bucket name
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public string TargetBucketName
@@ -77,11 +78,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象的存储类型。
+        /// Object storage class
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public StorageClassEnum? TargetStorageClass
@@ -92,3 +93,5 @@ namespace OBS.Model
 
     }
 }
+
+

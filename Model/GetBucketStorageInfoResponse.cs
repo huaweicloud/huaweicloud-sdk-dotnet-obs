@@ -15,13 +15,13 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取桶存量信息的响应结果。
+    /// Response to a request for obtaining bucket storage information
     /// </summary>
     public class GetBucketStorageInfoResponse : ObsWebServiceResponse
     {
 
         /// <summary>
-        ///  桶的空间大小。
+        /// Bucket size
         /// </summary>
         public long Size
         {
@@ -30,7 +30,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 桶的对象个数。
+        /// Number of objects in the bucket
         /// </summary>
         public long ObjectNumber
         {
@@ -41,3 +41,5 @@ namespace OBS.Model
     }
 }
     
+
+

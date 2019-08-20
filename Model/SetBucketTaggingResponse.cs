@@ -15,10 +15,12 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 设置桶标签的响应结果。
+    /// Response to a request for setting bucket tags
     /// </summary>
     public class SetBucketTaggingResponse : ObsWebServiceResponse
     {
     }
 }
     
+
+

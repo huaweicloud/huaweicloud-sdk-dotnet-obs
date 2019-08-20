@@ -15,10 +15,12 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 删除桶跨区域复制配置的响应结果。
+    /// Response to a request for deleting the cross-region copy configuration of a bucket
     /// </summary>
     public class DeleteBucketReplicationResponse : ObsWebServiceResponse
     {
     }
 }
     
+
+

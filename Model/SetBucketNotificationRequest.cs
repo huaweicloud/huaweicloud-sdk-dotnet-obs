@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 设置桶消息通知配置的请求参数。
+    /// Parameters in a request for setting bucket notification
     /// </summary>
     public class SetBucketNotificationRequest : ObsBucketWebServiceRequest
     {
@@ -26,11 +26,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 桶的消息通知配置。
+        /// Bucket notification configuration
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public NotificationConfiguration Configuration
@@ -41,3 +41,5 @@ namespace OBS.Model
     }
 }
     
+
+

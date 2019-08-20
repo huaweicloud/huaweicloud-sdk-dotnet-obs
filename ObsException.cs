@@ -19,98 +19,98 @@ using System.Text;
 namespace OBS
 {
     /// <summary>
-    ///  OBS服务异常。
+    /// The OBS service is abnormal.
     /// </summary>
     public class ObsException : ServiceException
     {
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
-        /// <param name="message">OBS服务端错误描述。</param>
+        /// <param name="message">Error description returned by the OBS server</param>
         public ObsException(string message)
             : base(message)
         {
         }
 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
-        /// <param name="message">OBS服务端错误描述。</param>
-        /// <param name="innerException">导致当前异常的异常。</param>
+        /// <param name="message">Error description returned by the OBS server</param>
+        /// <param name="innerException">Exception caused by the error</param>
         public ObsException(string message, Exception innerException)
             : base(message, innerException)
         {
         }
 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
-        /// <param name="innerException">导致当前异常的异常。</param>
+        /// <param name="innerException">Exception caused by the error</param>
         public ObsException(Exception innerException)
             : base(innerException.Message, innerException)
         {
         }
 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
-        /// <param name="message">OBS服务端错误描述。</param>
-        /// <param name="errorType">错误类型。</param>
-        /// <param name="errorCode">OBS服务端错误码。</param>
+        /// <param name="message">Error description returned by the OBS server</param>
+        /// <param name="errorType">Error type</param>
+        /// <param name="errorCode">Error code on the OBS server</param>
         public ObsException(string message, ErrorType errorType, string errorCode)
             : base(message, errorType, errorCode)
         {
         }
 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
-        /// <param name="message">OBS服务端错误描述。</param>
-        /// <param name="errorType">错误类型。</param>
-        /// <param name="errorCode">OBS服务端错误码。</param>
-        /// <param name="requestId">OBS服务端返回的请求Id。</param>
+        /// <param name="message">Error description returned by the OBS server</param>
+        /// <param name="errorType">Error type</param>
+        /// <param name="errorCode">Error code on the OBS server</param>
+        /// <param name="requestId">Request ID returned by the OBS server</param>
         public ObsException(string message, ErrorType errorType, string errorCode, string requestId)
             : base(message, errorType, errorCode, requestId)
         {
         }
 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
-        /// <param name="message">OBS服务端错误描述。</param>
-        /// <param name="errorType">错误类型。</param>
-        /// <param name="errorCode">OBS服务端错误码。</param>
-        /// <param name="requestId">OBS服务端返回的请求Id。</param>
-        /// <param name="statusCode">HTTP状态码。</param>
+        /// <param name="message">Error description returned by the OBS server</param>
+        /// <param name="errorType">Error type</param>
+        /// <param name="errorCode">Error code on the OBS server</param>
+        /// <param name="requestId">Request ID returned by the OBS server</param>
+        /// <param name="statusCode">HTTP status code</param>
         public ObsException(string message, ErrorType errorType, string errorCode, string requestId, HttpStatusCode statusCode)
             : base(message, errorType, errorCode, requestId, statusCode)
         {
         }
 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
-        /// <param name="message">OBS服务端错误描述。</param>
-        /// <param name="innerException">导致当前异常的异常。</param>
-        /// <param name="errorType">错误类型。</param>
-        /// <param name="errorCode">OBS服务端错误码。</param>
-        /// <param name="requestId">OBS服务端返回的请求Id。</param>
-        /// <param name="statusCode">HTTP状态码。</param>
+        /// <param name="message">Error description returned by the OBS server</param>
+        /// <param name="innerException">Exception caused by the error</param>
+        /// <param name="errorType">Error type</param>
+        /// <param name="errorCode">Error code on the OBS server</param>
+        /// <param name="requestId">Request ID returned by the OBS server</param>
+        /// <param name="statusCode">HTTP status code</param>
         public ObsException(string message, Exception innerException, ErrorType errorType, string errorCode, string requestId, HttpStatusCode statusCode)
             : base(message, innerException, errorType, errorCode, requestId, statusCode)
         {
         }
 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
-        /// <param name="message">OBS服务端错误描述。</param>
-        /// <param name="innerException">导致当前异常的异常。</param>
-        /// <param name="errorType">错误类型。</param>
-        /// <param name="errorCode">OBS服务端错误码。</param>
-        /// <param name="requestId">OBS服务端返回的请求Id。</param>
-        /// <param name="statusCode">HTTP状态码。</param>
-        /// <param name="obsId2">标记。</param>
+        /// <param name="message">Error description returned by the OBS server</param>
+        /// <param name="innerException">Exception caused by the error</param>
+        /// <param name="errorType">Error type</param>
+        /// <param name="errorCode">Error code on the OBS server</param>
+        /// <param name="requestId">Request ID returned by the OBS server</param>
+        /// <param name="statusCode">HTTP status code</param>
+        /// <param name="obsId2"> Special symbol</param>
         public ObsException(string message, Exception innerException, ErrorType errorType, string errorCode, string requestId, HttpStatusCode statusCode, string obsId2)
             : base(message, innerException, errorType, errorCode, requestId, statusCode)
         {
@@ -118,14 +118,14 @@ namespace OBS
         }
 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
-        /// <param name="message">错误信息。</param>
-        /// <param name="errorType">错误类型。</param>
-        /// <param name="errorCode">OBS服务端错误码。</param>
-        /// <param name="errorMessage">OBS服务端错误描述。</param>
-        /// <param name="requestId">OBS服务端返回的请求Id。</param>
-        /// <param name="statusCode">HTTP状态码。</param>
+        /// <param name="message">Error information</param>
+        /// <param name="errorType">Error type</param>
+        /// <param name="errorCode">Error code on the OBS server</param>
+        /// <param name="errorMessage">Error description returned by the OBS server</param>
+        /// <param name="requestId">Request ID returned by the OBS server</param>
+        /// <param name="statusCode">HTTP status code</param>
         public ObsException(string message, ErrorType errorType, string errorCode, string errorMessage, string requestId, HttpStatusCode statusCode)
             : base(message, errorType, errorCode, requestId, statusCode)
         {
@@ -133,15 +133,15 @@ namespace OBS
         }
 
         /// <summary>
-        /// 构造函数。
+        /// Constructor
         /// </summary>
-        /// <param name="message">错误信息。</param>
-        /// <param name="innerException">导致当前异常的异常。</param>
-        /// <param name="errorType">错误类型。</param>
-        /// <param name="errorCode">OBS服务端错误码。</param>
-        /// <param name="errorMessage">OBS服务端错误描述。</param>
-        /// <param name="requestId">OBS服务端返回的请求Id。</param>
-        /// <param name="statusCode">HTTP状态码。</param>
+        /// <param name="message">Error information</param>
+        /// <param name="innerException">Exception caused by the error</param>
+        /// <param name="errorType">Error type</param>
+        /// <param name="errorCode">Error code on the OBS server</param>
+        /// <param name="errorMessage">Error description returned by the OBS server</param>
+        /// <param name="requestId">Request ID returned by the OBS server</param>
+        /// <param name="statusCode">HTTP status code</param>
         public ObsException(string message, Exception innerException, ErrorType errorType, string errorCode, string errorMessage, string requestId, HttpStatusCode statusCode)
             : base(message, innerException, errorType, errorCode, requestId, statusCode)
         {
@@ -149,13 +149,13 @@ namespace OBS
         }
 
         /// <summary>
-        /// OBS服务端返回的用于定位问题的特殊标记。
+        /// Special symbol returned by the OBS server, used for locating faults
         /// </summary>
         [Obsolete]
         public string ObsId2 { get; set; }
 
         /// <summary>
-        /// 服务端ID。
+        /// Server ID
         /// </summary>
         public string HostId
         {
@@ -176,3 +176,5 @@ namespace OBS
         }
     }
 }
+
+

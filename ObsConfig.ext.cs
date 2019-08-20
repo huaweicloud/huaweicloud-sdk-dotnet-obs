@@ -17,7 +17,7 @@ using OBS.Internal;
 namespace OBS
 {
     /// <summary>
-    /// 客户端配置参数。
+    /// Configuration parameters of ObsClient
     /// </summary>
     public partial class ObsConfig
     {
@@ -35,7 +35,7 @@ namespace OBS
         private bool authTypeNegotiation = Constants.DefaultAuthTypeNegotiation;
 
         /// <summary>
-        /// 是否验证证书。
+        /// Whether to verify the certificate
         /// </summary>
         public bool ValidateCertificate
         {
@@ -44,7 +44,7 @@ namespace OBS
         }
 
         /// <summary>
-        /// 是否进行鉴权方式协商，默认值：true。
+        /// Whether to negotiate the authentication mode. The default value is "true."
         /// </summary>
         public bool AuthTypeNegotiation
         {
@@ -59,7 +59,7 @@ namespace OBS
         }
 
         /// <summary>
-        /// 连接OBS使用的鉴权方式，当开启协议协商时，该值被忽略。
+        /// Authentication mode used for accessing OBS. When protocol negotiation is enabled, this parameter is ineffective.
         /// </summary>
         public AuthTypeEnum AuthType
         {
@@ -68,7 +68,7 @@ namespace OBS
         }
 
         /// <summary>
-        /// 请求失败后最大的重试次数，默认值为3。
+        /// Maximum number of retry attempts upon a request failure. The default value is 3.
         /// </summary>
         public int MaxErrorRetry
         {
@@ -77,7 +77,7 @@ namespace OBS
         }
 
         /// <summary>
-        /// 套接字接收缓冲区的大小。
+        /// Size of the socket reception buffer
         /// </summary>
         public int ReceiveBufferSize
         {
@@ -86,7 +86,7 @@ namespace OBS
         }
 
         /// <summary>
-        /// 上传对象时的读写缓存大小。
+        /// Read/write cache size during an object upload
         /// </summary>
         public int BufferSize
         {
@@ -95,7 +95,7 @@ namespace OBS
         }
 
         /// <summary>
-        /// HTTPS协议类型。
+        /// HTTPS protocol type
         /// </summary>
         public SecurityProtocolType? SecurityProtocolType
         {
@@ -105,7 +105,7 @@ namespace OBS
 
 
         /// <summary>
-        /// 请求超时前等待的时间，单位：毫秒。
+        /// Request timeout interval. The unit is millisecond.
         /// </summary>
         public int Timeout
         {
@@ -117,7 +117,7 @@ namespace OBS
         }
 
         /// <summary>
-        /// 异步请求的超时时间，单位：毫秒。
+        /// Asynchronous request timeout interval. The unit is millisecond.
         /// </summary>
         public int AsyncSocketTimeout
         {
@@ -129,7 +129,7 @@ namespace OBS
         }
 
         /// <summary>
-        /// 是否使用长连接，默认值：true。
+        /// Whether to use persistent connections. The default value is "true."
         /// </summary>
         public bool KeepAlive
         {
@@ -145,7 +145,7 @@ namespace OBS
 
 
         /// <summary>
-        /// 代理地址。
+        /// Proxy address
         /// </summary>
         public string ProxyHost
         {
@@ -155,7 +155,7 @@ namespace OBS
 
 
         /// <summary>
-        /// 代理端口。
+        /// Proxy port
         /// </summary>
         public int ProxyPort
         {
@@ -164,7 +164,7 @@ namespace OBS
         }
 
         /// <summary>
-        /// 连接代理服务器时使用的用户名。
+        /// Username used for connecting to the proxy server
         /// </summary>
         public string ProxyUserName
         {
@@ -173,7 +173,7 @@ namespace OBS
         }
 
         /// <summary>
-        /// 连接代理服务器时使用的密码。
+        /// Password used for connecting to the proxy server
         /// </summary>
         public string ProxyPassword
         {
@@ -182,7 +182,7 @@ namespace OBS
         }
 
         /// <summary>
-        /// 代理服务器的域。
+        /// Domain to which the proxy belongs
         /// </summary>
         public string ProxyDomain
         {
@@ -191,8 +191,8 @@ namespace OBS
         }
 
         /// <summary>
-        /// 连接池中连接的最大空闲时间，单位：毫秒。
-        /// 默认值为30000毫秒。
+        /// Maximum idle time for obtaining connections from the connection pool. The unit is millisecond.
+        /// The default value is 30000.
         /// </summary>
         public int MaxIdleTime
         {
@@ -212,8 +212,8 @@ namespace OBS
         }
 
         /// <summary>
-        /// 允许打开的最大HTTP连接数。
-        /// 默认值为1000。
+        /// Maximum number of concurrently opened HTTP connections
+        /// The default value is 1000.
         /// </summary>
         public int ConnectionLimit
         {
@@ -226,8 +226,8 @@ namespace OBS
 
 
         /// <summary>
-        /// 读写数据超时时间，单位：毫秒。
-        /// 默认值为60000毫秒。
+        /// Data read/write timeout interval. The unit is millisecond.
+        /// The default value is 60000.
         /// </summary>
         public int ReadWriteTimeout
         {
@@ -240,3 +240,5 @@ namespace OBS
 
     }
 }
+
+

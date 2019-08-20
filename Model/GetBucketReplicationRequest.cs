@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取桶跨区域复制配置的请求参数。
+    /// Parameters in a request for obtaining the cross-region copy configuration of a bucket
     /// </summary>
     public class GetBucketReplicationRequest : ObsBucketWebServiceRequest
     {
@@ -28,3 +28,5 @@ namespace OBS.Model
     }
 }
     
+
+

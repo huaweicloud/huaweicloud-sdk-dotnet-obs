@@ -12,11 +12,10 @@
 // specific language governing permissions and limitations under the License.
 //----------------------------------------------------------------------------------*/
 
-
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取桶生命周期配置的请求参数。
+    /// Parameters in a request for obtaining bucket lifecycle rules
     /// </summary>
     public class GetBucketLifecycleRequest : ObsBucketWebServiceRequest
     {
@@ -29,3 +28,5 @@ namespace OBS.Model
     }
 }
     
+
+

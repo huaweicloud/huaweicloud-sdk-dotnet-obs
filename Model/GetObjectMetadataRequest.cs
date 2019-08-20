@@ -15,7 +15,7 @@ using System;
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取对象元数据的请求参数。
+    /// Parameters in a request for obtaining object metadata
     /// </summary>
     public class GetObjectMetadataRequest : ObsBucketWebServiceRequest
     {
@@ -25,11 +25,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象名。
+        /// Object name
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public string ObjectKey
@@ -39,11 +39,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象版本号。
+        /// Object version ID
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string VersionId
@@ -53,11 +53,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象内容SSE-C解密头域信息
+        /// SSE-C decryption headers of the object content
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public SseCHeader SseCHeader
@@ -68,3 +68,5 @@ namespace OBS.Model
     }
 }
     
+
+

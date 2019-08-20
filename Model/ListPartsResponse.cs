@@ -17,7 +17,7 @@ using System.Collections.Generic;
 namespace OBS.Model
 {
     /// <summary>
-    /// 列举已上传的段的响应结果。
+    /// Response to a request for listing uploaded parts
     /// </summary>
     public class ListPartsResponse : ObsWebServiceResponse
     {
@@ -25,7 +25,7 @@ namespace OBS.Model
         private IList<PartDetail> parts;
 
         /// <summary>
-        /// 桶名。
+        /// Bucket name
         /// </summary>
         public string BucketName
         {
@@ -34,7 +34,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象名。
+        /// Object name
         /// </summary>
         public string ObjectKey
         {
@@ -43,7 +43,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 分段上传任务的ID。
+        /// Multipart upload ID
         /// </summary>
         public string UploadId
         {
@@ -52,7 +52,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 待列举段的起始位置。
+        /// Start position for listing parts
         /// </summary>
         public int? PartNumberMarker
         {
@@ -62,7 +62,7 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 下次请求的起始位置。
+        /// Start position for next listing
         /// </summary>
         public int? NextPartNumberMarker
         {
@@ -71,7 +71,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 列举已上传段的最大条目数。 
+        /// Maximum number of uploaded parts to be listed 
         /// </summary>
         public int? MaxParts
         {
@@ -80,8 +80,8 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 判断列举结果是否被截断。
-        ///  true表示截断，本次没有返回全部结果；false表示未截断，本次已经返回了全部结果。
+        /// Check whether the listing results are truncated. 
+        /// Value "true" indicates that the results are incomplete while value "false" indicates that the results are complete.
         /// </summary>
         public bool IsTruncated
         {
@@ -90,7 +90,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 已上传的段列表。
+        /// List of uploaded parts
         /// </summary>
         public IList<PartDetail> Parts
         {
@@ -101,7 +101,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 分段上传任务的创建者。
+        /// Creator of the multipart upload
         /// </summary>
         public Initiator Initiator
         {
@@ -110,7 +110,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 分段上传任务的所有者。
+        /// Owner of the multipart upload
         /// </summary>
         public Owner Owner
         {
@@ -119,7 +119,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 分段上传任务最终生成对象的存储类型。
+        /// Storage class of the object generated after the multipart upload is complete
         /// </summary>
         public StorageClassEnum? StorageClass
         {
@@ -130,3 +130,5 @@ namespace OBS.Model
     }
 }
     
+
+

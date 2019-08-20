@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 设置桶多版本配置的请求参数。
+    /// Parameters in a request for setting bucket versioning
     /// </summary>
     public class SetBucketVersioningRequest : ObsBucketWebServiceRequest
     {
@@ -26,11 +26,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 桶的多版本配置。
+        /// Bucket versioning configuration
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public VersioningConfiguration Configuration
@@ -42,3 +42,5 @@ namespace OBS.Model
     }
 }
     
+
+

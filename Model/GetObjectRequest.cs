@@ -16,7 +16,7 @@ using System;
 namespace OBS.Model
 {
     /// <summary>
-    /// 下载对象的请求参数。
+    /// Parameters in an object download request
     /// </summary>
     public class GetObjectRequest : GetObjectMetadataRequest
     {
@@ -29,11 +29,11 @@ namespace OBS.Model
         private double _metric;
 
         /// <summary>
-        /// 下载进度反馈方式，默认为ByBytes。
+        /// Mode for presenting the download progress. The default value is "ByBytes".
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选，仅在设置了DownloadProgress时有效。
+        /// Optional parameter, which is effective only when "DownloadProgress" is set.
         /// </para>
         /// </remarks>
         public ProgressTypeEnum ProgressType
@@ -43,11 +43,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 下载进度反馈间隔，默认为100KB或1秒。
+        /// Interval for refreshing the download progress. The default value is 100 KB or 1 second.
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选，仅在设置了DownloadProgress时有效。
+        /// Optional parameter, which is effective only when "DownloadProgress" is set.
         /// </para>
         /// </remarks>
         public double ProgressInterval
@@ -63,11 +63,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 下载进度回调函数。
+        /// Download progress callback function
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public EventHandler<TransferStatus> DownloadProgress
@@ -77,11 +77,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 如果对象的ETag值与该参数值相同，则返回对象内容，否则返回异常码。
+        /// Return the object if its ETag is the same as the one specified by this parameter; otherwise, an error code is returned.
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string IfMatch
@@ -92,11 +92,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 如果对象的修改时间晚于该参数值指定的时间，则返回对象内容，否则返回异常码。
+        /// Returns the object if it is modified after the time specified by this parameter; otherwise, an error code is returned.
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public DateTime? IfModifiedSince
@@ -107,11 +107,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 如果对象的ETag值与该参数值不相同，则返回对象内容，否则返回异常码。
+        /// Return the object if its ETag is different from the one specified by this parameter; otherwise, an error code is returned.
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string IfNoneMatch
@@ -122,11 +122,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 如果对象的修改时间早于该参数值指定的时间，则返回对象内容，否则返回异常码。
+        /// Return the object if it remains unchanged since the time specified by this parameter; otherwise, an error code is returned.
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public DateTime? IfUnmodifiedSince
@@ -139,11 +139,11 @@ namespace OBS.Model
        
 
         /// <summary>
-        /// 下载对象的范围。
+        /// Download range of the object
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public ByteRange ByteRange
@@ -153,11 +153,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 重写的响应头信息。
+        /// Rewritten response headers
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public ResponseHeaderOverrides ResponseHeaderOverrides
@@ -168,11 +168,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 图片处理参数。
+        /// Image processing parameters
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string ImageProcess
@@ -185,3 +185,5 @@ namespace OBS.Model
     }
 }
     
+
+

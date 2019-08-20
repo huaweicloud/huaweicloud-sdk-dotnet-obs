@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取桶访问权限的请求参数。
+    /// Parameters in a request for obtaining bucket ACLs
     /// </summary>
     public class GetBucketAclRequest : ObsBucketWebServiceRequest
     {
@@ -26,3 +26,5 @@ namespace OBS.Model
     }
 }
     
+
+

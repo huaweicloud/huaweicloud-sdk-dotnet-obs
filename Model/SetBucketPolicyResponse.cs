@@ -15,10 +15,12 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 设置桶策略的响应结果。
+    /// Response to a request for setting bucket policies
     /// </summary>
     public class SetBucketPolicyResponse : ObsWebServiceResponse
     {
     }
 }
     
+
+

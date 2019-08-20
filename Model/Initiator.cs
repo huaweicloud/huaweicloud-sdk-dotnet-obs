@@ -16,14 +16,14 @@ using System;
 namespace OBS.Model
 {
     /// <summary>
-    /// 分段上传任务的创建者。
+    /// Creator of the multipart upload
     /// </summary>
     public class Initiator
     {
 
 
         /// <summary>
-        /// 用户名。
+        /// Username
         /// </summary>
         [Obsolete]
         public string DisplayName
@@ -33,7 +33,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 用户的DomainId。
+        /// ID of the domain to which the user belongs
         /// </summary>
         public string Id
         {
@@ -43,3 +43,5 @@ namespace OBS.Model
 
     }
 }
+
+

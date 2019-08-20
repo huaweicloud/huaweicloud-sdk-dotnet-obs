@@ -17,14 +17,14 @@ using System.Collections.Generic;
 namespace OBS.Model
 {
     /// <summary>
-    /// 临时鉴权响应结果。
+    /// Response to a temporary authentication request
     /// </summary>
     public class CreateTemporarySignatureResponse
     {
         private IDictionary<string, string> actualSignedRequestHeaders;
             
         /// <summary>
-        /// 临时鉴权URL
+        /// Temporarily signed URL
         /// </summary>
         public string SignUrl
         {
@@ -33,7 +33,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 实际用于鉴权的头域。
+        /// Headers used for authentication
         /// </summary>
         public IDictionary<String,String> ActualSignedRequestHeaders
         {
@@ -46,3 +46,5 @@ namespace OBS.Model
     }
 }
     
+
+

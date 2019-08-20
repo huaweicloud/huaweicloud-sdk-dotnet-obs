@@ -18,7 +18,7 @@ using System.Text;
 namespace OBS.Model
 {
     /// <summary>
-    /// 断点续传下载事件。
+    /// Event type of resumable downloads
     /// </summary>
     public class ResumableDownloadEvent : EventArgs
     {
@@ -28,7 +28,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 事件类型。
+        /// Event type
         /// </summary>
         public ResumableDownloadEventTypeEnum EventType
         {
@@ -37,7 +37,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 分段号。
+        /// Part number
         /// </summary>
         public int PartNumber
         {
@@ -48,7 +48,7 @@ namespace OBS.Model
     }
 
     /// <summary>
-    /// 断点续传上传事件。
+    /// Event type of resumable uploads
     /// </summary>
     public class ResumableUploadEvent : EventArgs
     {
@@ -59,7 +59,7 @@ namespace OBS.Model
         }
        
         /// <summary>
-        /// 事件类型。
+        /// Event type
         /// </summary>
         public ResumableUploadEventTypeEnum EventType
         {
@@ -68,7 +68,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 分段上传任务ID。
+        /// Multipart upload ID
         /// </summary>
         public string UploadId
         {
@@ -77,7 +77,7 @@ namespace OBS.Model
         }
     
         /// <summary>
-        /// 分段号。
+        /// Part number
         /// </summary>
         public int PartNumber
         {
@@ -86,7 +86,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// ETag值。
+        /// ETag value
         /// </summary>
         public string ETag
         {
@@ -97,3 +97,5 @@ namespace OBS.Model
 
     }
 }
+
+

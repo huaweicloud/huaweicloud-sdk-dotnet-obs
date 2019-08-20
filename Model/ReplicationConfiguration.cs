@@ -18,16 +18,16 @@ using System.Text;
 namespace OBS.Model
 {
     /// <summary>
-    /// 桶的跨区域复制配置。
+    /// Cross-region replication configuration of a bucket
     /// </summary>
     public class ReplicationConfiguration
     {
         /// <summary>
-        /// 委托名字
+        /// Agent name
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public string Agency
@@ -39,11 +39,11 @@ namespace OBS.Model
         private IList<ReplicationRule> rules;
 
         /// <summary>
-        /// 桶的跨区域复制配置规则列表。
+        /// List of cross-region replication configuration rules
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public IList<ReplicationRule> Rules
@@ -57,3 +57,5 @@ namespace OBS.Model
         }
     }
 }
+
+

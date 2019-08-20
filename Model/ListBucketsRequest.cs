@@ -11,16 +11,17 @@
 // CONDITIONS OF ANY KIND, either express or implied.  See the License for the
 // specific language governing permissions and limitations under the License.
 //----------------------------------------------------------------------------------*/
+
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取桶列表的请求参数。
+    /// Parameters in a request for obtaining bucket list
     /// </summary>
     public class ListBucketsRequest : ObsWebServiceRequest
     {
         private bool queryLocation = true;
         /// <summary>
-        /// 是否列出所有桶的区域信息，默认为true。
+        /// Whether to list the region information of all buckets. The default value is "true".
         /// </summary>
         public bool IsQueryLocation
         {
@@ -42,3 +43,5 @@ namespace OBS.Model
     }
 }
     
+
+

@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 设置桶存储类型的请求参数。
+    /// Parameters in a request for setting a bucket storage class
     /// </summary>
     public class SetBucketStoragePolicyRequest : ObsBucketWebServiceRequest
     {
@@ -26,11 +26,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        ///  桶的存储类型。
+        /// Bucket storage class
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public StorageClassEnum? StorageClass
@@ -42,3 +42,5 @@ namespace OBS.Model
     }
 }
     
+
+

@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 设置桶存储类型的响应结果。
+    /// Response to a request for setting a bucket storage class
     /// </summary>
     public class SetBucketStoragePolicyResponse : ObsWebServiceResponse
     {
@@ -23,3 +23,5 @@ namespace OBS.Model
     }
 }
     
+
+

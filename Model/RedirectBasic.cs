@@ -15,18 +15,18 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 重定向基础配置。
+    /// Basic redirection configuration
     /// </summary>
     public class RedirectBasic
     {
         
 
         /// <summary>
-        /// 重定向请求时使用的主机名。
+        /// Host name used for redirecting the request
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string HostName
@@ -38,11 +38,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 重定向请求时使用的协议。
+        /// Protocol used for redirecting the request
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public ProtocolEnum? Protocol
@@ -56,3 +56,5 @@ namespace OBS.Model
 
     }
 }
+
+

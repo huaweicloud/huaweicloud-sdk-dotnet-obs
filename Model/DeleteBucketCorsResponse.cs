@@ -15,10 +15,12 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 删除桶跨域资源共享配置的响应结果。
+    /// Response to a request for deleting bucket CORS configuration
     /// </summary>
     public class DeleteBucketCorsResponse : ObsWebServiceResponse
     {
     }
 }
     
+
+

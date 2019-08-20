@@ -15,13 +15,13 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 删除对象的响应结果。
+    /// Response to an object deletion request
     /// </summary>
     public class DeleteObjectResponse : ObsWebServiceResponse
     {
 
         /// <summary>
-        ///标识删除的对象是否是删除标记。
+        /// Identifier specifying whether the deleted object is a delete marker
         /// </summary>
         public bool DeleteMarker
         {
@@ -30,7 +30,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 待删除对象的版本号。
+        /// Version ID of the to-be-deleted object
         /// </summary>
         public string VersionId
         {
@@ -41,3 +41,5 @@ namespace OBS.Model
     }
 }
     
+
+

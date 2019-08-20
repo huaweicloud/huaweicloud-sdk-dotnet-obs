@@ -16,7 +16,7 @@ using System.Collections.Generic;
 namespace OBS.Model
 {
     /// <summary>
-    /// 设置桶标签的请求参数。
+    /// Parameters in a request for setting bucket tags
     /// </summary>
     public class SetBucketTaggingRequest : ObsBucketWebServiceRequest
     {
@@ -28,12 +28,12 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 桶标签列表。
+        /// Bucket tag set
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
-        /// 每个桶支持最多10个Tag。
+        /// Mandatory parameter
+        /// You can add 10 tags to a bucket at the maximum.
         /// </para>
         /// </remarks>
         public IList<Tag> Tags
@@ -48,3 +48,5 @@ namespace OBS.Model
     }
 }
     
+
+

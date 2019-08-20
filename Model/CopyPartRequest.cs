@@ -17,7 +17,7 @@ using System.Collections.Generic;
 namespace OBS.Model
 {
     /// <summary>
-    /// 复制段的请求参数。
+    /// Parameters in the request for copying parts
     /// </summary>
     public class CopyPartRequest : ObsBucketWebServiceRequest
     {
@@ -28,11 +28,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 源桶名。
+        /// Source bucket name
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public string SourceBucketName
@@ -43,11 +43,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 源对象名。
+        /// Source object name
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public string SourceObjectKey
@@ -58,11 +58,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 源对象的版本号。
+        /// Version ID of the source object
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string SourceVersionId
@@ -74,11 +74,11 @@ namespace OBS.Model
       
 
         /// <summary>
-        /// 目标对象名。
+        /// Target object name
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public string ObjectKey
@@ -88,11 +88,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 分段上传任务的ID号。
+        /// Multipart upload ID
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public string UploadId
@@ -103,11 +103,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 目标段的分段号。
+        /// Target part number
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public int PartNumber
@@ -117,11 +117,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 复制源对象的范围。
+        /// Copy range of the source object
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public ByteRange ByteRange
@@ -132,11 +132,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 源对象SSE-C解密头域信息。
+        /// SSE-C decryption headers of the source object
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public SseCHeader SourceSseCHeader
@@ -146,11 +146,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 段内容SSE-C加密头域信息。
+        /// SSE-C encryption headers of parts
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public SseCHeader DestinationSseCHeader
@@ -162,3 +162,5 @@ namespace OBS.Model
     }
 }
     
+
+

@@ -27,10 +27,10 @@ namespace OBS
 
         #region UploadFile
         /// <summary>
-        /// 断点续传上传文件。
+        /// Upload a file in resumable mode.
         /// </summary>
-        /// <param name="request">上传文件的请求参数。</param>
-        /// <returns>合并段的响应结果。</returns>
+        /// <param name="request">Parameters in a request for uploading a file</param>
+        /// <returns>Response to the request for combining parts</returns>
         public CompleteMultipartUploadResponse UploadFile(UploadFileRequest request)
         {
             ParameterJudgment(request);
@@ -53,10 +53,10 @@ namespace OBS
         }
 
         /// <summary>
-        /// 断点续传上传数据流。
+        /// Upload data streams in resumable mode.
         /// </summary>
-        /// <param name="request">上传数据流的请求参数。</param>
-        /// <returns>合并段的响应结果。</returns>
+        /// <param name="request">Parameters in a request for uploading data streams</param>
+        /// <returns>Response to the request for combining parts</returns>
         public CompleteMultipartUploadResponse UploadStream(UploadStreamRequest request)
         {
             ParameterJudgment(request);
@@ -82,7 +82,7 @@ namespace OBS
         }
 
         /// <summary>
-        /// 参数校验
+        /// Verify parameters. 
         /// </summary>
         /// <param name="request"></param>
         private void ParameterJudgment(ResumableUploadRequest request)
@@ -103,7 +103,7 @@ namespace OBS
 
 
         /// <summary>
-        /// 断点续传上传执行方法
+        /// Execution method of the resumable upload
         /// </summary>
         /// <param name="resumableUploadRequest"></param>
         /// <returns></returns>
@@ -122,12 +122,12 @@ namespace OBS
                 uploadCheckPoint.UploadStream = (resumableUploadRequest as UploadStreamRequest).UploadStream;
             }
 
-            //开启断点续传
+           
             if (resumableUploadRequest.EnableCheckpoint)
             {
-                bool loadFileFlag = true;//序列化文件加载成功标志位
-                bool paraVerifyFlag = true;//参数信息一致性校验标志位
-                bool fileVerifyFlag = true;//序列化文件一致性校验标志位
+                bool loadFileFlag = true;
+                bool paraVerifyFlag = true;
+                bool fileVerifyFlag = true;
 
                 if (!File.Exists(resumableUploadRequest.CheckpointFile))
                 {
@@ -137,10 +137,10 @@ namespace OBS
                 {
                     try
                     {
-                        //加载序列化文件CheckpointFile
+                       
                         uploadCheckPoint.Load(resumableUploadRequest.CheckpointFile);
                     }
-                    //首次上传时会出现加载失败
+                   
                     catch (Exception ex)
                     {
                         LoggerMgr.Warn(string.Format("Load checkpoint file with path {0} error", resumableUploadRequest.CheckpointFile), ex);
@@ -148,104 +148,104 @@ namespace OBS
                     }
                 }
 
-                //序列化文件加载成功时才进行后续校验
+               
                 if (loadFileFlag)
                 {
-                    //UploadFile方式
+                    
                     if (uploadType == ResumableUploadTypeEnum.UploadFile)
                     {
                         UploadFileRequest uploadFileRequest = resumableUploadRequest as UploadFileRequest;
-                        //参数信息一致性校验：UploadFileRequest参数（桶名、对象名、上传文件路径）与CheckpointFile记录数据的一致性验证
+                        
                         if (!(uploadFileRequest.BucketName.Equals(uploadCheckPoint.BucketName)
                             && uploadFileRequest.ObjectKey.Equals(uploadCheckPoint.ObjectKey)
                             && uploadFileRequest.UploadFile.Equals(uploadCheckPoint.UploadFile)))
                         {
                             paraVerifyFlag = false;
                         }
-                        //参数信息一致性校验成功时
+                       
                         else
                         {
-                            //序列化文件一致性校验：Md5值；文件的名字、大小、最后修改时间；CheckSum值
+                          
                             fileVerifyFlag = uploadCheckPoint.IsValid(uploadFileRequest.UploadFile, null, uploadFileRequest.EnableCheckSum, uploadType);
                         }
                     }
-                    //UploadStream方式
+
                     else
                     {
                         UploadStreamRequest uploadStreamRequest = resumableUploadRequest as UploadStreamRequest;
-                        //参数信息一致性校验：UploadStreamRequest参数（桶名、对象名）与CheckpointFile记录数据的一致性验证
+
                         if (!(uploadStreamRequest.BucketName.Equals(uploadCheckPoint.BucketName)
                             && uploadStreamRequest.ObjectKey.Equals(uploadCheckPoint.ObjectKey)))
                         {
                             paraVerifyFlag = false;
                         }
-                        //参数信息一致性校验成功时
+                       
                         else
                         {
-                            //序列化文件一致性校验：Md5值；CheckSum值：必选true--校验UploadStream流的一致性
+                          
                             fileVerifyFlag = uploadCheckPoint.IsValid(null, uploadStreamRequest.UploadStream, uploadStreamRequest.EnableCheckSum, uploadType);
                         }
                     }
                 }
 
-                //任一阶段校验失败时
+
                 if (!loadFileFlag || !paraVerifyFlag || !fileVerifyFlag)
                 {
-                    //若序列化文件加载成功，且当参数校验失败或序列化文件校验失败，才取消多段上传任务
+                   
                     if (loadFileFlag && !string.IsNullOrEmpty(uploadCheckPoint.BucketName) && !string.IsNullOrEmpty(uploadCheckPoint.ObjectKey) &&
                         !string.IsNullOrEmpty(uploadCheckPoint.UploadId))
                     {
-                        //取消多段上传任务
+                       
                         AbortMultipartUpload(uploadCheckPoint);
                     }
 
-                    //删除原有的CheckpointFile文件
+                   
                     if (File.Exists(resumableUploadRequest.CheckpointFile))
                     {
                         File.Delete(resumableUploadRequest.CheckpointFile);
                     }
 
-                    //准备工作
+                  
                     ResumableUploadPrepare(resumableUploadRequest, uploadCheckPoint);
                 }
             }
-            //未开启断点续传
+           
             else
             {
-                //准备工作
+              
                 ResumableUploadPrepare(resumableUploadRequest, uploadCheckPoint);
             }
 
             TransferStreamManager mgr = null;
             try
             {
-                //开始并发上传段
+               
                 IList<PartResultUpload> partResultsUpload = ResumableUploadBegin(resumableUploadRequest, uploadCheckPoint, out mgr, uploadType);
 
 
-                //上传结果校验
+               
                 foreach (PartResultUpload result in partResultsUpload)
                 {
-                    //上传失败
+                   
                     if (result.IsFailed && result.Exception != null)
                     {
-                        //若没有开启断点续传，则直接取消多段上传任务
+                        
                         if (!resumableUploadRequest.EnableCheckpoint)
                         {
                             AbortMultipartUpload(uploadCheckPoint);
                         }
-                        //若开启断点续传
+                       
                         else if(uploadCheckPoint.IsUploadAbort)
                         {
                             AbortMultipartUpload(uploadCheckPoint);
 
-                            //删除原有的CheckpointFile文件
+                          
                             if (File.Exists(resumableUploadRequest.CheckpointFile))
                             {
                                 File.Delete(resumableUploadRequest.CheckpointFile);
                             }
                         }
-                        //抛出异常
+                        
                         throw result.Exception;
                     }
                 }
@@ -259,7 +259,7 @@ namespace OBS
             }
            
 
-            //合并多段
+           
             CompleteMultipartUploadRequest completeMultipartUploadRequest = new CompleteMultipartUploadRequest
             {
                 BucketName = resumableUploadRequest.BucketName,
@@ -280,7 +280,7 @@ namespace OBS
                 }
                 if (resumableUploadRequest.EnableCheckpoint)
                 {
-                    //合并段成功，删除序列化文件
+                   
                     if (File.Exists(resumableUploadRequest.CheckpointFile))
                     {
                         File.Delete(resumableUploadRequest.CheckpointFile);
@@ -288,23 +288,23 @@ namespace OBS
                 }
                 return completeMultipartUploadResponse;
             }
-            //合并段操作失败
+           
             catch (ObsException ex)
             {
-                //若没有开启断点续传，则直接取消多段上传任务
+                
                 if (!resumableUploadRequest.EnableCheckpoint)
                 {
                     AbortMultipartUpload(uploadCheckPoint);
                 }
-                //若开启断点续传
+              
                 else
                 {
-                    //若返回4xx状态码，则取消多段上传任务
+                  
                     if (ex.StatusCode >= HttpStatusCode.BadRequest && ex.StatusCode < HttpStatusCode.InternalServerError)
                     {
                         AbortMultipartUpload(uploadCheckPoint);
 
-                        //删除原有的CheckpointFile文件
+                     
                         if (File.Exists(resumableUploadRequest.CheckpointFile))
                         {
                             File.Delete(resumableUploadRequest.CheckpointFile);
@@ -320,19 +320,19 @@ namespace OBS
                     resumableUploadRequest.UploadEventHandler(this, e);
                 }
 
-                //抛出异常
+              
                 throw ex;
             }
         }
 
         /// <summary>
-        /// 上传文件准备工作
+        /// Prepare for uploading a file.
         /// </summary>
         /// <param name="resumableUploadRequest"></param>
         /// <param name="uploadCheckPoint"></param>
         private void ResumableUploadPrepare(ResumableUploadRequest resumableUploadRequest, UploadCheckPoint uploadCheckPoint)
         {
-            //根据ResumableUploadRequest中用户设置的参数来更新UploadCheckPoint中字段信息
+          
             uploadCheckPoint.BucketName = resumableUploadRequest.BucketName;
             uploadCheckPoint.ObjectKey = resumableUploadRequest.ObjectKey;
             long originPosition = 0;
@@ -353,7 +353,7 @@ namespace OBS
             uploadCheckPoint.UploadParts = SplitUploadFile(uploadCheckPoint.FileStatus.Size, resumableUploadRequest.UploadPartSize, originPosition);
             uploadCheckPoint.PartEtags = new List<PartETag>();
 
-            //初始化多段上传任务
+        
             InitiateMultipartUploadRequest initiateRequest = new InitiateMultipartUploadRequest()
             {
                 BucketName = resumableUploadRequest.BucketName,
@@ -388,23 +388,23 @@ namespace OBS
                 throw ex;
             }
 
-            //获取分段上传任务号
+         
             uploadCheckPoint.UploadId = initiateResponse.UploadId;
 
-            //若开启断点续传，需记录UploadCheckPoint的数据到序列化文件
+           
             if (resumableUploadRequest.EnableCheckpoint)
             {
                 try
                 {
                     uploadCheckPoint.Record(resumableUploadRequest.CheckpointFile);
                 }
-                //若记录文件操作失败
+              
                 catch (Exception ex)
                 {
-                    //取消多段上传任务
+                  
                     AbortMultipartUpload(uploadCheckPoint);
 
-                    //抛出线程异常（将Exception异常转换为ObsException类型，最外层的catch才可捕获）
+                  
                     ObsException exception = new ObsException(ex.Message, ex);
                     exception.ErrorType = ErrorType.Sender;
                     throw exception;
@@ -420,7 +420,7 @@ namespace OBS
         }
 
         /// <summary>
-        /// 根据上传文件的文件大小和分段大小，计算出段列表
+        /// Calculate the part list based on the file size and part size.
         /// </summary>
         /// <param name="fileLength"></param>
         /// <param name="partSize"></param>
@@ -470,7 +470,7 @@ namespace OBS
         }
 
         /// <summary>
-        /// 上传段的结果
+        /// Results of the part upload
         /// </summary>
         internal class PartResultUpload
         {
@@ -516,9 +516,9 @@ namespace OBS
                         AutoClose = false
                     };
 
-                    //调用上传段接口
+                  
                     UploadPartResponse uploadPartResponse = null;
-                    //文件方式
+                  
                     if (param.uploadType == ResumableUploadTypeEnum.UploadFile)
                     {
                         if (param.mgr != null)
@@ -540,7 +540,7 @@ namespace OBS
                             uploadPartResponse = UploadPart(uploadPartRequest);
                         }
                     }
-                    //数据流方式
+                   
                     else
                     {
                         if (param.mgr != null)
@@ -562,7 +562,7 @@ namespace OBS
                     }
 
                     PartETag partEtag = new PartETag(uploadPartResponse.PartNumber, uploadPartResponse.ETag);
-                    //更新异步返回结果PartResult的IsFailed字段
+                   
                     partResultUpload.IsFailed = false;
                     uploadPart.IsCompleted = true;
                     lock (param.uploadCheckPoint.uploadlock)
@@ -595,10 +595,10 @@ namespace OBS
                 {
                     partResultUpload.IsFailed = true;
                 }
-            } //上传段失败
+            }
             catch (ObsException ex)
             {
-                //若返回4xx状态码，则剩余段也就无需再继续上传了
+               
                 if (ex.StatusCode >= HttpStatusCode.BadRequest && ex.StatusCode < HttpStatusCode.InternalServerError)
                 {
                     uploadCheckPoint.IsUploadAbort = true;
@@ -640,11 +640,11 @@ namespace OBS
         }
 
         /// <summary>
-        /// 多线程并发上传段
+        /// Concurrently upload loads in multi-thread mode.
         /// </summary>
         private IList<PartResultUpload> ResumableUploadBegin(ResumableUploadRequest resumableUploadRequest, UploadCheckPoint uploadCheckPoint, out TransferStreamManager mgr, ResumableUploadTypeEnum uploadType)
         {
-            //分段的上传结果列表
+           
             IList<PartResultUpload> partResultsUpload = new List<PartResultUpload>();
             IList<UploadPart> uploadParts = new List<UploadPart>();
             long transferredBytes = 0;
@@ -671,7 +671,7 @@ namespace OBS
 
             if (resumableUploadRequest.UploadProgress != null)
             {
-                //UploadFile方式：支持多线程并发上传，需采用线程安全方式
+             
                 if (uploadType == ResumableUploadTypeEnum.UploadFile)
                 {
                     if (resumableUploadRequest.ProgressType == ProgressTypeEnum.ByBytes)
@@ -690,7 +690,7 @@ namespace OBS
                 {
                     if (resumableUploadRequest.ProgressType == ProgressTypeEnum.ByBytes)
                     {
-                        //UploadStream：仅支持单线程上传，采用普通方式，提升性能
+                        
                         mgr = new TransferStreamByBytes(resumableUploadRequest.Sender, resumableUploadRequest.UploadProgress,
                         uploadCheckPoint.FileStatus.Size, transferredBytes, resumableUploadRequest.ProgressInterval);
                     }
@@ -732,7 +732,7 @@ namespace OBS
 
             try
             {
-                //继续执行剩下的任务
+                
                 while (taskNum < uploadParts.Count)
                 {
                     if (uploadCheckPoint.IsUploadAbort)
@@ -763,7 +763,7 @@ namespace OBS
         }
 
         /// <summary>
-        /// 取消多段上传任务
+        /// Abort a multipart upload.
         /// </summary>
         private void AbortMultipartUpload(UploadCheckPoint uploadCheckPoint)
         {
@@ -787,10 +787,10 @@ namespace OBS
 
         #region DownloadFile
         /// <summary>
-        /// 断点续传下载文件。
+        /// Download a file in resumable mode.
         /// </summary>
-        /// <param name="request">下载文件的请求参数。</param>
-        /// <returns>获取对象元数据响应结果。</returns>
+        /// <param name="request">Parameters in a file download request</param>
+        /// <returns>Response to a request for obtaining object metadata</returns>
         public GetObjectMetadataResponse DownloadFile(DownloadFileRequest request)
         {
             ParameterJudgement(request);
@@ -798,7 +798,7 @@ namespace OBS
         }
 
         /// <summary>
-        /// 下载文件参数校验
+        /// Verify the parameters of the to-be-downloaded file.
         /// </summary>
         /// <param name="request"></param>
         private void ParameterJudgement(DownloadFileRequest request)
@@ -829,7 +829,7 @@ namespace OBS
         }
 
         /// <summary>
-        /// 断点续传下载文件--执行方法
+        /// Execution method of the resumable download
         /// </summary>
         private GetObjectMetadataResponse DownloadFileExcute(DownloadFileRequest downloadFileRequest)
         {
@@ -837,35 +837,35 @@ namespace OBS
 
             GetObjectMetadataResponse response = null;
 
-            //若开启断点续传
+         
             if (downloadFileRequest.EnableCheckpoint)
             {
-                bool loadFileFlag = true;//序列化文件加载成功标志位
-                bool paraVerifyFlag = true;//参数信息一致性校验标志位
-                bool fileVerifyFlag = true;//序列化文件一致性校验标志位
+                bool loadFileFlag = true;
+                bool paraVerifyFlag = true;
+                bool fileVerifyFlag = true;
                 ObsException obsException = null;
                 try
                 {
-                    //加载序列化记录文件
+                    
                     downloadCheckPoint.Load(downloadFileRequest.CheckpointFile);
                 }
-                //首次下载时序列化文件加载失败
+               
                 catch (Exception)
                 {
                     loadFileFlag = false;
                 }
 
-                //序列化文件加载成功时才进行后续校验
+              
                 if (loadFileFlag)
                 {
-                    //参数信息一致性校验：DownloadFileRequest参数（桶名、对象名、下载文件路径、版本号）与CheckpointFile记录数据的一致性验证
+                    
                     if (!(downloadFileRequest.BucketName.Equals(downloadCheckPoint.BucketName)
                     && downloadFileRequest.ObjectKey.Equals(downloadCheckPoint.ObjectKey)
                     && downloadFileRequest.DownloadFile.Equals(downloadCheckPoint.DownloadFile)))
                     {
                         paraVerifyFlag = false;
                     }
-                    //若存在版本号，则需进一步验证
+
                     if (string.IsNullOrEmpty(downloadFileRequest.VersionId))
                     {
                         if (!string.IsNullOrEmpty(downloadCheckPoint.VersionId))
@@ -878,12 +878,12 @@ namespace OBS
                         paraVerifyFlag = false;
                     }
 
-                    //参数信息一致性校验成功时
+   
                     if (paraVerifyFlag)
                     {
                         try
                         {
-                            //序列化文件一致性校验：Md5值；临时文件的名字、大小；对象的大小、最后修改时间、Etag值
+                            
                             fileVerifyFlag = downloadCheckPoint.IsValid(downloadFileRequest.TempDownloadFile, this);
                         }
                         catch (ObsException ex)
@@ -902,10 +902,10 @@ namespace OBS
                     }
                 }
 
-                //任一阶段校验失败时
+                
                 if (!loadFileFlag || !paraVerifyFlag || !fileVerifyFlag)
                 {
-                    //删除临时文件
+                    
                     if (downloadCheckPoint.TmpFileStatus != null)
                     {
                         if (File.Exists(downloadCheckPoint.TmpFileStatus.TmpFilePath))
@@ -914,7 +914,7 @@ namespace OBS
                         }
                     }
 
-                    //删除序列化记录文件
+                    
                     if (File.Exists(downloadFileRequest.CheckpointFile))
                     {
                         File.Delete(downloadFileRequest.CheckpointFile);
@@ -925,29 +925,29 @@ namespace OBS
                         throw obsException;
                     }
 
-                    //下载文件准备工作
+                   
                     response = DownloadFilePrepare(downloadFileRequest, downloadCheckPoint);
                 }
             }
             else
             {
-                //下载文件准备工作
+               
                 response = DownloadFilePrepare(downloadFileRequest, downloadCheckPoint);
             }
 
             TransferStreamManager mgr = null;
             try
             {
-                //开始并发下载分段
+                
                 IList<PartResultDown> partResultsDowns = DownloadFileBegin(downloadFileRequest, downloadCheckPoint, out mgr);
 
-                //下载结果校验
+               
                 foreach (PartResultDown result in partResultsDowns)
                 {
-                    //下载失败
+                  
                     if (result.IsFailed && result.Exception != null)
                     {
-                        //若没有开启断点续传，则删除临时下载文件
+                       
                         if (!downloadFileRequest.EnableCheckpoint)
                         {
                             if (File.Exists(downloadCheckPoint.TmpFileStatus.TmpFilePath))
@@ -955,7 +955,7 @@ namespace OBS
                                 File.Delete(downloadCheckPoint.TmpFileStatus.TmpFilePath);
                             }
                         }
-                        //若开启断点续传
+                       
                         else if(downloadCheckPoint.IsDownloadAbort)
                         {
                             if (File.Exists(downloadCheckPoint.TmpFileStatus.TmpFilePath))
@@ -967,7 +967,7 @@ namespace OBS
                                 File.Delete(downloadFileRequest.CheckpointFile);
                             }
                         }
-                        //抛出异常
+                       
                         throw result.Exception;
                     }
                 }
@@ -980,12 +980,12 @@ namespace OBS
 
             try
             {
-                //重命名临时文件
+              
                 Rename(downloadFileRequest.TempDownloadFile, downloadFileRequest.DownloadFile);
             }
             catch (Exception ex)
             {
-                //重命名操作失败，删除序列化记录文件
+               
                 if (File.Exists(downloadFileRequest.CheckpointFile))
                 {
                     File.Delete(downloadFileRequest.CheckpointFile);
@@ -995,7 +995,7 @@ namespace OBS
                 throw exception;
             }
 
-            //若开启断点续传，下载成功后删除序列化记录文件
+            
             if (downloadFileRequest.EnableCheckpoint)
             {
                 if (File.Exists(downloadFileRequest.CheckpointFile))
@@ -1004,7 +1004,7 @@ namespace OBS
                 }
             }
 
-            //返回文件下载结果（下载对象的元数据）
+            
             return response == null ? this.GetObjectMetadata(downloadFileRequest, downloadCheckPoint) : response;
         }
 
@@ -1019,7 +1019,7 @@ namespace OBS
         }
 
         /// <summary>
-        /// 下载文件准备工作
+        /// Prepare for downloading a file.
         /// </summary>
         /// <param name="downloadFileRequest"></param>
         /// <param name="downloadCheckPoint"></param>
@@ -1040,7 +1040,7 @@ namespace OBS
 
             try
             {
-                //创建临时文件流，并设置文件大小
+               
                 using (FileStream fs = new FileStream(downloadFileRequest.TempDownloadFile, FileMode.Create))
                 {
                     fs.SetLength(downloadCheckPoint.ObjectStatus.Size);
@@ -1053,7 +1053,7 @@ namespace OBS
                 throw exception;
             }
 
-            //设置临时文件状态
+            
             downloadCheckPoint.TmpFileStatus = new TmpFileStatus()
             {
                 TmpFilePath = downloadFileRequest.TempDownloadFile,
@@ -1061,17 +1061,17 @@ namespace OBS
                 LastModified = File.GetLastWriteTime(downloadFileRequest.TempDownloadFile),
             };
 
-            //若开启断点续传
+          
             if (downloadFileRequest.EnableCheckpoint)
             {
                 try
                 {
                     downloadCheckPoint.Record(downloadFileRequest.CheckpointFile);
                 }
-                //若记录序列化文件操作失败
+               
                 catch (Exception ex)
                 {
-                    //删除临时文件
+                 
                     if (downloadCheckPoint.TmpFileStatus != null)
                     {
                         if (File.Exists(downloadCheckPoint.TmpFileStatus.TmpFilePath))
@@ -1089,7 +1089,7 @@ namespace OBS
         }
 
         /// <summary>
-        /// 根据下载对象的大小和分段大小，计算出分段列表
+        /// Calculate the part list based on the file size and part size.
         /// </summary>
         private List<DownloadPart> SplitObject(long objectSize, long partSize)
         {
@@ -1123,17 +1123,17 @@ namespace OBS
         }
 
         /// <summary>
-        /// 下载段的结果
+        /// Result of the part download
         /// </summary>
         internal class PartResultDown
         {
             /// <summary>
-            /// 分段下载是否失败
+            /// Whether a part fails to be downloaded
             /// </summary>
             public bool IsFailed { get; set; }
 
             /// <summary>
-            /// 分段下载异常
+            /// An part download exception
             /// </summary>
             public ObsException Exception { get; set; }
 
@@ -1151,7 +1151,7 @@ namespace OBS
         }
 
         /// <summary>
-        /// 执行范围下载
+        /// Perform a partial download.
         /// </summary>
         private void DownloadPartExcute(object state)
         {
@@ -1180,7 +1180,7 @@ namespace OBS
                     getObjectRequest.IfModifiedSince = downloadFileRequest.IfModifiedSince;
                     getObjectRequest.IfUnmodifiedSince = downloadFileRequest.IfUnmodifiedSince;
 
-                    //调用下载对象接口
+                   
                     GetObjectResponse getObjectResponse = this.GetObject(getObjectRequest);
 
 
@@ -1202,14 +1202,14 @@ namespace OBS
                                 content = getObjectResponse.OutputStream;
                             }
 
-                            //创建用于保存到本地的临时下载文件流
+                           
                             using (FileStream output = new FileStream(downloadFileRequest.TempDownloadFile, FileMode.Open, FileAccess.Write, FileShare.ReadWrite,
                                 Constants.DefaultBufferSize))
                             {
                                 output.Seek(downloadPart.Start, SeekOrigin.Begin);
-                                //保存返回流的二进制流
+                               
                                 byte[] buffer = new byte[Constants.DefaultBufferSize];
-                                //将下载的流写到临时下载文件中
+                               
                                 int bytesRead = 0;
 
                                 while ((bytesRead = content.Read(buffer, 0, buffer.Length)) > 0)
@@ -1227,7 +1227,7 @@ namespace OBS
                         }
                     }
 
-                    //更新异步返回结果PartResultDown的IsFailed字段
+                    
                     partResultDown.IsFailed = false;
                     downloadPart.IsCompleted = true;
 
@@ -1235,9 +1235,9 @@ namespace OBS
                     {
                         lock (downloadCheckPoint.downloadlock)
                         {
-                            //更新临时下载文件的修改时间
+                          
                             downloadCheckPoint.UpdateTmpFile(downloadFileRequest.TempDownloadFile);
-                            //将DownloadCheckPoint对象中的数据写到CheckpointFile文件中
+                           
                             downloadCheckPoint.Record(downloadFileRequest.CheckpointFile);
                         }
                     }
@@ -1261,10 +1261,10 @@ namespace OBS
                     partResultDown.IsFailed = false;
                 }
             }
-            //下载段失败
+
             catch (ObsException ex)
             {
-                //若返回4xx状态码，则剩余段也就无需再继续下载了
+
                 if (ex.StatusCode >= HttpStatusCode.BadRequest && ex.StatusCode < HttpStatusCode.InternalServerError)
                 {
                     downloadCheckPoint.IsDownloadAbort = true;
@@ -1303,12 +1303,12 @@ namespace OBS
 
 
         /// <summary>
-        /// 多线程并发下载段
+        /// Concurrently download parts in multi-thread mode. 
         /// </summary>
         private IList<PartResultDown> DownloadFileBegin(DownloadFileRequest downloadFileRequest, DownloadCheckPoint downloadCheckPoint,
             out TransferStreamManager mgr)
         {
-            //文件下载结果（包括下载段的结果列表PartResultsDown和下载对象的元数据ObjectMetadata
+
             IList<PartResultDown> partResultsDowns = new List<PartResultDown>();
             IList<DownloadPart> downloadParts = new List<DownloadPart>();
             long transferredBytes = 0;
@@ -1370,7 +1370,7 @@ namespace OBS
 
             try
             {
-                //继续执行剩下的任务
+
                 while (taskNum < downloadParts.Count)
                 {
                     if (downloadCheckPoint.IsDownloadAbort)
@@ -1403,7 +1403,7 @@ namespace OBS
 
 
         /// <summary>
-        /// 重命名临时文件
+        /// Rename the temporary file. 
         /// </summary>
         /// <param name="tempDownloadFilePath"></param>
         /// <param name="downloadFilePath"></param>
@@ -1421,7 +1421,7 @@ namespace OBS
             {
                 File.Move(tempDownloadFilePath, downloadFilePath);
             }
-            //如果重命名失败，则把临时下载文件的内容，写到下载文件中
+         
             catch (Exception)
             {
                 byte[] buffer = new byte[Constants.DefaultBufferSize];
@@ -1448,7 +1448,7 @@ namespace OBS
                 }
                 finally
                 {
-                    //删除临时下载文件
+               
                     File.Delete(tempDownloadFilePath);
                 }
             }

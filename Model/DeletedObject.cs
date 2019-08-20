@@ -15,14 +15,14 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 批量删除成功的对象。
+    /// Objects that have been successfully deleted in a batch
     /// </summary>
     public class DeletedObject
     {
         
 
         /// <summary>
-        /// 标识对象是否标记删除。
+        /// Identifier specifying whether an object is deleted
         /// </summary>
         public bool DeleteMarker
         {
@@ -31,7 +31,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 删除标记的版本号。
+        /// Version ID of the delete marker
         /// </summary>
         public string DeleteMarkerVersionId
         {
@@ -40,7 +40,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象名。
+        /// Object name
         /// </summary>
         public string ObjectKey
         {
@@ -49,7 +49,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象版本号。
+        /// Object version ID
         /// </summary>
         public string VersionId
         {
@@ -59,3 +59,5 @@ namespace OBS.Model
 
     }
 }
+
+

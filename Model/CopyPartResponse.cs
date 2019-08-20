@@ -17,13 +17,13 @@ using System;
 namespace OBS.Model
 {
     /// <summary>
-    /// 复制段的响应结果。
+    /// Response to the request for copying parts
     /// </summary>
     public class CopyPartResponse : ObsWebServiceResponse
     {
 
         /// <summary>
-        /// 目标段的etag值。
+        /// ETag value of the target part
         /// </summary>
         public string ETag
         {
@@ -32,7 +32,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 目标段的最后修改时间。
+        /// Last modification time of the target part
         /// </summary>
         public DateTime? LastModified
         {
@@ -41,7 +41,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 目标段的分段号。
+        /// Target part number
         /// </summary>
         public int PartNumber
         {
@@ -53,3 +53,5 @@ namespace OBS.Model
     }
 }
     
+
+

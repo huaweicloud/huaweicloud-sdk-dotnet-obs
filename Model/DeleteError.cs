@@ -15,14 +15,14 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 批量删除失败的结果。
+    /// Results about objects failed to be deleted
     /// </summary>
     public class DeleteError
     {
         
 
         /// <summary>
-        /// 对象名。
+        /// Object name
         /// </summary>
         public string ObjectKey
         {
@@ -31,7 +31,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象版本号。
+        /// Object version ID
         /// </summary>
         public string VersionId
         {
@@ -40,7 +40,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 删除失败的错误码。
+        /// Error code returned after a deletion failure
         /// </summary>
         public string Code
         {
@@ -49,7 +49,7 @@ namespace OBS.Model
         }
 
         /// <summary>
-        ///  删除失败的错误信息。
+        /// Error information of a deletion failure
         /// </summary>
         public string Message
         {
@@ -58,3 +58,5 @@ namespace OBS.Model
         }
     }
 }
+
+

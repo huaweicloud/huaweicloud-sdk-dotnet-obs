@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 获取桶Website（托管）配置的请求参数。
+    /// Parameters in a request for obtaining bucket website hosting rules
     /// </summary>
     public class GetBucketWebsiteRequest : ObsBucketWebServiceRequest
     {
@@ -28,3 +28,5 @@ namespace OBS.Model
     }
 }
     
+
+

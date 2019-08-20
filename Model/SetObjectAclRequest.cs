@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 设置对象访问权限的请求参数。
+    /// Parameters in a request for setting an object ACL
     /// </summary>
     public class SetObjectAclRequest : ObsBucketWebServiceRequest
     {
@@ -26,11 +26,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 预定义访问策略。  
+        /// Pre-defined access control policy  
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public CannedAclEnum? CannedAcl
@@ -41,11 +41,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 被授权者和访问权限列表。
+        /// Authorized user and ACL
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public AccessControlList AccessControlList
@@ -57,11 +57,11 @@ namespace OBS.Model
      
 
         /// <summary>
-        /// 对象名。
+        /// Object name
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数必选。
+        /// Mandatory parameter
         /// </para>
         /// </remarks>
         public string ObjectKey
@@ -71,11 +71,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象版本号。
+        /// Object version ID
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string VersionId
@@ -87,3 +87,5 @@ namespace OBS.Model
     }
 }
     
+
+

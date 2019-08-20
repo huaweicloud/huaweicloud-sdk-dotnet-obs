@@ -15,7 +15,7 @@
 namespace OBS.Model
 {
     /// <summary>
-    /// 列举桶内多版本对象的请求参数。
+    /// Parameters in a request for listing versioning objects in a bucket
     /// </summary>
     public class ListVersionsRequest : ObsBucketWebServiceRequest
     {
@@ -26,13 +26,13 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// 对象名进行分组的字符。
+        /// Character for grouping object names
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
-        /// 对于对象名中包含Delimiter的对象，其对象名（如果请求中指定了Prefix，则此处的对象名需要去掉Prefix）
-        /// 中从首字符至第一个Delimiter之间的字符串将作为一个分组并作为CommonPrefix返回。
+        /// Optional parameter
+        /// If the object name contains the "Delimiter" parameter, the character string from the first character to the first delimiter in the object name is grouped under a single result element, "CommonPrefix". 
+        /// (If a prefix is specified in the request, the prefix must be removed from the object name.)
         /// </para>
         /// </remarks>
         public string Delimiter
@@ -44,12 +44,12 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 列举多版本对象的起始位置（按对象名排序）。
+        /// Start position for listing versioning objects (sorted by object name)
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
-        /// 返回的对象列表将是对象名按照字典序排序后该参数以后的所有对象。
+        /// Optional parameter
+        /// This parameter specifies the object name from which the listing begins. Listed objects are sorted by object name in lexicographical order.
         /// </para>
         /// </remarks>
         public string KeyMarker
@@ -61,12 +61,12 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 列举多版本对象的最大条目数。
+        /// Maximum number of versioning objects to be listed
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
-        /// 取值范围为1~1000，当超出范围时，按照默认的1000进行处理。
+        /// Optional parameter
+        /// The value ranges from 1to 1000. If there are more than 1000 versioning objects, only 1000 of them will be listed.
         /// </para>
         /// </remarks>
         public int? MaxKeys
@@ -77,11 +77,11 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 列举多版本对象时的对象名前缀。
+        /// Object name prefix used for listing versioning objects
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
+        /// Optional parameter
         /// </para>
         /// </remarks>
         public string Prefix
@@ -93,13 +93,13 @@ namespace OBS.Model
 
 
         /// <summary>
-        /// 列举多版本对象的起始位置（按对象版本号排序）。
+        /// Start position for listing versioning objects (sorted by version ID)
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选。
-        /// 与KeyMarker配合使用，返回的对象列表将是对象名和版本号按照字典序排序后该参数以后的所有对象。
-        /// 如果VersionIdMarker不是KeyMarker的一个版本号，则该参数无效。
+        /// Optional parameter
+        /// This parameter works together with "KeyMarker" and specifies the object name from which the listing begins. Listed objects are sorted by object name and version ID in lexicographical order.
+        /// If the values of "VersionIdMarker" and "KeyMarker" are inconsistent, this parameter is ineffective.
         /// </para>
         /// </remarks>
         public string VersionIdMarker
@@ -110,4 +110,6 @@ namespace OBS.Model
 
     }
 }
+
+
 

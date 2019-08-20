@@ -17,19 +17,21 @@ using System;
 namespace OBS.Model
 {
     /// <summary>
-    /// 桶或对象的所有者信息。
+    /// Bucket or object owner information
     /// </summary>
     public class Owner
     {
         /// <summary>
-        /// 所有者的名称。
+        /// Owner name
         /// </summary>
         [Obsolete]
         public string DisplayName { set; get; }
 
         /// <summary>
-        /// 所有者的DomainId。
+        /// ID of the domain to which the owner belongs
         /// </summary>
         public string Id { get; set; }
     }
 }
+
+

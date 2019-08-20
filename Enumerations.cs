@@ -17,23 +17,23 @@ namespace OBS
 {
 
     /// <summary>
-    /// 鉴权类型
+    /// Authentication type
     /// </summary>
     public enum AuthTypeEnum
     {
         /// <summary>
-        /// V2协议。
+        /// V2 protocol
         /// </summary>
         V2,
 
         /// <summary>
-        /// V4协议。
+        /// V4 protocol
         /// </summary>
         [Obsolete]
         V4,
 
         /// <summary>
-        /// OBS协议。
+        /// OBS protocol
         /// </summary>
         OBS
     }
@@ -50,3 +50,4 @@ namespace OBS
         Unknown
     }
 }
+

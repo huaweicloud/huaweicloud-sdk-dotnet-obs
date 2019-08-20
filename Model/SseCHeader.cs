@@ -18,12 +18,12 @@ using System.Text;
 namespace OBS.Model
 {
     /// <summary>
-    /// SSE-C加解密方式头域信息
+    /// SSE-C encryption/decryption headers
     /// </summary>
     public class SseCHeader : SseHeader
     {
         /// <summary>
-        /// SSE-C加解密方式下的算法。
+        /// SSE-C encryption/decryption algorithm
         /// </summary>
         public SseCAlgorithmEnum Algorithm
         {
@@ -32,11 +32,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// SSE-C加解密方式下使用的密钥，用于加解密对象，该值是密钥进行base64encode后的值。
+        /// Key used in the SSE-C encryption/decryption mode. The key is used to encrypt and decrypt an object. The value is a Base64-encoded key.
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选，不可与Key一起使用。
+        /// Optional parameter, which cannot be used with "Key".
         /// </para>
         /// </remarks>
         public string KeyBase64
@@ -46,11 +46,11 @@ namespace OBS.Model
         }
 
         /// <summary>
-        /// SSE-C加解密方式下使用的密钥，用于加解密对象，该值是密钥未经过base64encode后的值
+        /// Key used in the SSE-C encryption/decryption mode. The key is used to encrypt and decrypt an object. The value is a key that is not encoded using Base64.
         /// </summary>
         /// <remarks>
         /// <para>
-        /// 参数可选，不可与KeyBase64一起使用。
+        /// Optional parameter, which cannot be used with "KeyBase64".
         /// </para>
         /// </remarks>
         public byte[] Key
@@ -60,3 +60,5 @@ namespace OBS.Model
         }
     }
 }
+
+
