@@ -200,7 +200,7 @@ namespace OBS.Internal
                     }
                     throw ParseObsException(response, "Try to redirect, but location is null!", context);
                 }
-                else if ((statusCode >= 400 && statusCode < 500) || statusCode == 304)
+                else if ((statusCode >= 400 && statusCode < 500 && statusCode != 408) || statusCode == 304)
                 {
                     ObsException exception = ParseObsException(response, "Request error", context);
                     if (Constants.RequestTimeout.Equals(exception.ErrorCode))
@@ -221,7 +221,7 @@ namespace OBS.Internal
                     }
                     throw exception;
                 }
-                else if (statusCode >= 500)
+                else if (statusCode >= 500 || statusCode == 408)
                 {
                     if (ShouldRetry(request, null, retryCount, maxErrorRetry))
                     {
@@ -230,7 +230,7 @@ namespace OBS.Internal
                     }
                     else if (retryCount > maxErrorRetry && LoggerMgr.IsErrorEnabled)
                     {
-                        LoggerMgr.Error("Encountered too many 5xx errors");
+                        LoggerMgr.Error("Encountered too many 5xx or 408 errors");
                     }
                     throw ParseObsException(response, "Request error", context);
                 }
