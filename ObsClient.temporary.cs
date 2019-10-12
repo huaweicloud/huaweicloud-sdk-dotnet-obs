@@ -127,12 +127,12 @@ namespace OBS
 
             if (this.ObsConfig.PathStyle && !string.IsNullOrEmpty(httpRequest.BucketName))
             {
-                response.SignUrl += "/" + httpRequest.BucketName;
+                response.SignUrl += "/" + CommonUtil.UrlEncode(httpRequest.BucketName);
             }
 
             if (!string.IsNullOrEmpty(httpRequest.ObjectKey))
             {
-                response.SignUrl += "/" + httpRequest.ObjectKey;
+                response.SignUrl += "/" + CommonUtil.UrlEncode(httpRequest.ObjectKey, null, "/");
             }
 
             bool isFirst = true;
@@ -191,12 +191,12 @@ namespace OBS
 
             if (this.ObsConfig.PathStyle && !string.IsNullOrEmpty(httpRequest.BucketName))
             {
-                response.SignUrl += "/" + httpRequest.BucketName;
+                response.SignUrl += "/" + CommonUtil.UrlEncode(httpRequest.BucketName);
             }
 
             if (!string.IsNullOrEmpty(httpRequest.ObjectKey))
             {
-                response.SignUrl += "/" + httpRequest.ObjectKey;
+                response.SignUrl += "/" + CommonUtil.UrlEncode(httpRequest.ObjectKey, null, "/");
             }
 
             string accessKeyIdPrefix = this.ObsConfig.AuthType == AuthTypeEnum.OBS ? "AccessKeyId=" : "AWSAccessKeyId=";
