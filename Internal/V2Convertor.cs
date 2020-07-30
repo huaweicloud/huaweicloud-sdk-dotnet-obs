@@ -1932,5 +1932,18 @@ namespace OBS.Internal
             httpRequest.Params.Add(Constants.SubResourceApiVersion, null);
             return httpRequest;
         }
+
+        public HttpRequest Trans(HeadObjectRequest request)
+        {
+            HttpRequest httpRequest = new HttpRequest();
+            httpRequest.Method = HttpVerb.HEAD;
+            httpRequest.BucketName = request.BucketName;
+            httpRequest.ObjectKey = request.ObjectKey;
+            if (!string.IsNullOrEmpty(request.VersionId))
+            {
+                httpRequest.Params.Add(Constants.ObsRequestParams.VersionId, request.VersionId);
+            }
+            return httpRequest;
+        }
     }
 }

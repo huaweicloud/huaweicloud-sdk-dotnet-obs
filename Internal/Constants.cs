@@ -24,31 +24,31 @@ namespace OBS.Internal
         {
             public const string Connection = "Connection";
 
-            public const string Authorization = "Authorization";
-
-            public const string CacheControl = "Cache-Control";
-
-            public const string ContentDisposition = "Content-Disposition";
-
-            public const string ContentEncoding = "Content-Encoding";
-
-            public const string ContentLength = "Content-Length";
-
-            public const string ContentMd5 = "Content-MD5";
-
-            public const string Location = "Location";
-
-            public const string ContentType = "Content-Type";
-
-            public const string Date = "Date";
-
-            public const string Expires = "Expires";
-
-            public const string ETag = "ETag";
+            public const string Range = "Range";
 
             public const string LastModified = "Last-Modified";
 
-            public const string Range = "Range";
+            public const string Location = "Location";
+
+            public const string Expires = "Expires";
+
+            public const string Date = "Date";
+
+            public const string ContentMd5 = "Content-MD5";
+
+            public const string ContentLength = "Content-Length";
+
+            public const string ContentEncoding = "Content-Encoding";
+
+            public const string ContentDisposition = "Content-Disposition";
+
+            public const string ContentType = "Content-Type";
+
+            public const string ETag = "ETag";
+
+            public const string CacheControl = "Cache-Control";
+
+            public const string Authorization = "Authorization";
 
             public const string Host = "Host";
 
@@ -133,7 +133,7 @@ namespace OBS.Internal
 
         public const string V2HeaderMetaPrefix = "x-amz-meta-";
 
-        public const string ObsSdkVersion = "3.19.7.1";
+        public const string ObsSdkVersion = "3.20.7";
 
         public const string ObsApiHeader = "api";
         public const string ObsApiHeaderWithPrefix = ObsHeaderPrefix + ObsApiHeader;
@@ -176,6 +176,10 @@ namespace OBS.Internal
         private static volatile IList<string> _AllowedResponseHttpHeaders;
 
         public const string ThreeAz = "3az";
+
+        public const string ObsHeadErrorCode = "x-obs-error-code";
+
+        public const string ObsHeadErrorMessage = "x-obs-error-message";
 
         public static IList<string> AllowedResponseHttpHeaders
         {

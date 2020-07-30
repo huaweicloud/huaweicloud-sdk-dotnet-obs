@@ -30,8 +30,8 @@
       <DocumentationSource sourceFile="bin\Release\esdk_obs_.net.dll" />
       <DocumentationSource sourceFile="bin\Release\esdk_obs_.net.xml" />
     </DocumentationSources>
-    <HelpTitle>OBS SDK for .NET 3.1.3 API</HelpTitle>
-    <HelpFileVersion>3.1.3</HelpFileVersion>
+    <HelpTitle>OBS SDK for .NET 3.19.7.1 API</HelpTitle>
+    <HelpFileVersion>3.19.7.1</HelpFileVersion>
     <RootNamespaceContainer>False</RootNamespaceContainer>
     <NamespaceGrouping>True</NamespaceGrouping>
     <Preliminary>False</Preliminary>

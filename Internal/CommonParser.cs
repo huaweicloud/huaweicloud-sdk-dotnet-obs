@@ -43,42 +43,40 @@ namespace OBS.Internal
                 else if (key.StartsWith(iheaders.HeaderPrefix()))
                 {
                     key = key.Substring(iheaders.HeaderPrefix().Length);
-                }else if (key.StartsWith(Constants.ObsHeaderMetaPrefix))
+                }
+                else if (key.StartsWith(Constants.ObsHeaderMetaPrefix))
                 {
                     key = key.Substring(Constants.ObsHeaderMetaPrefix.Length);
-                }else if (key.StartsWith(Constants.ObsHeaderPrefix))
+                }
+                else if (key.StartsWith(Constants.ObsHeaderPrefix))
                 {
                     key = key.Substring(Constants.ObsHeaderPrefix.Length);
                 }
-                response.Headers.Add(key, header.Value); 
-            }            
-
+                response.Headers.Add(key, header.Value);
+            }
         }
 
         public static void ParseErrorResponse(Stream stream, ObsException exception)
         {
-            if (stream != null)
+            using (XmlReader reader = XmlReader.Create(stream))
             {
-                using (XmlReader reader = XmlReader.Create(stream))
+                while (reader.Read())
                 {
-                    while (reader.Read())
+                    if ("Code".Equals(reader.Name))
                     {
-                        if ("Code".Equals(reader.Name))
-                        {
-                            exception.ErrorCode = reader.ReadString();
-                        }
-                        else if ("Message".Equals(reader.Name))
-                        {
-                            exception.ErrorMessage = reader.ReadString();
-                        }
-                        else if ("RequestId".Equals(reader.Name))
-                        {
-                            exception.RequestId = reader.ReadString();
-                        }
-                        else if ("HostId".Equals(reader.Name))
-                        {
-                            exception.HostId = reader.ReadString();
-                        }
+                        exception.ErrorCode = reader.ReadString();
+                    }
+                    else if ("Message".Equals(reader.Name))
+                    {
+                        exception.ErrorMessage = reader.ReadString();
+                    }
+                    else if ("RequestId".Equals(reader.Name))
+                    {
+                        exception.RequestId = reader.ReadString();
+                    }
+                    else if ("HostId".Equals(reader.Name))
+                    {
+                        exception.HostId = reader.ReadString();
                     }
                 }
             }

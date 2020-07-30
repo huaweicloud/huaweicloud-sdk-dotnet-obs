@@ -138,7 +138,7 @@ namespace OBS
             if (this.ObsConfig.PathStyle)
             {
                 this.ObsConfig.AuthTypeNegotiation = false;
-                if(this.ObsConfig.AuthType == AuthTypeEnum.OBS)
+                if (this.ObsConfig.AuthType == AuthTypeEnum.OBS)
                 {
                     this.ObsConfig.AuthType = AuthTypeEnum.V2;
                 }
@@ -196,7 +196,7 @@ namespace OBS
             try
             {
 
-                GetApiVersionResponse response = async ?  this.GetApiVersionAsync(request) : this.GetApiVersion(request);
+                GetApiVersionResponse response = async ? this.GetApiVersionAsync(request) : this.GetApiVersion(request);
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     if ((response.Headers.ContainsKey(Constants.ObsApiHeader)
@@ -334,6 +334,7 @@ namespace OBS
             }
             CommonParser.ParseObsWebServiceResponse(httpResponse, response, this.httpClient.GetIHeaders(context));
             response.HandleObsWebServiceRequest(request);
+            response.OriginalResponse = httpResponse;
             return response;
         }
 
@@ -353,11 +354,11 @@ namespace OBS
             }
             catch (ObsException ex)
             {
-                if ("CreateBucket".Equals(request.GetAction()) 
+                if ("CreateBucket".Equals(request.GetAction())
                     && ex.StatusCode == HttpStatusCode.BadRequest
                     && "Unsupported Authorization Type".Equals(ex.ErrorMessage)
-                    && this.ObsConfig.AuthTypeNegotiation 
-                    && context.AuthType == AuthTypeEnum.OBS) 
+                    && this.ObsConfig.AuthTypeNegotiation
+                    && context.AuthType == AuthTypeEnum.OBS)
                 {
                     try
                     {
@@ -367,16 +368,17 @@ namespace OBS
                         }
                         context.AuthType = AuthTypeEnum.V2;
                         return PrepareResponse<T, K>(request, context, httpRequest, this.httpClient.PerformRequest(httpRequest, context));
-                    }catch(ObsException _ex)
+                    }
+                    catch (ObsException _ex)
                     {
                         if (LoggerMgr.IsErrorEnabled)
                         {
-                            LoggerMgr.Error(string.Format("{0} exception code: {1}, with message: {2}", request.GetAction(), _ex.ErrorCode, _ex.Message));
+                            LoggerMgr.Error(string.Format("{0} exception code: {1}, with message: {2}", request.GetAction(), _ex.ErrorCode, _ex.ErrorMessage));
 
                         }
                         throw _ex;
                     }
-                    catch(Exception _ex)
+                    catch (Exception _ex)
                     {
                         if (LoggerMgr.IsErrorEnabled)
                         {
@@ -388,7 +390,7 @@ namespace OBS
 
                 if (LoggerMgr.IsErrorEnabled)
                 {
-                    LoggerMgr.Error(string.Format("{0} exception code: {1}, with message: {2}", request.GetAction(), ex.ErrorCode, ex.Message));
+                    LoggerMgr.Error(string.Format("{0} exception code: {1}, with message: {2}", request.GetAction(), ex.ErrorCode, ex.ErrorMessage));
 
                 }
                 throw ex;
@@ -424,9 +426,5 @@ namespace OBS
         {
             return this.DoRequest<T, K>(request, null);
         }
-
-
-
-
     }
 }

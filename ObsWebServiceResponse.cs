@@ -21,8 +21,9 @@ namespace OBS
     /// <summary>
     /// Base class of service responses 
     /// </summary>
-    public class ObsWebServiceResponse
+    public class ObsWebServiceResponse : IDisposable
     {
+        private bool _disposed = false;
 
         private IDictionary<string, string> _headers;
         
@@ -71,6 +72,36 @@ namespace OBS
         {
             get;
             internal set;
+        }
+
+        public HttpResponse OriginalResponse
+        {
+            get;
+            set;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        public void Dispose(bool disposing)
+        {
+
+            if (_disposed)
+            {
+                return;
+            }
+
+            if (disposing)
+            {
+                if (OriginalResponse.Content != null && ContentLength > 0)
+                {
+                    CommonUtil.CloseIDisposable(OriginalResponse);
+                }
+                _disposed = true;
+            }
         }
     }
 }

@@ -19,7 +19,7 @@ using System.Net;
 
 namespace OBS.Internal
 {
-    internal class HttpResponse : IDisposable
+    public class HttpResponse : IDisposable
     {
 
         private IDictionary<string, string> _headers;
@@ -52,7 +52,7 @@ namespace OBS.Internal
 
         public void Abort()
         {
-            if(this._request != null)
+            if (this._request != null)
             {
                 this._request.Abort();
             }
@@ -79,7 +79,8 @@ namespace OBS.Internal
             }
         }
 
-        public HttpStatusCode StatusCode {
+        public HttpStatusCode StatusCode
+        {
             get
             {
                 return this._response.StatusCode;
@@ -115,7 +116,7 @@ namespace OBS.Internal
                     _response.Close();
                     _response = null;
                 }
-                if(_request != null)
+                if (_request != null)
                 {
                     _request = null;
                 }

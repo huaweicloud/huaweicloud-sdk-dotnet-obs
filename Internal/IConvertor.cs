@@ -119,6 +119,8 @@ namespace OBS.Internal
         HttpRequest Trans(AppendObjectRequest request);
 
         HttpRequest Trans(GetApiVersionRequest request);
+
+        HttpRequest Trans(HeadObjectRequest request);
     }
 
     internal delegate void TransContentDelegate(XmlWriter xmlWriter);

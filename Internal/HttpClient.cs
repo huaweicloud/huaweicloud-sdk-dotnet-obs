@@ -27,15 +27,11 @@ namespace OBS.Internal
 {
     internal partial class HttpClient
     {
-
-
         internal HttpClient(ObsConfig obsConfig)
         {
             ServicePointManager.DefaultConnectionLimit = obsConfig.ConnectionLimit;
             ServicePointManager.MaxServicePointIdleTime = obsConfig.MaxIdleTime;
             ServicePointManager.Expect100Continue = false;
-
-
 
             if (obsConfig.SecurityProtocolType.HasValue)
             {
@@ -59,7 +55,6 @@ namespace OBS.Internal
 
         internal IHeaders GetIHeaders(HttpContext context)
         {
-
             switch (context.ChooseAuthType)
             {
                 case AuthTypeEnum.V2:
@@ -72,7 +67,6 @@ namespace OBS.Internal
 
         internal HttpResponse DoRequest(HttpRequest httpRequest, HttpContext context)
         {
-
             if (!context.SkipAuth)
             {
                 this.GetSigner(context).DoAuth(httpRequest, context, this.GetIHeaders(context));
@@ -200,7 +194,7 @@ namespace OBS.Internal
                     }
                     throw ParseObsException(response, "Try to redirect, but location is null!", context);
                 }
-                else if ((statusCode >= 400 && statusCode < 500 && statusCode != 408) || statusCode == 304)
+                else if ((statusCode >= 400 && statusCode < 500) || statusCode == 304)
                 {
                     ObsException exception = ParseObsException(response, "Request error", context);
                     if (Constants.RequestTimeout.Equals(exception.ErrorCode))
@@ -221,7 +215,7 @@ namespace OBS.Internal
                     }
                     throw exception;
                 }
-                else if (statusCode >= 500 || statusCode == 408)
+                else if (statusCode >= 500)
                 {
                     if (ShouldRetry(request, null, retryCount, maxErrorRetry))
                     {
@@ -230,7 +224,7 @@ namespace OBS.Internal
                     }
                     else if (retryCount > maxErrorRetry && LoggerMgr.IsErrorEnabled)
                     {
-                        LoggerMgr.Error("Encountered too many 5xx or 408 errors");
+                        LoggerMgr.Error("Encountered too many 5xx errors");
                     }
                     throw ParseObsException(response, "Request error", context);
                 }
@@ -280,7 +274,7 @@ namespace OBS.Internal
             if (request.Content != null && (originPos >= 0 && request.Content.CanSeek))
             {
                 request.Content.Seek(originPos, SeekOrigin.Begin);
-                if(request.Content is TransferStream)
+                if (request.Content is TransferStream)
                 {
                     (request.Content as TransferStream).ResetReadProgress();
                 }
@@ -306,18 +300,35 @@ namespace OBS.Internal
             if (response != null)
             {
                 exception.StatusCode = response.StatusCode;
+                string temp;
                 try
                 {
-                    CommonParser.ParseErrorResponse(response.Content, exception);
+                    if (response.Content.Length > 0)
+                    {
+                        CommonParser.ParseErrorResponse(response.Content, exception);
+                    }
+                    else if (response.Headers.ContainsKey(Constants.ObsHeadErrorCode) && response.Headers.ContainsKey(Constants.ObsHeadErrorMessage))
+                    {
+                        response.Headers.TryGetValue(Constants.ObsHeadErrorCode, out temp);
+                        exception.ErrorCode = temp;
+                        response.Headers.TryGetValue(Constants.ObsHeadErrorMessage, out temp);
+                        exception.ErrorMessage = temp;
+                    }
+                    else
+                    {
+                        exception.ErrorCode = response.StatusCode.ToString();
+                        exception.ErrorMessage = response.Failure.Message;
+                    }
                 }
                 catch (Exception ee)
                 {
+                    exception.ErrorMessage = ee.Message;
                     if (LoggerMgr.IsErrorEnabled)
                     {
                         LoggerMgr.Error(ee.Message, ee);
                     }
                 }
-                string temp;
+
                 if (response.Headers.TryGetValue(this.GetIHeaders(context).RequestId2Header(), out temp))
                 {
                     exception.ObsId2 = temp;
@@ -461,6 +472,7 @@ namespace OBS.Internal
                 {
                     continue;
                 }
+
                 webRequest.Headers.Add(header.Key, header.Value);
             }
 #else

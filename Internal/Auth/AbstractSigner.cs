@@ -30,7 +30,7 @@ namespace OBS.Internal.Auth
             request.Headers.Add(Constants.CommonHeaders.Authorization, auth);
         }
 
-        internal override IDictionary<string,string> GetSignature(HttpRequest request, HttpContext context, IHeaders iheaders)
+        internal override IDictionary<string, string> GetSignature(HttpRequest request, HttpContext context, IHeaders iheaders)
         {
             StringBuilder stringToSign = new StringBuilder();
 
@@ -175,7 +175,7 @@ namespace OBS.Internal.Auth
 
             if (LoggerMgr.IsDebugEnabled)
             {
-                LoggerMgr.Debug("StringToSign:" + stringToSign.ToString());
+                LoggerMgr.Debug("StringToSign: ******");
             }
 
             IDictionary<string, string> ret = new Dictionary<string, string>();

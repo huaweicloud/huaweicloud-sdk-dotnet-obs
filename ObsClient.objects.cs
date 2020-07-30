@@ -13,7 +13,7 @@
 //----------------------------------------------------------------------------------*/
 using OBS.Internal;
 using OBS.Model;
-using System;
+using System.Net;
 
 namespace OBS
 {
@@ -125,12 +125,12 @@ namespace OBS
                     throw new ObsException(Constants.InvalidUploadIdMessage, ErrorType.Sender, Constants.InvalidUploadId, "");
                 }
 
-                if(request.PartNumber <= 0)
+                if (request.PartNumber <= 0)
                 {
                     throw new ObsException(Constants.InvalidPartNumberMessage, ErrorType.Sender, Constants.InvalidPartNumber, "");
                 }
 
-                if(string.IsNullOrEmpty(request.SourceBucketName))
+                if (string.IsNullOrEmpty(request.SourceBucketName))
                 {
                     throw new ObsException(Constants.InvalidSourceBucketNameMessage, ErrorType.Sender, Constants.InvalidBucketName, "");
                 }
@@ -259,7 +259,7 @@ namespace OBS
         /// <returns>Response to the request for aborting a multipart upload</returns>
         public AbortMultipartUploadResponse AbortMultipartUpload(AbortMultipartUploadRequest request)
         {
-            return this.DoRequest<AbortMultipartUploadRequest, AbortMultipartUploadResponse>(request, delegate()
+            return this.DoRequest<AbortMultipartUploadRequest, AbortMultipartUploadResponse>(request, delegate ()
             {
                 if (request.ObjectKey == null)
                 {
@@ -369,7 +369,27 @@ namespace OBS
             });
         }
 
-
+        /// <summary>
+        /// Querying whether a object exists.
+        /// </summary>
+        /// <param name="request">Parameters in a request for querying whether a object exists</param>
+        /// <returns>Response to a request for querying whether a object exists</returns>
+        public bool HeadObject(HeadObjectRequest request)
+        {
+            try
+            {
+                this.DoRequest<HeadObjectRequest, ObsWebServiceResponse>(request);
+                return true;
+            }
+            catch (ObsException e)
+            {
+                if (e.StatusCode == HttpStatusCode.NotFound)
+                {
+                    return false;
+                }
+                throw e;
+            }
+        }
     }
 }
 

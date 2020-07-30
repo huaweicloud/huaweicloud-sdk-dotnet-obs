@@ -43,12 +43,13 @@ namespace OBS
             }
             if (string.IsNullOrEmpty(request.UploadFile) || !File.Exists(request.UploadFile))
             {
-                if (File.Exists(request.CheckpointFile)){
+                if (File.Exists(request.CheckpointFile))
+                {
                     File.Delete(request.CheckpointFile);
                 }
                 throw new ObsException("The UploadFile is not exist.", ErrorType.Sender, "NoSuchUploadFile", "");
             }
-            
+
             return ResumableUploadExcute(request);
         }
 
@@ -122,7 +123,7 @@ namespace OBS
                 uploadCheckPoint.UploadStream = (resumableUploadRequest as UploadStreamRequest).UploadStream;
             }
 
-           
+
             if (resumableUploadRequest.EnableCheckpoint)
             {
                 bool loadFileFlag = true;
@@ -137,10 +138,10 @@ namespace OBS
                 {
                     try
                     {
-                       
+
                         uploadCheckPoint.Load(resumableUploadRequest.CheckpointFile);
                     }
-                   
+
                     catch (Exception ex)
                     {
                         LoggerMgr.Warn(string.Format("Load checkpoint file with path {0} error", resumableUploadRequest.CheckpointFile), ex);
@@ -148,24 +149,24 @@ namespace OBS
                     }
                 }
 
-               
+
                 if (loadFileFlag)
                 {
-                    
+
                     if (uploadType == ResumableUploadTypeEnum.UploadFile)
                     {
                         UploadFileRequest uploadFileRequest = resumableUploadRequest as UploadFileRequest;
-                        
+
                         if (!(uploadFileRequest.BucketName.Equals(uploadCheckPoint.BucketName)
                             && uploadFileRequest.ObjectKey.Equals(uploadCheckPoint.ObjectKey)
                             && uploadFileRequest.UploadFile.Equals(uploadCheckPoint.UploadFile)))
                         {
                             paraVerifyFlag = false;
                         }
-                       
+
                         else
                         {
-                          
+
                             fileVerifyFlag = uploadCheckPoint.IsValid(uploadFileRequest.UploadFile, null, uploadFileRequest.EnableCheckSum, uploadType);
                         }
                     }
@@ -179,10 +180,10 @@ namespace OBS
                         {
                             paraVerifyFlag = false;
                         }
-                       
+
                         else
                         {
-                          
+
                             fileVerifyFlag = uploadCheckPoint.IsValid(null, uploadStreamRequest.UploadStream, uploadStreamRequest.EnableCheckSum, uploadType);
                         }
                     }
@@ -191,61 +192,61 @@ namespace OBS
 
                 if (!loadFileFlag || !paraVerifyFlag || !fileVerifyFlag)
                 {
-                   
+
                     if (loadFileFlag && !string.IsNullOrEmpty(uploadCheckPoint.BucketName) && !string.IsNullOrEmpty(uploadCheckPoint.ObjectKey) &&
                         !string.IsNullOrEmpty(uploadCheckPoint.UploadId))
                     {
-                       
+
                         AbortMultipartUpload(uploadCheckPoint);
                     }
 
-                   
+
                     if (File.Exists(resumableUploadRequest.CheckpointFile))
                     {
                         File.Delete(resumableUploadRequest.CheckpointFile);
                     }
 
-                  
+
                     ResumableUploadPrepare(resumableUploadRequest, uploadCheckPoint);
                 }
             }
-           
+
             else
             {
-              
+
                 ResumableUploadPrepare(resumableUploadRequest, uploadCheckPoint);
             }
 
             TransferStreamManager mgr = null;
             try
             {
-               
+
                 IList<PartResultUpload> partResultsUpload = ResumableUploadBegin(resumableUploadRequest, uploadCheckPoint, out mgr, uploadType);
 
 
-               
+
                 foreach (PartResultUpload result in partResultsUpload)
                 {
-                   
+
                     if (result.IsFailed && result.Exception != null)
                     {
-                        
+
                         if (!resumableUploadRequest.EnableCheckpoint)
                         {
                             AbortMultipartUpload(uploadCheckPoint);
                         }
-                       
-                        else if(uploadCheckPoint.IsUploadAbort)
+
+                        else if (uploadCheckPoint.IsUploadAbort)
                         {
                             AbortMultipartUpload(uploadCheckPoint);
 
-                          
+
                             if (File.Exists(resumableUploadRequest.CheckpointFile))
                             {
                                 File.Delete(resumableUploadRequest.CheckpointFile);
                             }
                         }
-                        
+
                         throw result.Exception;
                     }
                 }
@@ -257,9 +258,9 @@ namespace OBS
                     mgr.TransferEnd();
                 }
             }
-           
 
-           
+
+
             CompleteMultipartUploadRequest completeMultipartUploadRequest = new CompleteMultipartUploadRequest
             {
                 BucketName = resumableUploadRequest.BucketName,
@@ -280,7 +281,7 @@ namespace OBS
                 }
                 if (resumableUploadRequest.EnableCheckpoint)
                 {
-                   
+
                     if (File.Exists(resumableUploadRequest.CheckpointFile))
                     {
                         File.Delete(resumableUploadRequest.CheckpointFile);
@@ -288,23 +289,23 @@ namespace OBS
                 }
                 return completeMultipartUploadResponse;
             }
-           
+
             catch (ObsException ex)
             {
-                
+
                 if (!resumableUploadRequest.EnableCheckpoint)
                 {
                     AbortMultipartUpload(uploadCheckPoint);
                 }
-              
+
                 else
                 {
-                  
+
                     if (ex.StatusCode >= HttpStatusCode.BadRequest && ex.StatusCode < HttpStatusCode.InternalServerError)
                     {
                         AbortMultipartUpload(uploadCheckPoint);
 
-                     
+
                         if (File.Exists(resumableUploadRequest.CheckpointFile))
                         {
                             File.Delete(resumableUploadRequest.CheckpointFile);
@@ -320,7 +321,7 @@ namespace OBS
                     resumableUploadRequest.UploadEventHandler(this, e);
                 }
 
-              
+
                 throw ex;
             }
         }
@@ -332,7 +333,7 @@ namespace OBS
         /// <param name="uploadCheckPoint"></param>
         private void ResumableUploadPrepare(ResumableUploadRequest resumableUploadRequest, UploadCheckPoint uploadCheckPoint)
         {
-          
+
             uploadCheckPoint.BucketName = resumableUploadRequest.BucketName;
             uploadCheckPoint.ObjectKey = resumableUploadRequest.ObjectKey;
             long originPosition = 0;
@@ -349,11 +350,11 @@ namespace OBS
                 uploadCheckPoint.FileStatus = FileStatus.getFileStatus(null, uploadStreamRequest.UploadStream, uploadStreamRequest.EnableCheckSum, ResumableUploadTypeEnum.UploadStream);
                 originPosition = uploadCheckPoint.UploadStream.Position;
             }
-            
+
             uploadCheckPoint.UploadParts = SplitUploadFile(uploadCheckPoint.FileStatus.Size, resumableUploadRequest.UploadPartSize, originPosition);
             uploadCheckPoint.PartEtags = new List<PartETag>();
 
-        
+
             InitiateMultipartUploadRequest initiateRequest = new InitiateMultipartUploadRequest()
             {
                 BucketName = resumableUploadRequest.BucketName,
@@ -388,23 +389,23 @@ namespace OBS
                 throw ex;
             }
 
-         
+
             uploadCheckPoint.UploadId = initiateResponse.UploadId;
 
-           
+
             if (resumableUploadRequest.EnableCheckpoint)
             {
                 try
                 {
                     uploadCheckPoint.Record(resumableUploadRequest.CheckpointFile);
                 }
-              
+
                 catch (Exception ex)
                 {
-                  
+
                     AbortMultipartUpload(uploadCheckPoint);
 
-                  
+
                     ObsException exception = new ObsException(ex.Message, ex);
                     exception.ErrorType = ErrorType.Sender;
                     throw exception;
@@ -433,14 +434,14 @@ namespace OBS
 
             if (partNumber >= 10000)
             {
-                partSize = fileLength %10000==0? fileLength / 10000 : fileLength/10000+1;
+                partSize = fileLength % 10000 == 0 ? fileLength / 10000 : fileLength / 10000 + 1;
                 partNumber = Convert.ToInt32(fileLength / partSize);
             }
 
             if (fileLength % partSize > 0)
                 partNumber++;
 
-            if(partNumber == 0)
+            if (partNumber == 0)
             {
                 parts.Add(new UploadPart()
                 {
@@ -516,9 +517,9 @@ namespace OBS
                         AutoClose = false
                     };
 
-                  
+
                     UploadPartResponse uploadPartResponse = null;
-                  
+
                     if (param.uploadType == ResumableUploadTypeEnum.UploadFile)
                     {
                         if (param.mgr != null)
@@ -540,7 +541,7 @@ namespace OBS
                             uploadPartResponse = UploadPart(uploadPartRequest);
                         }
                     }
-                   
+
                     else
                     {
                         if (param.mgr != null)
@@ -562,7 +563,7 @@ namespace OBS
                     }
 
                     PartETag partEtag = new PartETag(uploadPartResponse.PartNumber, uploadPartResponse.ETag);
-                   
+
                     partResultUpload.IsFailed = false;
                     uploadPart.IsCompleted = true;
                     lock (param.uploadCheckPoint.uploadlock)
@@ -598,7 +599,7 @@ namespace OBS
             }
             catch (ObsException ex)
             {
-               
+
                 if (ex.StatusCode >= HttpStatusCode.BadRequest && ex.StatusCode < HttpStatusCode.InternalServerError)
                 {
                     uploadCheckPoint.IsUploadAbort = true;
@@ -644,7 +645,7 @@ namespace OBS
         /// </summary>
         private IList<PartResultUpload> ResumableUploadBegin(ResumableUploadRequest resumableUploadRequest, UploadCheckPoint uploadCheckPoint, out TransferStreamManager mgr, ResumableUploadTypeEnum uploadType)
         {
-           
+
             IList<PartResultUpload> partResultsUpload = new List<PartResultUpload>();
             IList<UploadPart> uploadParts = new List<UploadPart>();
             long transferredBytes = 0;
@@ -671,7 +672,7 @@ namespace OBS
 
             if (resumableUploadRequest.UploadProgress != null)
             {
-             
+
                 if (uploadType == ResumableUploadTypeEnum.UploadFile)
                 {
                     if (resumableUploadRequest.ProgressType == ProgressTypeEnum.ByBytes)
@@ -685,12 +686,12 @@ namespace OBS
                         uploadCheckPoint.FileStatus.Size, transferredBytes, resumableUploadRequest.ProgressInterval);
                     }
                 }
-                
+
                 else
                 {
                     if (resumableUploadRequest.ProgressType == ProgressTypeEnum.ByBytes)
                     {
-                        
+
                         mgr = new TransferStreamByBytes(resumableUploadRequest.Sender, resumableUploadRequest.UploadProgress,
                         uploadCheckPoint.FileStatus.Size, transferredBytes, resumableUploadRequest.ProgressInterval);
                     }
@@ -711,7 +712,7 @@ namespace OBS
             {
                 taskNum = Math.Min((resumableUploadRequest as UploadFileRequest).TaskNum, uploadParts.Count);
             }
-            
+
             ManualResetEvent[] events = new ManualResetEvent[taskNum];
             UploadPartExcuteParam[] executeParams = new UploadPartExcuteParam[taskNum];
             for (int i = 0; i < taskNum; i++)
@@ -732,7 +733,7 @@ namespace OBS
 
             try
             {
-                
+
                 while (taskNum < uploadParts.Count)
                 {
                     if (uploadCheckPoint.IsUploadAbort)
@@ -837,7 +838,7 @@ namespace OBS
 
             GetObjectMetadataResponse response = null;
 
-         
+
             if (downloadFileRequest.EnableCheckpoint)
             {
                 bool loadFileFlag = true;
@@ -846,19 +847,19 @@ namespace OBS
                 ObsException obsException = null;
                 try
                 {
-                    
+
                     downloadCheckPoint.Load(downloadFileRequest.CheckpointFile);
                 }
-               
+
                 catch (Exception)
                 {
                     loadFileFlag = false;
                 }
 
-              
+
                 if (loadFileFlag)
                 {
-                    
+
                     if (!(downloadFileRequest.BucketName.Equals(downloadCheckPoint.BucketName)
                     && downloadFileRequest.ObjectKey.Equals(downloadCheckPoint.ObjectKey)
                     && downloadFileRequest.DownloadFile.Equals(downloadCheckPoint.DownloadFile)))
@@ -878,18 +879,18 @@ namespace OBS
                         paraVerifyFlag = false;
                     }
 
-   
+
                     if (paraVerifyFlag)
                     {
                         try
                         {
-                            
+
                             fileVerifyFlag = downloadCheckPoint.IsValid(downloadFileRequest.TempDownloadFile, this);
                         }
                         catch (ObsException ex)
                         {
                             int statusCode = Convert.ToInt32(ex.StatusCode);
-                            if(statusCode >= 400 && statusCode < 500)
+                            if (statusCode >= 400 && statusCode < 500)
                             {
                                 fileVerifyFlag = false;
                                 obsException = ex;
@@ -902,10 +903,10 @@ namespace OBS
                     }
                 }
 
-                
+
                 if (!loadFileFlag || !paraVerifyFlag || !fileVerifyFlag)
                 {
-                    
+
                     if (downloadCheckPoint.TmpFileStatus != null)
                     {
                         if (File.Exists(downloadCheckPoint.TmpFileStatus.TmpFilePath))
@@ -914,40 +915,40 @@ namespace OBS
                         }
                     }
 
-                    
+
                     if (File.Exists(downloadFileRequest.CheckpointFile))
                     {
                         File.Delete(downloadFileRequest.CheckpointFile);
                     }
 
-                    if(obsException != null)
+                    if (obsException != null)
                     {
                         throw obsException;
                     }
 
-                   
+
                     response = DownloadFilePrepare(downloadFileRequest, downloadCheckPoint);
                 }
             }
             else
             {
-               
+
                 response = DownloadFilePrepare(downloadFileRequest, downloadCheckPoint);
             }
 
             TransferStreamManager mgr = null;
             try
             {
-                
+
                 IList<PartResultDown> partResultsDowns = DownloadFileBegin(downloadFileRequest, downloadCheckPoint, out mgr);
 
-               
+
                 foreach (PartResultDown result in partResultsDowns)
                 {
-                  
+
                     if (result.IsFailed && result.Exception != null)
                     {
-                       
+
                         if (!downloadFileRequest.EnableCheckpoint)
                         {
                             if (File.Exists(downloadCheckPoint.TmpFileStatus.TmpFilePath))
@@ -955,8 +956,8 @@ namespace OBS
                                 File.Delete(downloadCheckPoint.TmpFileStatus.TmpFilePath);
                             }
                         }
-                       
-                        else if(downloadCheckPoint.IsDownloadAbort)
+
+                        else if (downloadCheckPoint.IsDownloadAbort)
                         {
                             if (File.Exists(downloadCheckPoint.TmpFileStatus.TmpFilePath))
                             {
@@ -967,7 +968,7 @@ namespace OBS
                                 File.Delete(downloadFileRequest.CheckpointFile);
                             }
                         }
-                       
+
                         throw result.Exception;
                     }
                 }
@@ -980,12 +981,12 @@ namespace OBS
 
             try
             {
-              
+
                 Rename(downloadFileRequest.TempDownloadFile, downloadFileRequest.DownloadFile);
             }
             catch (Exception ex)
             {
-               
+
                 if (File.Exists(downloadFileRequest.CheckpointFile))
                 {
                     File.Delete(downloadFileRequest.CheckpointFile);
@@ -995,7 +996,7 @@ namespace OBS
                 throw exception;
             }
 
-            
+
             if (downloadFileRequest.EnableCheckpoint)
             {
                 if (File.Exists(downloadFileRequest.CheckpointFile))
@@ -1004,7 +1005,7 @@ namespace OBS
                 }
             }
 
-            
+
             return response == null ? this.GetObjectMetadata(downloadFileRequest, downloadCheckPoint) : response;
         }
 
@@ -1040,7 +1041,7 @@ namespace OBS
 
             try
             {
-               
+
                 using (FileStream fs = new FileStream(downloadFileRequest.TempDownloadFile, FileMode.Create))
                 {
                     fs.SetLength(downloadCheckPoint.ObjectStatus.Size);
@@ -1053,7 +1054,7 @@ namespace OBS
                 throw exception;
             }
 
-            
+
             downloadCheckPoint.TmpFileStatus = new TmpFileStatus()
             {
                 TmpFilePath = downloadFileRequest.TempDownloadFile,
@@ -1061,17 +1062,17 @@ namespace OBS
                 LastModified = File.GetLastWriteTime(downloadFileRequest.TempDownloadFile),
             };
 
-          
+
             if (downloadFileRequest.EnableCheckpoint)
             {
                 try
                 {
                     downloadCheckPoint.Record(downloadFileRequest.CheckpointFile);
                 }
-               
+
                 catch (Exception ex)
                 {
-                 
+
                     if (downloadCheckPoint.TmpFileStatus != null)
                     {
                         if (File.Exists(downloadCheckPoint.TmpFileStatus.TmpFilePath))
@@ -1079,7 +1080,7 @@ namespace OBS
                             File.Delete(downloadCheckPoint.TmpFileStatus.TmpFilePath);
                         }
                     }
-                  
+
                     ObsException exception = new ObsException(ex.Message, ex);
                     exception.ErrorType = ErrorType.Sender;
                     throw exception;
@@ -1099,7 +1100,7 @@ namespace OBS
 
             if (partNumber >= 10000)
             {
-                partSize = objectSize %10000 == 0? objectSize /10000 : objectSize/10000 + 1;
+                partSize = objectSize % 10000 == 0 ? objectSize / 10000 : objectSize / 10000 + 1;
                 partNumber = Convert.ToInt32(objectSize / partSize);
             }
 
@@ -1180,16 +1181,20 @@ namespace OBS
                     getObjectRequest.IfModifiedSince = downloadFileRequest.IfModifiedSince;
                     getObjectRequest.IfUnmodifiedSince = downloadFileRequest.IfUnmodifiedSince;
 
-                   
+
                     GetObjectResponse getObjectResponse = this.GetObject(getObjectRequest);
 
+                    if (getObjectResponse.OutputStream == null || getObjectResponse.ContentLength == 0)
+                    {
+                        throw new ObsException("response body is null");
+                    }
 
-                    if(getObjectResponse.OutputStream != null && getObjectResponse.ContentLength > 0)
+                    if (getObjectResponse.OutputStream != null && getObjectResponse.ContentLength > 0)
                     {
                         Stream content = null;
                         try
                         {
-                            if (param.mgr != null )
+                            if (param.mgr != null)
                             {
                                 TransferStream stream = new TransferStream(getObjectResponse.OutputStream);
                                 stream.BytesReaded += param.mgr.BytesTransfered;
@@ -1202,14 +1207,18 @@ namespace OBS
                                 content = getObjectResponse.OutputStream;
                             }
 
-                           
+                            if (getObjectResponse.ContentLength != downloadPart.End - downloadPart.Start + 1)
+                            {
+                                throw new ObsException("The length of the response returned is not the same as expected.");
+                            }
+
                             using (FileStream output = new FileStream(downloadFileRequest.TempDownloadFile, FileMode.Open, FileAccess.Write, FileShare.ReadWrite,
                                 Constants.DefaultBufferSize))
                             {
                                 output.Seek(downloadPart.Start, SeekOrigin.Begin);
-                               
+
                                 byte[] buffer = new byte[Constants.DefaultBufferSize];
-                               
+
                                 int bytesRead = 0;
 
                                 while ((bytesRead = content.Read(buffer, 0, buffer.Length)) > 0)
@@ -1220,14 +1229,14 @@ namespace OBS
                         }
                         finally
                         {
-                            if(content != null)
+                            if (content != null)
                             {
                                 content.Close();
                             }
                         }
                     }
 
-                    
+                    LoggerMgr.Debug($"No {downloadPart.PartNumber} part ContentLength is {getObjectResponse.ContentLength} and Part size is ：{downloadPart.End - downloadPart.Start}");
                     partResultDown.IsFailed = false;
                     downloadPart.IsCompleted = true;
 
@@ -1235,9 +1244,9 @@ namespace OBS
                     {
                         lock (downloadCheckPoint.downloadlock)
                         {
-                          
+
                             downloadCheckPoint.UpdateTmpFile(downloadFileRequest.TempDownloadFile);
-                           
+
                             downloadCheckPoint.Record(downloadFileRequest.CheckpointFile);
                         }
                     }
@@ -1249,21 +1258,18 @@ namespace OBS
                         e.PartNumber = downloadPart.PartNumber;
                         param.eventHandler(this, e);
                     }
-
-                    if (LoggerMgr.IsDebugEnabled)
-                    {
-                        LoggerMgr.Debug(string.Format("PartNumber {0} is done, Start {1}, End {2}", downloadPart.PartNumber,
-                            downloadPart.Start, downloadPart.End));
-                    }
                 }
                 else
                 {
                     partResultDown.IsFailed = false;
                 }
             }
-
             catch (ObsException ex)
             {
+                if (LoggerMgr.IsErrorEnabled)
+                {
+                    LoggerMgr.Error(string.Format("DownloadPartExcute exception code: {0}, with message: {1}", ex.ErrorCode, ex.Message), ex);
+                }
 
                 if (ex.StatusCode >= HttpStatusCode.BadRequest && ex.StatusCode < HttpStatusCode.InternalServerError)
                 {
@@ -1281,6 +1287,11 @@ namespace OBS
             }
             catch (Exception ex)
             {
+                if (LoggerMgr.IsErrorEnabled)
+                {
+                    LoggerMgr.Error("Error in DownloadPartExcute", ex);
+                }
+
                 partResultDown.IsFailed = true;
                 ObsException exception = new ObsException(ex.Message, ex);
                 exception.ErrorType = ErrorType.Sender;
@@ -1295,10 +1306,14 @@ namespace OBS
             }
             finally
             {
+                if (LoggerMgr.IsDebugEnabled)
+                {
+                    LoggerMgr.Debug($"No {downloadPart.PartNumber} part finally download {(partResultDown.IsFailed ? "Failed" : "Succeed")}, Start at {downloadPart.Start}, End at {downloadPart.End}");
+                }
+
                 param.partResultDown = partResultDown;
                 param.executeEvent.Set();
             }
-
         }
 
 
@@ -1421,7 +1436,7 @@ namespace OBS
             {
                 File.Move(tempDownloadFilePath, downloadFilePath);
             }
-         
+
             catch (Exception)
             {
                 byte[] buffer = new byte[Constants.DefaultBufferSize];
@@ -1448,7 +1463,7 @@ namespace OBS
                 }
                 finally
                 {
-               
+
                     File.Delete(tempDownloadFilePath);
                 }
             }

@@ -14,6 +14,7 @@
 using OBS.Internal;
 using OBS.Model;
 using System;
+using System.Net;
 
 namespace OBS
 {
@@ -538,7 +539,40 @@ namespace OBS
             return this.EndDoRequest<SetObjectAclRequest, SetObjectAclResponse>(ar);
         }
 
+        /// <summary>
+        /// Start the asynchronous request for querying whether a object exists.
+        /// </summary>
+        /// <param name="request">Parameters in a request for querying whether a object exists</param>
+        /// <param name="callback">Asynchronous request callback function</param>
+        /// <param name="state">Asynchronous request status object</param>
+        /// <returns>Response to the asynchronous request</returns>
+        public IAsyncResult BeginHeadObject(HeadObjectRequest request, AsyncCallback callback, object state)
+        {
+            return this.BeginDoRequest<HeadObjectRequest>(request, callback, state);
+        }
 
+
+        /// <summary>
+        /// End the asynchronous request for querying whether a object exists.
+        /// </summary>
+        /// <param name="ar">Response to the asynchronous request</param>
+        /// <returns>Response to a request for querying whether a object exists</returns>
+        public bool EndHeadObject(IAsyncResult ar)
+        {
+            try
+            {
+                this.EndDoRequest<HeadObjectRequest, ObsWebServiceResponse>(ar);
+                return true;
+            }
+            catch (ObsException e)
+            {
+                if (e.StatusCode == HttpStatusCode.NotFound)
+                {
+                    return false;
+                }
+                throw e;
+            }
+        }
     }
 }
 

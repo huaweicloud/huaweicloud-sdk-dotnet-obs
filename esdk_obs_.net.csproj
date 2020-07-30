@@ -84,6 +84,7 @@
     <Compile Include="Model\DeleteBucketReplicationResponse.cs" />
     <Compile Include="Model\AppendObjectRequest.cs" />
     <Compile Include="Model\AppendObjectResponse.cs" />
+    <Compile Include="Model\HeadObjectRequest.cs" />
     <Compile Include="Model\ReplicationRule.cs" />
     <Compile Include="Model\GetBucketReplicationResponse.cs" />
     <Compile Include="Model\GetBucketReplicationRequest.cs" />

@@ -29,7 +29,7 @@ namespace OBS.Internal.Auth
         private const string RequestKey = "aws4_request";
         internal const string Algorithm = "AWS4-HMAC-SHA256";
         internal static readonly string ScopeSuffix = string.Format("/{0}/{1}/{2}", RegionKey, ServiceKey, RequestKey);
-        
+
 
         private V4Signer()
         {
@@ -52,7 +52,7 @@ namespace OBS.Internal.Auth
                 .ToString();
             request.Headers.Add(Constants.CommonHeaders.Authorization, auth);
         }
-           
+
         internal static string CaculateSignature(string stringToSign, string shortDate, string sk)
         {
             byte[] key = CommonUtil.HmacSha256("AWS4" + sk, shortDate);
@@ -169,7 +169,7 @@ namespace OBS.Internal.Auth
 
             canonicalRequest.Append("\n");
 
-            if(headerDict == null)
+            if (headerDict == null)
             {
                 // Canonical Headers
                 headerDict = new Dictionary<string, string>();
@@ -182,7 +182,7 @@ namespace OBS.Internal.Auth
                     headerDict.Add(entry.Key.Trim().ToLower(), entry.Value);
                 }
             }
-            
+
             foreach (string key in signedHeaderList)
             {
                 canonicalRequest.Append(key).Append(":").Append(headerDict[key]).Append("\n");
@@ -195,11 +195,11 @@ namespace OBS.Internal.Auth
             canonicalRequest.Append("\n");
 
             // Hashed Payload
-            canonicalRequest.Append(string.IsNullOrEmpty(payload)? UnsignedPayload : payload);
+            canonicalRequest.Append(string.IsNullOrEmpty(payload) ? UnsignedPayload : payload);
 
             if (LoggerMgr.IsDebugEnabled)
             {
-                LoggerMgr.Debug("CanonicalRequest:" + canonicalRequest);
+                LoggerMgr.Debug("CanonicalRequest: ******");
             }
 
             StringBuilder stringToSign = new StringBuilder(Algorithm).Append("\n")
@@ -209,14 +209,14 @@ namespace OBS.Internal.Auth
 
             if (LoggerMgr.IsDebugEnabled)
             {
-                LoggerMgr.Debug("StringToSign:" + stringToSign.ToString());
+                LoggerMgr.Debug("StringToSign:  ******");
             }
 
             return CaculateSignature(stringToSign.ToString(), dateDict["ShortDate"], context.SecurityProvider.Sk);
         }
 
 
-        internal override IDictionary<string,string> GetSignature(HttpRequest request, HttpContext context, IHeaders iheaders)
+        internal override IDictionary<string, string> GetSignature(HttpRequest request, HttpContext context, IHeaders iheaders)
         {
             CommonUtil.AddHeader(request, iheaders.ContentSha256Header(), ContentSha256);
             IDictionary<string, string> tempDict = new Dictionary<string, string>();

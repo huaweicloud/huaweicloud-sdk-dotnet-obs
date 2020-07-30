@@ -23,7 +23,7 @@ namespace OBS.Model
     /// <summary>
     /// Response to an object download request
     /// </summary>
-    public class GetObjectResponse : GetObjectMetadataResponse, IDisposable
+    public class GetObjectResponse : GetObjectMetadataResponse
     {
 
         private bool _disposed = false;
@@ -36,7 +36,7 @@ namespace OBS.Model
             if (request != null && request.DownloadProgress != null && this.OutputStream != null && this.ContentLength > 0)
             {
                 TransferStream stream = new TransferStream(this.OutputStream);
-                
+
                 TransferStreamManager mgr;
                 if (request.ProgressType == ProgressTypeEnum.ByBytes)
                 {
@@ -56,32 +56,6 @@ namespace OBS.Model
             }
 
         }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        public void Dispose(bool disposing)
-        {
-            if (_disposed)
-            {
-                return;
-            }
-
-
-            if (disposing)
-            {
-                if (OutputStream != null)
-                {
-                    OutputStream.Close();
-                    OutputStream = null;
-                }
-                _disposed = true;
-            }
-        }
-
 
         /// <summary>
         /// Object data stream 
@@ -164,10 +138,15 @@ namespace OBS.Model
                 exception.ErrorType = ErrorType.Receiver;
                 throw exception;
             }
+            finally
+            {
+                if (OutputStream != null)
+                {
+                    OutputStream.Close();
+                    OutputStream = null;
+                }
+            }
         }
-
-
     }
-
 }
-    
+
