@@ -1,4 +1,5 @@
 ﻿Version 3.20.7
+
 新特性：
 1.判断对象是否存在的接口（ObsClient.HeadObject/ObsClient.BeginHeadObject/ObsClient.EndHeadObject）;
 

@@ -7,7 +7,9 @@ Documentation & Demo:
 1. Added the section about the APIs for checking whether an object exists.
 
 Resolved Issues:
-1. Fixed the issue that message and code fields in the error messages are occasionally empty.
+1. Fix ObsClient cannot release TCP connection in time under .Net Framework.
+2. Fix the issue that resumable download in poor network environment.
+3. Fixed the issue that message and code fields in the error messages are occasionally empty.
 
 -----------------------------------------------------------------------------------
 
