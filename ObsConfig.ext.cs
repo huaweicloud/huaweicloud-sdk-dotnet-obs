@@ -238,6 +238,10 @@ namespace OBS
             }
         }
 
+        /// <summary>
+        /// Enterprise project ID, which can be obtained from the enterprise project service.
+        /// </summary>
+        public string Epid { get; set; }
     }
 }
 

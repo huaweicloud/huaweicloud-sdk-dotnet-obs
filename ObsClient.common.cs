@@ -307,6 +307,12 @@ namespace OBS
             }
             httpRequest.Endpoint = this.ObsConfig.Endpoint;
             httpRequest.PathStyle = this.ObsConfig.PathStyle;
+
+            if (!string.IsNullOrEmpty(this.ObsConfig.Epid))
+            {
+                httpRequest.Headers.Add("x-obs-epid", this.ObsConfig.Epid);
+            }
+
             return httpRequest;
         }
 
