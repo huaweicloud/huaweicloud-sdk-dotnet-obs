@@ -1,4 +1,11 @@
-﻿Version 3.20.7
+﻿Version 3.22.3
+
+新特性：
+1.支持Content-Disposition标准元数据接口;
+
+-----------------------------------------------------------------------------------
+
+Version 3.20.7
 
 新特性：
 1.判断对象是否存在的接口（ObsClient.HeadObject/ObsClient.BeginHeadObject/ObsClient.EndHeadObject）;
